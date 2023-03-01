@@ -16,10 +16,9 @@ export const reviewSlice = createSlice({
         name: action.payload.name,
         text: action.payload.text, // text하나만 선택
         date: action.payload.date,
-        rate: action.payload.rate,
+        rate: action.payload.rate
       });
-      console.log(nextId);
-      console.log(action.payload.pid);
+      console.log(action.payload.rate);
     },
     removeReview: (state, action) => {
       alert("삭제되었습니다.");

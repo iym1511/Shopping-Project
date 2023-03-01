@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../css/Review.css'
@@ -8,11 +8,8 @@ import { addReview } from '../redux/review';
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 
-const Review = ({setShowReviewModal, showReviewModal}) => {
 
-    // 별점
-    const [clicked, setClicked] = useState([false, false, false, false, false]);
-    let [starScore, setStarScore] = useState(); 
+const Review = ({setShowReviewModal, showReviewModal}) => {
 
     let {id} = useParams();
 
@@ -21,6 +18,7 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
     const users = useSelector((state) => state.user);
     const sign = useSelector((state) => state.signup);
     const reviews = useSelector((state) => state.review);
+    const shop = useSelector((state) => state);
 
     const date = new Date();
     const year = date.getFullYear();
@@ -32,6 +30,14 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
 
     // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 / 댓글 이름별출력도 이걸로함
     const findUser = sign.userlist.find((user)=> user.id == users.id)
+    // useParams :id 값이랑 배열안에있는 id값을 같은걸로 찾아줌
+    const shoplist = shop.players.find(r=> r.id == id)
+
+    // 별점
+    const starArray = [0, 1, 2, 3, 4];
+    const [clicked, setClicked] = useState([false, false, false, false, false]);
+    const [star, setStar] = useState(); 
+    
 
       const [comment, setComment] = useState(
           {
@@ -40,12 +46,12 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
               name: findUser.name, // 일치한 유저 찾아서 댓글에 넣어줌
               text : "",
               date : userDate,
-              rate : starScore
+              rate : star   
           }
       )
   
-      const handleText = (e) => {
-          setComment({...comment, text : e.target.value})
+      const handleText = (e) => {  // 변하는값줄때 직접 전송.....
+          setComment({...comment, text : e.target.value, rate : star})
       }
   
       const onReset = () => {
@@ -56,8 +62,9 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
           e.preventDefault()
           if(comment.text !== ""){
               dispatch(addReview(comment))
+              console.log(comment.rate)
               alert("리뷰 등록 완료!")
-              navigate("/mypage")
+              navigate(`/detailpage/${id}`)
           }else{
               alert("댓글을 작성해주세요")
               console.log(reviews)
@@ -92,24 +99,25 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
         };
     });
 
-    const ARRAY = [0, 1, 2, 3, 4];
+   
+    
 
+    const handleStarClick = index => {
+        let clickStates = [...clicked];
+        for (let i = 0; i < 5; i++) {
+          clickStates[i] = i <= index ? true : false;
+        }
+        setClicked(clickStates);
+        console.log(clickStates)
+      };
 
-  
-
-
-  const handleStarClick = index => {
-    let clickStates = [...clicked];
-    for (let i = 0; i < 5; i++) {
-      clickStates[i] = i <= index ? true : false;
-    }
-    setClicked(clickStates);
-    console.log(clickStates)
-  };
+    useEffect(() => {
+        sendReview();
+    }, [clicked]); //컨디마 컨디업
 
   const sendReview = () => {
-    let score= clicked.filter(Boolean).length;
-    setStarScore(clicked.filter(Boolean).length);
+    let score = clicked.filter(Boolean).length;
+    setStar(score)
     // fetch('http://52.78.63.175:8000/movie', {
     //   method: 'POST',
     //   Headers: {
@@ -121,35 +129,29 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
     //   }),
     // });
   };
- 
-  useEffect(() => {
-    sendReview();
-}, [clicked]); //컨디마 컨디업
 
-    useEffect(()=>{
-        console.log(reviews);
-    },[])
 
     return (  
-        <div>
-            <div className={`review-modal ${showReviewModal ? 'review-modalOpen' : ''}`} ref={modalRef}>
+        <div className='review-container'>
+            <div className="review-modal" >
                 <h1 className='review-title'>Review</h1>
-                <p className='review-subtitle'>상품은 어떠셨나요? 리뷰를작성하여 후기를 남겨주세요!</p>
+                <p className='review-subtitle'>상품은 어떠셨나요? 리뷰와 별점을 남겨주세요!</p>
+                <img src={shoplist.image} className="review-img"/>
+                <Stars className='review-star'>
+                        {
+                            starArray.map((el, idx) => {
+                            return (
+                                <FaStar
+                                key={idx}
+                                size="30"
+                                onClick={() => handleStarClick(el)}
+                                className={clicked[el] && 'yellowStar'}
+                                />
+                            );
+                            })
+                        }
+                    </Stars>
                 <form onSubmit={addtext}>
-                <Stars>
-                    {
-                        ARRAY.map((el, idx) => {
-                        return (
-                            <FaStar
-                            key={idx}
-                            size="30"
-                            onClick={() => handleStarClick(el)}
-                            className={clicked[el] && 'yellowStar'}
-                            />
-                        );
-                        })
-                    }
-                </Stars>
                     <input type="text" onChange={handleText}  className='review-input'/>
                     <button type='submit' className='review-btn'>리뷰 작성</button>
                 </form>
@@ -167,6 +169,8 @@ const Stars = styled.div`
   & svg {
     color: gray;
     cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 18px;
   }
 
   :hover svg {

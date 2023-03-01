@@ -8,6 +8,9 @@ import { add, remove } from "../redux/comment";
 import { addCart, loginUser, shopcartAddtt } from "../redux/user";
 import { cartadd } from "../redux/singup";
 import Modal from "./Modal";
+import { removeReview } from "../redux/review";
+import { FaStar } from 'react-icons/fa';
+import styled from 'styled-components';
 
 const DetailPage = () => {
     let {id} = useParams();
@@ -68,7 +71,6 @@ const DetailPage = () => {
     }
     
     const cartAdd = () => {
-
         dispatch(shopcartAdd(shoplist))
         setShowModal(true)
     }
@@ -97,33 +99,138 @@ const DetailPage = () => {
 
     return (  
         <div className="detail-box">
-            <h1 className="detail-title">상세페이지입니다.</h1>
             {/* 모달창 */}
             {showModal ? <Modal setShowModal={setShowModal}/> : null}
             {/* 같은 이미지 출력 */}
             {
                 users.isLoggedIn ? (
-                    <div className="detail-item">
-                    <p>{shoplist.name}</p>
-                    <img src={shoplist.image} alt="" width={100}/>
-                    <button onClick={cartAdd}>장바구니 추가</button>
-                    <form onSubmit={addtext}>
-                        <input type="text" className="input" onChange={handleText} placeholder="댓글을 입력하여 주십시요"/>
-                        <button className="btn">댓글작성</button>
-                    </form>
+                <div className="detail-item">
+                    <div className="detail-container">
+                        <div className="detail-imgbox">
+                            <img src={shoplist.image} className="detail-img"/>
+                        </div>
+                        <div className="detail-textbox">
+                            <div className="detail-fixbox">
+                            <p className="detail-text">{shoplist.name}</p>
+                            <p className="detail-money">판매가 KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                            <button onClick={cartAdd}>장바구니 담기</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 ) : (
                     <div className="detail-item">
-                    <p>{shoplist.name}</p>
-                    <img src={shoplist.image} alt="" width={100}/>
-                    <button onClick={logoutMode}>장바구니 추가</button>
-                    <form onSubmit={addtext}>
-                        <input type="text" className="input" onChange={handleText} disabled placeholder="로그인 후 이용해 주십시요"/>
-                        <button className="btn">댓글작성</button>
-                    </form>
+                    <div className="detail-container">
+                        <img src={shoplist.image} className="detail-img"/>
+                        <div className="detail-textbox">
+                            <p className="detail-text">{shoplist.name}</p>
+                            <p className="detail-money">판매가 KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                            <button onClick={logoutMode}>장바구니 담기</button>
+                        </div>
+                    </div>
                 </div>
                 )
             }
+
+
+
+            {
+                reviewfind.map((a)=>{
+                    let star = a.rate
+                    const showStar = () => {
+                        switch(star) {
+                            case 1 : 
+                            return(
+                            <Stars>
+                                <FaStar className="yellowStar"/>
+                                <FaStar/>
+                                <FaStar/>
+                                <FaStar/>
+                                <FaStar/>
+                            </Stars>
+                            )
+                            case 2 : 
+                            return(
+                            <Stars>
+                                <FaStar className="yellowStar"/>
+                                <FaStar className="yellowStar"/>
+                                <FaStar/>
+                                <FaStar/>
+                                <FaStar/>
+                            </Stars>
+                            )
+                            case 3 : 
+                            return(
+                            <Stars>
+                                <FaStar className="yellowStar"/>
+                                <FaStar className="yellowStar"/>
+                                <FaStar className="yellowStar"/>
+                                <FaStar/>
+                                <FaStar/>
+                            </Stars>
+                            )
+                            case 4 : 
+                            return(
+                            <Stars>
+                                <FaStar className="yellowStar"/>
+                                <FaStar className="yellowStar"/>
+                                <FaStar className="yellowStar"/>
+                                <FaStar className="yellowStar"/>
+                                <FaStar/>
+                            </Stars>
+                            )
+                            case 5 : 
+                            return(
+                            <Stars>
+                                <FaStar className="yellowStar"/>
+                                <FaStar className="yellowStar"/>
+                                <FaStar className="yellowStar"/>
+                                <FaStar className="yellowStar"/>
+                                <FaStar className="yellowStar"/>
+                            </Stars>
+                            )
+                        }
+                    } 
+
+                    return (
+                        <div className="detail-mapbox">
+                            <div className="detail-userbox">
+                                <div className="detail-rate">{showStar()}</div>
+                                <div className="detail-reviewName">NAME : {a.name}</div>
+                                <div className="detail-reviewDate">{a.date}</div>
+                            </div>
+                            <div className="detail-flexbox">
+                                <div className="detail-reviewText">{a.text}</div>
+                                {
+                                    findUser.name == a.name ? (
+                                        <button onClick={()=>{dispatch(removeReview(a.id))}} className="detail-reviewBtn">x</button>
+                                    ) : (
+                                        <></>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    )
+                })
+            }
+
+
+            {
+                users.isLoggedIn ? (
+                    <form onSubmit={addtext} className="detail-form">
+                    <input type="text" className="detail-input" onChange={handleText} placeholder="댓글을 입력하여 주십시요"/>
+                    <button className="detail-btn">QnA작성</button>
+                </form>
+                ) : (
+                    <div>
+                        <form onSubmit={addtext}>
+                            <input type="text" className="input" onChange={handleText} disabled placeholder="로그인 후 이용해 주십시요"/>
+                            <button className="detail-btn">QnA작성</button>
+                        </form>
+                    </div>
+                )
+            }
+
             {
                 commentfind.map((a, i) => (
                     <div className="map-box">
@@ -141,15 +248,7 @@ const DetailPage = () => {
                     </div>   
                 ))
             }
-            {
-                reviewfind.map((a)=>(
-                    <div className="detail-mapbox">
-                        <div>{a.name}</div>
-                        <div>{a.date}</div>
-                        <div>{a.text}</div>
-                    </div>
-                ))
-            }
+            
 
             {/* <div className="detail-outlet">
                 <div className="detail-navbox">
@@ -165,3 +264,15 @@ const DetailPage = () => {
 }
  
 export default DetailPage;
+
+const Stars = styled.div`
+  padding-top: 5px;
+
+  & svg {
+    color: gray;
+  }
+
+  .yellowStar {
+    color: #fcc419;
+  }
+`;

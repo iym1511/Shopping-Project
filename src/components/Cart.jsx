@@ -53,10 +53,7 @@ const Cart = () => {
         dispatch(ADDIT_USER({
             ...findUser,
             purchaseArray,
-            sessionCart,
         })) // 세션 하고있는 부분
-        const stringfyPurchaseArray = JSON.stringify(purchaseArray);
-        sessionStorage.setItem("cartmypage", stringfyPurchaseArray)
         alert("주문완료!")
         navigater("/mypage")
         console.log(purchaseArray)

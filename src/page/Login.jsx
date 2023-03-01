@@ -13,6 +13,14 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // 이메일,패스워드 조건이 충족하는지 확인용
+  const [emailValid, setEmailValid] = useState(false);
+  const [pwValid, setPwValid] = useState(false);
+  // useEffect로 한자한자입력할때마다 확인해서 
+  // 이메일,패스워드 두개의 조건이 충족하면
+  // 버튼을 활성화 시켜주는데 사용
+  const [notAllow, setNotAllow] = useState(true);
+
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,6 +31,7 @@ const Login = () => {
   const onChangePassword = (e) => {
     setPassword(e.target.value);
   };
+
 
   const clicksignup = () => {
     navigate("/signup");
@@ -66,9 +75,9 @@ const Login = () => {
             <h1 className="login-text">로그인페이지</h1>
             <form onSubmit={onSubmitForm} className="login-form">
                 <div>ID</div>
-                <input type="text" onChange={onChangeId}/>
+                <input type="text" onChange={onChangeId}/>     
                 <div>PW</div>
-                <input type="password" onChange={onChangePassword}/>
+                <input type="password" onChange={onChangePassword}/>                
                 <button className='login-btn' type='submit'>로그인</button>
             </form>
             <button onClick={clicksignup}>회원가입</button>

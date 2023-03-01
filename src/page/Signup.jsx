@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../css/Signup.css'
@@ -20,6 +20,14 @@ const Signup = () => {
     const [phonNumber, onChangephonNumber] = useInput("");
     const [passwordCheck, setPasswordCheck] = useState("");
     const [passwordError, setPasswordError] = useState(false);
+
+  // 이메일,패스워드 조건이 충족하는지 확인용
+  const [emailValid, setEmailValid] = useState(false);
+  const [pwValid, setPwValid] = useState(false);
+  // useEffect로 한자한자입력할때마다 확인해서 
+  // 이메일,패스워드 두개의 조건이 충족하면
+  // 버튼을 활성화 시켜주는데 사용
+  const [notAllow, setNotAllow] = useState(true);
 
     
 
@@ -64,6 +72,17 @@ const Signup = () => {
           alert("이미 사용중인 email입니다.");
         }
       };
+
+      useEffect(()=>{
+        // 둘다 모두 true면 버튼활성화를 풀어줌
+        if(emailValid && pwValid){
+            setNotAllow(false);
+            return;
+        }else{
+            setNotAllow(true);
+        }
+    
+    },[emailValid, pwValid])
     
 
     return (   // value = key값 상태가 바뀌었을때 같이 바뀜
@@ -73,7 +92,7 @@ const Signup = () => {
                 <div>Name</div>
                 <input type="text" required value={name} onChange={onChangeName}/>
                 <div>ID</div>
-                <input type="text" required value={id} onChange={onChangeId} />
+                <input type="text" required value={id} onChange={onChangeId} />  
                 <div>Password</div>
                 <input type="password" required value={password} onChange={onChangePassword} />
                 <div>Password Check</div>
@@ -81,8 +100,6 @@ const Signup = () => {
                 {passwordError && <p>Password가 일치하지 않습니다.</p>}
                 <div>Email</div>
                 <input type="text" required value={email} onChange={onChangeEmail} />
-                {/* <div>Address</div>
-                <input type="text" required value={address} onChange={onChangeAddress}/> */}
                 <div>PhoneNumber</div>
                 <input type="text" required value={phonNumber} onChange={onChangephonNumber}/>
                 

@@ -98,7 +98,8 @@ const MyPage = ()=> {
         },
     }
 
-    const deliveryAddress = () => {
+    const deliveryAddress = (e) => {
+        e.preventDefault()
         dispatch(ADDIT_USER({
             ...findUser,
             apiaddress,

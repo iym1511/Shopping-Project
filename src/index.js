@@ -18,7 +18,7 @@ root.render(
   
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <BrowserRouter >
+        <BrowserRouter basename={process.env.PUBLIC_URL}> {/** 깃 배포 빈화면일때 주소오류 잡아주는거 */}
           <App />
         </BrowserRouter>
       </PersistGate>

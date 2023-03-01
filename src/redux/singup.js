@@ -46,7 +46,6 @@ export const signupSlice = createSlice({
     },
     updateAddress: (state, action) => {
       state.newUser.address = action.payload.address;
-      console.log(action.payload.address);
     },
   },
 });

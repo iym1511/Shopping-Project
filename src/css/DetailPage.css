@@ -1,22 +1,100 @@
 .detail-box{
     border: 1px solid rgba(0, 0, 0, 0);
-}
-.detail-title{
-    text-align: center;
-    margin-top: 150px;
+    width: 95%;
 }
 .detail-item{
-    text-align: center;
+    margin-top: 150px;
+    width: 100%;
 }
-.btn{
+.detail-img{
+    width: 550px;
+    margin: auto;
+    margin-bottom: 50px;
+
+}
+.detail-textbox{
+    margin: auto;
+    width: 300px;
+    margin-left: 70px;
+    height: 520px;
+}
+.detail-fixbox{
+    position: fixed;
+}
+
+.detail-text{
+    width: 100px;
+}
+.detail-money{
+    width: 300px;
+}
+.detail-btn{
     margin: auto;
     margin-top: 10px;
     height: 30px;
     margin-left: 10px;
 }
 
+.detail-container{
+    display: flex;
+    margin: auto;
+    width: 100%;  
+}
+
+.detail-imgbox{
+    width: 500px;
+    margin: auto;
+}
+.detail-mapbox{
+    width: 42%;
+    display: flex;
+    margin-top: 50px;
+    margin-left: 100px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(207, 207, 207);
+}
+.detail-userbox{
+    
+}
+.detail-rate{
+    margin-left: 8px;
+    margin-top: 7px;
+    margin-bottom: 20px;
+    width: 100px;
+}
+.detail-reviewName{
+    margin-left: 10px;
+    margin-top: 7px;
+    color: gray;
+}
+.detail-reviewDate{
+    margin-left: 10px;
+    font-size: 12px;
+    margin-top: 7px;
+    color: gray;
+}
+.detail-reviewText{
+    width: 100%;
+    margin-left: 30px;
+    margin-top: 15px;
+    color: rgb(49, 49, 49);
+}
+.detail-reviewBtn{
+    border: none;
+    background-color: rgba(240, 248, 255, 0);
+}
+.detail-flexbox{
+    display: flex;
+    width: 100%;
+}
 .map-box{
 
+}
+.detail-form{
+    margin: auto;
+}
+.detail-input{
+    margin-top: 100px;
 }
 
 .inputbox{
@@ -71,3 +149,36 @@
     width: 200px;
     height: 50px;
 }
+
+/* 반응형 */
+/* @media screen and (max-width: 1470px) {
+    .detail-textbox{
+        position: fixed;
+        left: 350px;
+    }
+}
+@media screen and (max-width: 1230px) {
+    .detail-textbox{
+        position: fixed;
+        left: 370px;
+    }
+    .detail-mapbox{
+        width: 500px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .detail-textbox{
+        position: relative;
+        margin: auto;
+        top: -20px;
+        left: 90px;
+        width: 400px;
+        height: 400px;
+    }
+    .detail-img{
+        width: 550px;
+        margin-left: -80px;
+        margin-bottom: 50px;
+    
+    }
+} */
