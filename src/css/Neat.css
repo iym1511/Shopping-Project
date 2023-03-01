@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'Hahmlet-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.home-box{
+  border: 1px solid rgba(209, 64, 64, 0);
+  width: 90%;
+  margin: auto;
+}
+.home-title{
+    margin-top: 150px;
+    margin-left: 40px;
+    font-family: 'Hahmlet-Regular';
+    font-size: 2vw;
+    border-top: 1px solid black;
+    padding-top: 20px;
+    width: 95%;
+}
+.neat-icon{
+    width: 1.5%;
+}
+.neat-input{
+    border: none;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    margin-left: 79%;
+    width: 15%;
+    height: 25px;
+    font-size: 1.5vw;
+    margin-bottom: 20px;
+}
+.neat-mapbox{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* display: flex;
+    flex-wrap: wrap; */
+    width: 100%;
+    /* height: calc(40vh - 100px); */
+    color: rgb(104, 104, 104);
+}
+
+/* flex사용시 여기서 열당 개수 조절가능 
+    grid 쓰면 사진 크기 조절
+*/
+.list-Container{
+    margin: auto;
+    text-align: center;
+    width: 93%;
+    /* height: calc(40vh - 100px); */
+}
+
+/* 여기서 이미지 크기 조절 */
+.neat-mulgun{
+    width: 90%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.neat-name{
+    font-size: 0.8vw;
+}
+.neat-money{
+    font-size: 0.8vw;
+    margin-bottom: 70px;
+}
+
+/* .jjim{
+    margin-right: 10px;
+} */
+.listpage{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.neat-pagebtn{
+    width: 30%;
+    font-size: 0.8vw;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(255, 0, 0, 0);
+    margin-top: -15px;
+}

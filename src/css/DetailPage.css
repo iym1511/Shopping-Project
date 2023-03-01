@@ -1,0 +1,73 @@
+.detail-box{
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+.detail-title{
+    text-align: center;
+    margin-top: 150px;
+}
+.detail-item{
+    text-align: center;
+}
+.btn{
+    margin: auto;
+    margin-top: 10px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.map-box{
+
+}
+
+.inputbox{
+    display: flex;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    margin: auto;
+    padding-left: 30px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    width: 30%;
+}
+
+
+.detail-name{
+    width: 15%;
+}
+.inputtext{
+    width: 100%;
+    display: flex;
+}
+
+
+.xbtn{
+    margin: auto;
+    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.detail-outlet{
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+    margin: auto;
+}
+.detail-navbox{
+    display: flex;
+    justify-content: center;
+    
+}
+.detail-nav1{
+    cursor: pointer;
+    border: 1px solid black;
+    width: 200px;
+    height: 50px;
+}
+.detail-nav2{
+    cursor: pointer;
+    border: 1px solid black;
+    width: 200px;
+    height: 50px;
+}

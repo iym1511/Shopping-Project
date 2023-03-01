@@ -1,0 +1,89 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import '../css/Neat.css'
+import { shopcartAdd, shopdeleteCount } from "../redux/main";
+import { cartAdd } from "../redux/shop";
+
+const Neat = () => {
+    const shop = useSelector((state) => state)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    // 검색기능 State
+    const [searched, setSearched] = useState("");
+    const [search, setSearch] = useState("");
+
+    // 검색기능 함수
+    const searchChange = (e) => {
+        e.preventDefault();
+        setSearched(search);
+    }
+
+    const filterShop = shop.players.filter((a)=>{
+        return a.name.replace(" ","").toLocaleLowerCase().includes(searched.toLocaleLowerCase().replace(" ",""))
+    })
+    
+    
+    // 장바구니 기능 추가할려면 리덕스 따로만들어서 홈에서 찜하기누르는거따로 담기는거따로 해줘야함
+    // 그래서 홈에서 장바구니redux 리듀서를 가져와서 사용해주면 장바구니에 추가됨
+
+    // const jjim = (i) => {
+    //     dispatch(shopcartAdd(
+    //         {
+    //             id: shop.players[i].id,
+    //             name: shop.players[i].name,
+    //             count: shop.players[i].count,
+    //             image: shop.players[i].image,
+    //             money: shop.players[i].money,
+    //             save : shop.players[i].save,
+    //             checked : shop.players[i].checked
+    //         }
+    //     ))
+    // }
+             
+    //     <div className="neat-mapbox">  원래 쓰던거
+    //     {
+    //         shop.players.map((a, i)=> (
+    //             <div className="list-Container">                                    {/* index값을주면 map에서 0,1,2,3 페이지로감 */}
+    //                 <img src={shop.players[i].image} alt="이미지없음" className="neat-mulgun" onClick={()=>{navigate(`/detailpage/${i}`)}}/>
+    //                 <div className="neat-name">{a.name}</div>
+    //                     {/* map에서 i키값을 함수로보내줘서 위에서도 사용할수있게했음 중요 */}
+    //                 <div className="neat-money">KRW {a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+    //                 <div className="listpage">
+    //                     {/* <button className="jjim" onClick={()=>jjim(i)}>찜하기</button> */}
+    //                 </div>
+    //             </div>
+    //         ))
+    //     }
+    // </div>
+
+    return (
+        <div className="home-box">
+         <h1 className="home-title">NEAT</h1>
+         <form onSubmit={searchChange}>
+            <input type="text" className="neat-input" onChange={(e)=>{setSearch(e.target.value)}} />
+            <img src={require("../img/neat-input.png")} className="neat-icon"/>
+         </form>
+         <div className="neat-mapbox">
+            {
+                filterShop.map((a,i)=>(
+                    <div className="list-Container">                                    {/* index값을주면 map에서 0,1,2,3 페이지로감 */}
+                            <img src={filterShop[i].image} alt="이미지없음" className="neat-mulgun" onClick={()=>{navigate(`/detailpage/${filterShop[i].id}`)}}/>
+                            <div className="neat-name">{a.name}</div>
+                                {/* map에서 i키값을 함수로보내줘서 위에서도 사용할수있게했음 중요 */}
+                            <div className="neat-money">KRW {a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                            <div className="listpage">
+                                {/* <button className="jjim" onClick={()=>jjim(i)}>찜하기</button> */}
+                            </div>
+                        </div>
+                ))
+            }
+         </div>
+        </div>
+    );
+}
+ 
+export default Neat;
+

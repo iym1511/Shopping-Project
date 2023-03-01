@@ -1,0 +1,17 @@
+.login-box{
+    border: 1px solid rgba(255, 0, 0, 0);
+    text-align: center;
+}
+
+.login-text{
+    margin-top: 200px;
+    text-align: center;
+}
+
+.login-form{
+    
+}
+.login-btn{
+    display: flex;
+    margin:auto
+}

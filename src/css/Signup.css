@@ -1,0 +1,16 @@
+.signup-box{
+    border: 1px solid rgba(255, 0, 0, 0);
+}
+.signup-title{
+    margin-top: 150px;
+    text-align: center;
+}
+.signup-formbox{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: auto;   
+}
+.signup-btn{
+    display: flex;
+}

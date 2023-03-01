@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'SEBANG_Gothic_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SEBANG_Gothic_Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.nav-box{
+    display: flex;
+    position:fixed; 
+    /* width:1920px; */
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    background-color: rgba(255, 255, 255, 0.582);
+    transition: 0.3s;
+    font-family: 'SEBANG_Gothic_Bold';
+    z-index: 12;
+}
+.nav-box2{
+    background-color: rgba(138, 85, 85, 0);
+    height: 120px;
+    /* border-bottom: 1px solid rgb(77, 77, 77); */
+}
+.nav-shadow{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+/* .nav-logo{
+    width: 300px;
+    border: 1px solid red;
+    margin-top: -130px;
+    position: absolute;
+    right: 1620px;
+} */
+.nav-img{
+    background-image: url("../img/logo-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 10px 55px;
+    width: 370px;
+    height: 300px;
+    margin-top: -220px;
+    margin-left: -155px;
+    transition: 0.3s;
+}
+
+.nav-main{
+  margin-left: 6%;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+.nav-main2{
+  margin-top: 40px;
+  margin-left: 6%;
+}
+.nav-text{
+  color: black;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.nav-neat{
+    margin-top: 20px;
+    margin-left: 6%;
+    transition: 0.3s;
+}
+.nav-neat2{
+    transition: 0.3s;
+    margin-top: 40px;
+    margin-left: 6%;
+}
+
+
+.nav-shirt{
+    margin-top: 20px;
+    transition: 0.3s;
+    margin-left: 6%;
+}
+.nav-shirt2{
+    margin-top: 40px;
+}
+
+
+.nav-shoes{
+    margin-top: 20px;
+    transition: 0.3s;
+    margin-left: 6%;
+}
+.nav-shoes2{
+    margin-top: 40px;
+}
+
+.nav-bottom{
+    margin-top: 20px;
+    transition: 0.3s;
+    margin-left: 6%;
+}
+.nav-bottom2{
+    margin-top: 40px;
+}
+
+.nav-cart{
+    margin-top: 20px;
+    margin-left: 30%;
+    transition: 0.3s;
+}
+.nav-cart2{
+    transition: 0.3s;
+    margin-top: 40px;
+}
+
+
+.nav-user{
+    margin-top: 20px;
+    margin-left: 2%;
+    transition: 0.3s;
+}
+.nav-user2{
+    transition: 0.3s;
+    margin-top: 40px;
+}
+.nav-cart-logoutMode{
+    cursor: pointer;
+}
+
+/* 반응형 */
+@media screen and (max-width: 1420px) {
+    .nav-cart{
+        margin-left: 10%;
+    }
+}
+@media screen and (max-width: 1361px) {
+    .nav-img{
+        margin-left: -121px;
+        transition: 0.3s;
+    }
+}
