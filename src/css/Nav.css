@@ -103,7 +103,7 @@
 
 .nav-cart{
     margin-top: 20px;
-    margin-left: 30%;
+    margin-left: 20%;
     transition: 0.3s;
 }
 .nav-cart2{
@@ -133,9 +133,36 @@
 .nav-logout-icon{
     display: flex;
 }
+.nav-cart-length{
+    width: 15px;
+    height: 15px;
+    background-color: black;
+    color: white;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    top: -13px;
+    left: -8px;
+    margin-right: 10px;
+}
+.nav-userhi{    
+    width: 140px;
+}
+.nav-logoutBtn{
+    width: 70px;
+}
 .nav-cart-logoutMode{
     cursor: pointer;
 }
+.nav-mypage{
+    width: 100px;    
+    margin-right: 200px;
+}
+
 
 /* 반응형 */
 @media screen and (max-width: 1420px) {

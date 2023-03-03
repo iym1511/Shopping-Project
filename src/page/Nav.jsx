@@ -27,6 +27,9 @@ const Nav = () => {
   // 로그인 로그 확인용
   const log = useSelector((state)=> state.loginlog)
 
+  // 장바구니
+  const cart = useSelector((state)=> state.main)
+
   // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 (지워도댐 확인용)
   const sign = useSelector((state) => state.signup);
   const findUser = sign.userlist.find((user)=> user.id == users.id)
@@ -124,16 +127,21 @@ const Nav = () => {
                     <NavLink to="/cart">
                         <img src={require("../img/shopping-cart.png")} width={25} />
                     </NavLink>
+                    <p className="nav-cart-length">{cart.length}</p>
                     <div className="nav-userhi">{userName.name}님 반갑습니다.</div>
-                    <button onClick={logOut}>로그아웃</button>
+                    <button className="nav-logoutBtn" onClick={logOut}>로그아웃</button>
+                    <NavLink to="/mypage">
+                      <div className="nav-mypage">마이페이지</div>
+                    </NavLink>
                   </div>
                 </div>
               ) : (
                 <div className={`nav-cart ${scrollActive ? ' ' : 'nav-cart2'}`}>
                   <div className="nav-logout-icon">
-                    <NavLink to="/cart">
+                    <div onClick={loginMarket} style={{cursor:"pointer"}}>
                         <img src={require("../img/shopping-cart.png")} className="nav-cartimg2" width={25} />
-                    </NavLink>
+                    </div>
+                    <p className="nav-cart-length">{cart.length}</p>
                     <NavLink to="/login">
                         <img src={require("../img/account.png")} className="nav-userimg2" width={25} />
                     </NavLink>
@@ -142,7 +150,7 @@ const Nav = () => {
               )
             }
 
-            {
+            {/* {
               login ? (
                 <div>
                 <NavLink to="/mypage">
@@ -152,7 +160,7 @@ const Nav = () => {
               ):(
                 <div></div>
               )
-            }
+            } */}
             
             
         </div>
