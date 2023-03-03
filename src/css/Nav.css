@@ -121,6 +121,18 @@
     transition: 0.3s;
     margin-top: 40px;
 }
+.nav-cartimg2{
+    margin-left:5%;
+}
+.nav-userimg2{
+   margin-left: 50px;
+}
+.nav-login-icon{
+    display: flex;
+}
+.nav-logout-icon{
+    display: flex;
+}
 .nav-cart-logoutMode{
     cursor: pointer;
 }

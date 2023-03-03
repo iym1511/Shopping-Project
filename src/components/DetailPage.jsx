@@ -123,9 +123,11 @@ const DetailPage = () => {
                     <div className="detail-container">
                         <img src={shoplist.image} className="detail-img"/>
                         <div className="detail-textbox">
-                            <p className="detail-text">{shoplist.name}</p>
-                            <p className="detail-money">판매가 KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-                            <button onClick={logoutMode}>장바구니 담기</button>
+                            <div className="detail-fixbox">
+                                <p className="detail-text">{shoplist.name}</p>
+                                <p className="detail-money">판매가 KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                                <button onClick={logoutMode}>장바구니 담기</button>
+                            </div>
                         </div>
                     </div>
                 </div>

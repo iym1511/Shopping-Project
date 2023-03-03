@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/user";
+import { shopAlldelete } from "../redux/main";
 
 const Nav = () => {
 
@@ -40,6 +41,7 @@ const Nav = () => {
   const logOut = () => {
     setLogin(false);
     dispatch(logout());
+    dispatch(shopAlldelete());
     navigate("");
     console.log(users)
     console.log(findUser)
@@ -108,24 +110,34 @@ const Nav = () => {
 
             
             
-                <div className={`nav-cart ${scrollActive ? ' ' : 'nav-cart2'}`}>
+                {/* <div className={`nav-cart ${scrollActive ? ' ' : 'nav-cart2'}`}>
                   <NavLink to="/cart">
                       <img src={require("../img/shopping-cart.png")} width={25} />
                   </NavLink>
-                </div>
+                </div> */}
 
 
             {
               login ? (
-                <div>
-                  <div className="nav-user">{userName.name}님 반갑습니다.</div>
-                  <button onClick={logOut}>로그아웃</button>
+                <div  className={`nav-cart ${scrollActive ? ' ' : 'nav-cart2'}`}>
+                  <div className="nav-login-icon">
+                    <NavLink to="/cart">
+                        <img src={require("../img/shopping-cart.png")} width={25} />
+                    </NavLink>
+                    <div className="nav-userhi">{userName.name}님 반갑습니다.</div>
+                    <button onClick={logOut}>로그아웃</button>
+                  </div>
                 </div>
               ) : (
-                <div className={`nav-user ${scrollActive ? ' ' : 'nav-user2'}`}>
-                  <NavLink to="/login">
-                      <img src={require("../img/account.png")} width={25} />
-                  </NavLink>
+                <div className={`nav-cart ${scrollActive ? ' ' : 'nav-cart2'}`}>
+                  <div className="nav-logout-icon">
+                    <NavLink to="/cart">
+                        <img src={require("../img/shopping-cart.png")} className="nav-cartimg2" width={25} />
+                    </NavLink>
+                    <NavLink to="/login">
+                        <img src={require("../img/account.png")} className="nav-userimg2" width={25} />
+                    </NavLink>
+                  </div>
               </div>
               )
             }
