@@ -52,13 +52,27 @@ export const signupSlice = createSlice({
     // 테스트
     pushPid: (state, action) => {
       state.userlist = state.userlist.map((a)=>{
+        console.log(action.payload.pid)
+        // console.log(newUser.purchaseArray.find((a)= a.id == newUser.pid))
         return a.id == action.payload.id ? action.payload : a
       })
+
+
+    },
+
+    purchaseBoolean: (state, action) => {
+      const newUser = state.userlist.find((a)=> a.id == action.payload.id);
+      const userpid = newUser.purchaseArray.find((a)=> a.id == action.payload.pid);
+      userpid.reviewCheck = false
+      // if(userpid){
+      //   userpid.reviewCheck = false
+      //   console.log(userpid.reviewCheck)
+      // }
     }
   },
 });
 
-export const { createUser, updateAddress, pushAddCart, ADDIT_USER, pushPid } =
+export const { createUser, updateAddress, pushAddCart, ADDIT_USER, pushPid, purchaseBoolean } =
   signupSlice.actions;
 
 export default signupSlice.reducer;

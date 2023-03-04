@@ -10,6 +10,7 @@ const initialState = [
     save: 21900,
     delivery: 2500,
     checked: false,
+    reviewCheck : true
   },
   {
     id: 1,
@@ -20,6 +21,7 @@ const initialState = [
     save: 31000,
     delivery: 2500,
     checked: false,
+    reviewCheck : true
   },
   {
     id: 2,
@@ -30,6 +32,7 @@ const initialState = [
     save: 26000,
     delivery: 2500,
     checked: false,
+    reviewCheck : true
   },
   {
     id: 3,
@@ -40,6 +43,7 @@ const initialState = [
     save: 18000,
     delivery: 2500,
     checked: false,
+    reviewCheck : true
   },
   {
     id: 4,
@@ -50,6 +54,7 @@ const initialState = [
     save: 51000,
     delivery: 2500,
     checked: false,
+    reviewCheck : true
   },
   {
     id: 5,
@@ -60,6 +65,7 @@ const initialState = [
     save: 36000,
     delivery: 2500,
     checked: false,
+    reviewCheck : true
   },
   {
     id: 6,
@@ -70,6 +76,7 @@ const initialState = [
     save: 33000,
     delivery: 2500,
     checked: false,
+    reviewCheck : true
   },
   {
     id: 7,
@@ -80,6 +87,7 @@ const initialState = [
     save: 43000,
     delivery: 2500,
     checked: false,
+    reviewCheck : true
   },
   {
     id: 8,
@@ -90,6 +98,7 @@ const initialState = [
     save: 39000,
     delivery: 2500,
     checked: false,
+    reviewCheck : true
   },
 ];
 

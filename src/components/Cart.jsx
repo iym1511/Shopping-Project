@@ -56,6 +56,9 @@ const Cart = () => {
         })) // 세션 하고있는 부분
         alert("주문완료!")
         navigater("/mypage")
+        const cartJSON = JSON.stringify(purchaseArray)
+        sessionStorage.setItem(`${findUser.id}`, cartJSON)
+
         console.log(purchaseArray)
         console.log(findUser)
     }

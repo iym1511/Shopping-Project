@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import '../css/MyPage.css'
 import useInput from "../hooks/useInput";
-import { ADDIT_USER, pushPid} from "../redux/singup";
+import { ADDIT_USER, purchaseBoolean, pushPid} from "../redux/singup";
 import { loginChange, loginUser, updateAddress } from "../redux/user";
 import DaumPostcode from 'react-daum-postcode';
 import Review from "../components/Review";
@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 const MyPage = ()=> {
 
-    
+  
 
     // 세션으로 주소 불러오기
     const sesstionAddress = sessionStorage.getItem("address");
@@ -29,11 +29,19 @@ const MyPage = ()=> {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // parchaseArray세션으로 불러옴
+    const parchaseSesstion = sessionStorage.getItem(`${findUser.id}`)  
+    const parchaseJSON = JSON.parse(parchaseSesstion)
+    
     // 사용자 배송지 정보
     const [address, setAddress] = useState(findUser.apiaddress);
     const [zonecode, setZonecode] = useState(findUser.apizonecode)
     const [detailAddress, setDetailAddress] = useState(findUser.detailAddress);
     const [delcomment, setDelcomment] = useState(users.delComment);
+
+    // purchase 비교하는곳
+    const [newPurchase, setNewPurchase] = useState()
+    const asd = []
 
     const onChangeAddress = (e) => {
         setAddress(e.target.value)
@@ -139,13 +147,19 @@ const MyPage = ()=> {
       const reviewClick = (a) => {
         navigate(`/review/${a}`)
         dispatch(pushPid({...findUser, pid : a}))
-        // const newnew = findUser.some((a)=> a.pid == shop[a].id)
-       console.log(findUser.pid == shop[a].id)
-       if(findUser.pid == shop[a].id){
-        alert("기모찌")
-       }
-       
+        dispatch(purchaseBoolean({...findUser, pid : a}))
+        const checkuser = findUser.purchaseArray.find((e)=> e.id == a)
+        console.log(checkuser.id)
+        // find유저를 밖에빼서 해줘야 어떻게든 한다 ★★★★
+        setNewPurchase(findUser.purchaseArray.find((e)=> e.id == a))
+        asd.push(findUser.purchaseArray.find((e)=> e.id == a))
+        // const purchase = JSON.stringify(findUser.purchaseArray.find((e)=> e.id == a))
+        // sessionStorage.setItem(`${findUser.id}`, purchase)  
+        
         // a값을 review usePharam이랑 비교해줘야함
+      }
+      const reviewCheck = () => {
+        
       }
 
 
@@ -203,7 +217,9 @@ const MyPage = ()=> {
                             <p>수량 : {a.count}</p>
                             <p>배송완료</p>
                             <p>{a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-                            <button onClick={()=>{reviewClick(a.id)}}>Review</button>
+                            {   
+                                parchaseJSON.id == a.id ? (<div>리뷰작성끝</div>) : (<button onClick={()=>{reviewClick(a.id)}}>Review</button>)
+                            }
                         </div>
                     ))
                 )
