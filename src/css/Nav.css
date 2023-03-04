@@ -149,18 +149,27 @@
     left: -8px;
     margin-right: 10px;
 }
+.nav-userbox{
+    width: 130px;
+    position: relative;
+    top: -10px;
+    margin-left: 20px;
+}
 .nav-userhi{    
     width: 140px;
 }
 .nav-logoutBtn{
     width: 70px;
+    text-align: center;
+    margin-left: 25px;
+    margin-top: 10px;
 }
 .nav-cart-logoutMode{
     cursor: pointer;
 }
 .nav-mypage{
-    width: 100px;    
-    margin-right: 200px;
+    width: 100px;  
+    margin-left: 50px;
 }
 
 

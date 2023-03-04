@@ -128,8 +128,10 @@ const Nav = () => {
                         <img src={require("../img/shopping-cart.png")} width={25} />
                     </NavLink>
                     <p className="nav-cart-length">{cart.length}</p>
-                    <div className="nav-userhi">{userName.name}님 반갑습니다.</div>
-                    <button className="nav-logoutBtn" onClick={logOut}>로그아웃</button>
+                    <div className="nav-userbox">
+                      <div className="nav-userhi">{userName.name}님 반갑습니다.</div>
+                      <button className="nav-logoutBtn" onClick={logOut}>로그아웃</button>
+                    </div>
                     <NavLink to="/mypage">
                       <div className="nav-mypage">마이페이지</div>
                     </NavLink>

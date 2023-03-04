@@ -46,7 +46,8 @@ const Signup = () => {
         email,
         address,
         phonNumber,
-        item : [] // 장바구니 담기는 곳 
+        item : [], // 장바구니 담기는 곳 
+        pid : []
       };
     
       const findUser = sign.userlist.find(

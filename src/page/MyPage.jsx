@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import '../css/MyPage.css'
 import useInput from "../hooks/useInput";
-import { ADDIT_USER} from "../redux/singup";
+import { ADDIT_USER, pushPid} from "../redux/singup";
 import { loginChange, loginUser, updateAddress } from "../redux/user";
 import DaumPostcode from 'react-daum-postcode';
 import Review from "../components/Review";
@@ -18,9 +18,11 @@ const MyPage = ()=> {
     const sesstionAddress = sessionStorage.getItem("address");
     const sesstionZonecode = sessionStorage.getItem("zonecode");
  
-    const reviews = useSelector((state)=> state.review)
-    const sign = useSelector((state)=> state.signup)
-    const users = useSelector((state) => state.user);
+    const reviews = useSelector((state)=> state.review);
+    const sign = useSelector((state)=> state.signup);
+    const users = useSelector((state)=> state.user);
+    const shop = useSelector((state)=> state.players);
+
     // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 / 댓글 이름별출력도 이걸로함
     const findUser = sign.userlist.find((user)=> user.id == users.id)
 
@@ -117,6 +119,8 @@ const MyPage = ()=> {
         })
         );
         console.log(users)
+        console.log(findUser)
+        console.log(sign)
         alert("배송지 저장 완료")
     }
  
@@ -131,8 +135,17 @@ const MyPage = ()=> {
         setTrans(additUser);
       };
 
+      // map 에서 id를 넘겨주어 그 페이지로 이동
       const reviewClick = (a) => {
         navigate(`/review/${a}`)
+        dispatch(pushPid({...findUser, pid : a}))
+        // const newnew = findUser.some((a)=> a.pid == shop[a].id)
+       console.log(findUser.pid == shop[a].id)
+       if(findUser.pid == shop[a].id){
+        alert("기모찌")
+       }
+       
+        // a값을 review usePharam이랑 비교해줘야함
       }
 
 

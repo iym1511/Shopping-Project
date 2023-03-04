@@ -28,13 +28,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/neat" element={<Neat />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/detailpage/:id" element={<DetailPage />}>
-            <Route index path="/detailpage/:id" element={<DetailNav />}></Route>
-            <Route
-              path="/detailpage/:id/detailnav2"
-              element={<DetailNav2 />}
-            ></Route>
-          </Route>
+          <Route path="/detailpage/:id" element={<DetailPage />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/shirt" element={<Shirt />}></Route>
           <Route path="/shoes" element={<Shoes />}></Route>

@@ -7,6 +7,7 @@ import { addReview } from '../redux/review';
 
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
+import { PidAdd } from '../redux/reviewPid';
 
 
 const Review = ({setShowReviewModal, showReviewModal}) => {
@@ -62,12 +63,11 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
           e.preventDefault()
           if(comment.text !== ""){
               dispatch(addReview(comment))
-              console.log(comment.rate)
+            //   dispatch(PidAdd(id)) 지워야댐 redux파일이랑같이 ★
               alert("리뷰 등록 완료!")
               navigate(`/detailpage/${id}`)
           }else{
               alert("댓글을 작성해주세요")
-              console.log(reviews)
           }
           onReset();
           document.querySelector(".input").value="";

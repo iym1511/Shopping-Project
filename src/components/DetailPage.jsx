@@ -25,21 +25,21 @@ const DetailPage = () => {
 
     // 모달창
     const [showModal, setShowModal] = useState(false);
-
+    
     // 로그인 유무 체크
     const [login, setLogin] = useState(false);
 
     // useParams :id 값이랑 배열안에있는 id값을 같은걸로 찾아줌
-    const shoplist = shop.players.find(r=> r.id == id)
+    const shoplist = shop.players.find(r=> r.id == id);
     
     // pid안에있는 useParams id랑 같으면 필터
-    const commentfind = commentlist.comment.filter(r => r.pid == id)
+    const commentfind = commentlist.comment.filter(r => r.pid == id);
 
     // 리뷰
-    const reviewfind = reviewComment.filter(r => r.pid == id)
+    const reviewfind = reviewComment.filter(r => r.pid == id);
 
     // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 / 댓글 이름별출력도 이걸로함
-    const findUser = sign.userlist.find((user)=> user.id == users.id)
+    const findUser = sign.userlist.find((user)=> user.id == users.id);
 
 
     const [comment, setComment] = useState(

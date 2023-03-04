@@ -60,7 +60,8 @@ const Login = () => {
               delComment : findUser.delComment,
               comment : findUser.comment,
               isLoggedIn: true,
-              item :findUser.item // 장바구니 Signup 에서도 들어가는거 확인 했음
+              item :findUser.item, // 장바구니 Signup 에서도 들어가는거 확인 했음
+              pid: findUser.pid
             }),
           );
           console.log(findUser)

@@ -7,12 +7,13 @@
 
 .home-box{
   border: 1px solid rgba(209, 64, 64, 0);
-  width: 90%;
+  width: 99%;
   margin: auto;
+  /* background-color: aqua; */
 }
 .home-title{
     margin-top: 150px;
-    margin-left: 40px;
+    margin-left: 50px;
     font-family: 'Hahmlet-Regular';
     font-size: 2vw;
     border-top: 1px solid black;
@@ -37,7 +38,8 @@
     grid-template-columns: 1fr 1fr 1fr;
     /* display: flex;
     flex-wrap: wrap; */
-    width: 100%;
+    width: 95%;
+    margin: auto;
     /* height: calc(40vh - 100px); */
     color: rgb(104, 104, 104);
 }

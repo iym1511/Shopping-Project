@@ -34,6 +34,7 @@ export const signupSlice = createSlice({
         delComment: action.payload.delComment,
         item: action.payload.item,
         mypageitem: action.payload.mypageitem,
+        pid : action.payload.pid
       };
       const newUserlist = state.userlist.concat(newUser);
       state.userlist = newUserlist;
@@ -47,10 +48,17 @@ export const signupSlice = createSlice({
     updateAddress: (state, action) => {
       state.newUser.address = action.payload.address;
     },
+
+    // 테스트
+    pushPid: (state, action) => {
+      state.userlist = state.userlist.map((a)=>{
+        return a.id == action.payload.id ? action.payload : a
+      })
+    }
   },
 });
 
-export const { createUser, updateAddress, pushAddCart, ADDIT_USER } =
+export const { createUser, updateAddress, pushAddCart, ADDIT_USER, pushPid } =
   signupSlice.actions;
 
 export default signupSlice.reducer;

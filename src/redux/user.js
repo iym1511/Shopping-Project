@@ -15,6 +15,7 @@ export const userSlice = createSlice({
       state.isLoggedIn = action.payload.isLoggedIn;
       state.comment = action.payload.comment;
       state.item = action.payload.item;
+      state.pid = action.payload.pid;
     },
     logout: (state) => {
       // state.name = initialState.name;
@@ -25,6 +26,7 @@ export const userSlice = createSlice({
       state.isLoggedIn = initialState.isLoggedIn;
       // state.comment = initialState.comment;
       // state.item = initialState.item;
+      // state.pid = initialState.pid;
     },
     updateAddress: (state, action) => {
       state.address = action.payload.apiaddress;

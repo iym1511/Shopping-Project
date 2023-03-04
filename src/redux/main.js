@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [];
 
-let nextId = 0;
+
 
 export const mainSlice = createSlice({
   name: "main",
@@ -26,7 +26,7 @@ export const mainSlice = createSlice({
       alert("삭제되었습니다.");
       return state.filter((a) => a.id !== action.payload);
     },
-    shopAlldelete(state, action) {
+    shopAlldelete(state) {
       return (state = []);
     },
     shopcartAdd(state, action) {
