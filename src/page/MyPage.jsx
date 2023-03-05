@@ -10,6 +10,7 @@ import Review from "../components/Review";
 import { useNavigate } from "react-router-dom";
 
 
+
 const MyPage = ()=> {
 
   
@@ -41,7 +42,7 @@ const MyPage = ()=> {
 
     // purchase 비교하는곳
     const [newPurchase, setNewPurchase] = useState()
-    const asd = []
+    
 
     const onChangeAddress = (e) => {
         setAddress(e.target.value)
@@ -146,23 +147,27 @@ const MyPage = ()=> {
       // map 에서 id를 넘겨주어 그 페이지로 이동
       const reviewClick = (a) => {
         navigate(`/review/${a}`)
+        // 툴킷안에서 유저 맞는거 확인후 그 유저꺼 가져옴
         dispatch(pushPid({...findUser, pid : a}))
-        dispatch(purchaseBoolean({...findUser, pid : a}))
-        const checkuser = findUser.purchaseArray.find((e)=> e.id == a)
-        console.log(checkuser.id)
+        console.log(findUser.purchaseArray.find((e)=> e.id == a).reviewCheck)
+        // 유저 주문목록에 reviewCheck를 false로 바꿔줌
+
+        // dispatch(purchaseBoolean({...findUser, pid : a}))
+        // const checkuser = findUser.purchaseArray.find((e)=> e.id == a)
+        
+        // console.log(checkuser.id == a)
         // find유저를 밖에빼서 해줘야 어떻게든 한다 ★★★★
-        setNewPurchase(findUser.purchaseArray.find((e)=> e.id == a))
-        asd.push(findUser.purchaseArray.find((e)=> e.id == a))
+        // setNewPurchase(checkuser.id)
+        // setNewPurchase(checkuser.id)
+        // console.log(newPurchase)
         // const purchase = JSON.stringify(findUser.purchaseArray.find((e)=> e.id == a))
         // sessionStorage.setItem(`${findUser.id}`, purchase)  
-        
+        // parchaseJSON.forEach((e)=> e.id == a ? e.reviewCheck = false : e)
+        // console.log( parchaseJSON.id == a)
         // a값을 review usePharam이랑 비교해줘야함
       }
-      const reviewCheck = () => {
-        
-      }
 
-
+    
 
     return (  
         <div className="mypage-box">
@@ -218,7 +223,12 @@ const MyPage = ()=> {
                             <p>배송완료</p>
                             <p>{a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                             {   
-                                parchaseJSON.id == a.id ? (<div>리뷰작성끝</div>) : (<button onClick={()=>{reviewClick(a.id)}}>Review</button>)
+                                // map안에선 setState가 안먹으니 이대로 생으로 삼항연산자사용하자 ★
+                                findUser.purchaseArray.find((e)=> e.id == a.id).reviewCheck ? (
+                                <button key={a.id} onClick={()=>{reviewClick(a.id)}}>Review</button>
+                                ) : (
+                                <div>리뷰작성끝</div>
+                                ) 
                             }
                         </div>
                     ))

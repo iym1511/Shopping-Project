@@ -32,7 +32,7 @@ export const mainSlice = createSlice({
     shopcartAdd(state, action) {
       // 처음에 빈배열이라서 같은게 없어서 false 반환
       const someCheck = state.some((a) => a.id === action.payload.id);
-      console.log(someCheck);
+      // console.log(someCheck);
       // 값이 있으면 true 값이 없으면 false
       // 처음에 빈배열이라 false 반환하니 거꾸로 true로 만들어줘서 if문 실행
       if (!someCheck) {

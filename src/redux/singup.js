@@ -56,23 +56,30 @@ export const signupSlice = createSlice({
         // console.log(newUser.purchaseArray.find((a)= a.id == newUser.pid))
         return a.id == action.payload.id ? action.payload : a
       })
-
-
     },
 
     purchaseBoolean: (state, action) => {
       const newUser = state.userlist.find((a)=> a.id == action.payload.id);
       const userpid = newUser.purchaseArray.find((a)=> a.id == action.payload.pid);
-      userpid.reviewCheck = false
-      // if(userpid){
-      //   userpid.reviewCheck = false
-      //   console.log(userpid.reviewCheck)
-      // }
-    }
+      if(userpid.reviewCheck){
+        userpid.reviewCheck = false
+      }else{
+        userpid.reviewCheck = true
+      }
+        
+
+
+    },
+    // purchaseTrue: (state, action) => {
+    //   const newUser = state.userlist.find((a)=> a.id == action.payload.id);
+    //   const userpid = newUser.purchaseArray.find((a)=> a.id == action.payload.pid);
+    //   userpid.reviewCheck = true
+    //   console.log(userpid.reviewCheck)
+    // }
   },
 });
 
-export const { createUser, updateAddress, pushAddCart, ADDIT_USER, pushPid, purchaseBoolean } =
+export const { createUser, updateAddress, pushAddCart, ADDIT_USER, pushPid, purchaseBoolean} =
   signupSlice.actions;
 
 export default signupSlice.reducer;

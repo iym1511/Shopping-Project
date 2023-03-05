@@ -8,6 +8,7 @@ import { addReview } from '../redux/review';
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 import { PidAdd } from '../redux/reviewPid';
+import { purchaseBoolean } from '../redux/singup';
 
 
 const Review = ({setShowReviewModal, showReviewModal}) => {
@@ -33,6 +34,8 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
     const findUser = sign.userlist.find((user)=> user.id == users.id)
     // useParams :id 값이랑 배열안에있는 id값을 같은걸로 찾아줌
     const shoplist = shop.players.find(r=> r.id == id)
+
+    const checkuser = findUser.purchaseArray.find((e)=> e.id == id)
 
     // 별점
     const starArray = [0, 1, 2, 3, 4];
@@ -71,7 +74,17 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
           }
           onReset();
           document.querySelector(".input").value="";
+          
       }
+
+      const addboolean = () => {
+        if(checkuser.id == id){
+          dispatch(purchaseBoolean({...findUser}))
+          console.log(checkuser)
+
+        }
+      }
+      
 
 
 
@@ -153,7 +166,7 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
                     </Stars>
                 <form onSubmit={addtext}>
                     <input type="text" onChange={handleText}  className='review-input'/>
-                    <button type='submit' className='review-btn'>리뷰 작성</button>
+                    <button type='submit' onClick={addboolean} className='review-btn'>리뷰 작성</button>
                 </form>
             </div>
         </div>

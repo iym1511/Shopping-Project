@@ -6,7 +6,7 @@ import { shopcartAdd, shoptextAdd } from "../redux/main";
 import '../css/DetailPage.css'
 import { add, remove } from "../redux/comment";
 import { addCart, loginUser, shopcartAddtt } from "../redux/user";
-import { cartadd } from "../redux/singup";
+import { cartadd, purchaseBoolean} from "../redux/singup";
 import Modal from "./Modal";
 import { removeReview } from "../redux/review";
 import { FaStar } from 'react-icons/fa';
@@ -84,6 +84,8 @@ const DetailPage = () => {
     useEffect(() => {
         setLogin(users.isLoggedIn ? true : false);
       }, [users]);
+
+
 
     // detail-nav
     const reviewNav = () => {
@@ -204,8 +206,10 @@ const DetailPage = () => {
                             <div className="detail-flexbox">
                                 <div className="detail-reviewText">{a.text}</div>
                                 {
-                                    findUser.name == a.name ? (
-                                        <button onClick={()=>{dispatch(removeReview(a.id))}} className="detail-reviewBtn">x</button>
+                                    findUser.name == a.name ? ( // purchaseTrue는 삭제시 리뷰값을 true로 되돌려서 다시 리뷰작성할수있게
+                                        <button onClick={()=>{dispatch(removeReview(a.id))
+                                            dispatch(purchaseBoolean({...findUser}))}
+                                        } className="detail-reviewBtn">x</button>
                                     ) : (
                                         <></>
                                     )
