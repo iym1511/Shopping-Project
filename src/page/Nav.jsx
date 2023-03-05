@@ -98,18 +98,18 @@ const Nav = () => {
             <div className={`nav-neat ${scrollActive ? ' ' : 'nav-neat2'}`} >
               <NavLink to="/neat" className="nav-text">NEAT</NavLink>
             </div>
-            
+{/*             
             <div className={`nav-shirt ${scrollActive ? ' ' : 'nav-shirt2'}`}>
               <NavLink to="/shirt" className="nav-text">SHIRT</NavLink>
-            </div>
+            </div> */}
 
             <div className={`nav-shoes ${scrollActive ? ' ' : 'nav-shoes2'}`}>
               <NavLink to="/shoes" className="nav-text">SHOSE</NavLink>
             </div>
-
+{/* 
             <div className={`nav-bottom ${scrollActive ? ' ' : 'nav-bottom2'}`}>
               <NavLink to="/bottom" className="nav-text">BOTTOM</NavLink>
-            </div>
+            </div> */}
 
             
             

@@ -61,7 +61,16 @@ const Neat = () => {
 
     return (
         <div className="home-box">
-         <h1 className="home-title">NEAT</h1>
+        
+        <h1 className="home-bestTitle">BEST 3</h1>
+         <div className="shoes-wrapper">
+                <section className="sec01" onClick={()=>{navigate('/detailpage/9')}}></section>
+                <section className="sec02"></section>
+                <section className="sec03"></section>
+            </div>
+            <div className="home-titleBox">
+            <h1 className="home-title">NEAT</h1>
+        </div>
          <form onSubmit={searchChange}>
             <input type="text" className="neat-input" onChange={(e)=>{setSearch(e.target.value)}} />
             <img src={require("../img/neat-input.png")} className="neat-icon"/>

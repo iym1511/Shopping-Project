@@ -100,6 +100,39 @@ const initialState = [
     checked: false,
     reviewCheck : true
   },
+  {
+    id: 9,
+    name: "모던 하찌폴라",
+    count: 1,
+    image: [require("../img/neat-10.jpg")],
+    money: 47000,
+    save: 47000,
+    delivery: 2500,
+    checked: false,
+    reviewCheck : true
+  },
+  {
+    id: 10,
+    name: "알파카 단가라 니트",
+    count: 1,
+    image: [require("../img/neat-11.jpg")],
+    money: 21000,
+    save: 21000,
+    delivery: 2500,
+    checked: false,
+    reviewCheck : true
+  },
+  {
+    id: 11,
+    name: "바둑 체크니트",
+    count: 1,
+    image: [require("../img/neat-12.jpg")],
+    money: 30000,
+    save: 30000,
+    delivery: 2500,
+    checked: false,
+    reviewCheck : true
+  },
 ];
 
 export const shopSlice = createSlice({

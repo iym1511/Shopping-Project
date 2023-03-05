@@ -5,7 +5,7 @@ const initialState = {
     // 임시데이터
     {
       id: "qwe",
-      name: "문일윤",
+      name: "더미데이터",
       password: "qwe",
       email: "iym1511@naver.com",
       address: null,

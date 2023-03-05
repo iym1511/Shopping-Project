@@ -83,6 +83,7 @@
 .detail-reviewBtn{
     border: none;
     background-color: rgba(240, 248, 255, 0);
+    cursor: pointer;
 }
 .detail-flexbox{
     display: flex;
