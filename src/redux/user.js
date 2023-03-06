@@ -4,7 +4,6 @@ const initialState = {
   name: "더미데이터",
   id: "qwe",
   email: "iym1511@naver.com",
-  isLoggedIn: true,
 };
 
 export const userSlice = createSlice({
@@ -23,15 +22,15 @@ export const userSlice = createSlice({
       state.pid = action.payload.pid;
     },
     logout: (state) => {
-      // state.name = initialState.name;
-      // state.id = initialState.id;
-      // state.email = initialState.email;
-      // state.password = initialState.password;
-      // state.phone = initialState.phone;
+      state.name = initialState.name;
+      state.id = initialState.id;
+      state.email = initialState.email;
+      state.password = initialState.password;
+      state.phone = initialState.phone;
       state.isLoggedIn = initialState.isLoggedIn;
-      // state.comment = initialState.comment;
-      // state.item = initialState.item;
-      // state.pid = initialState.pid;
+      state.comment = initialState.comment;
+      state.item = initialState.item;
+      state.pid = initialState.pid;
     },
     updateAddress: (state, action) => {
       state.address = action.payload.apiaddress;
@@ -52,7 +51,7 @@ export const {
   toggleCheckbox,
   toggleCheckboxAll,
   deleteChecked,
-  updateAddress
+  updateAddress,
 } = userSlice.actions;
 
 export default userSlice.reducer;

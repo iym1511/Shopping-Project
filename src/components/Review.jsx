@@ -7,7 +7,6 @@ import { addReview } from '../redux/review';
 
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
-import { PidAdd } from '../redux/reviewPid';
 import { purchaseBoolean } from '../redux/singup';
 
 

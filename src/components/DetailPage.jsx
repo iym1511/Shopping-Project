@@ -11,6 +11,8 @@ import Modal from "./Modal";
 import { removeReview } from "../redux/review";
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
+import Pagenation from "./Pagenation";
+
 
 const DetailPage = () => {
     let {id} = useParams();
@@ -40,6 +42,7 @@ const DetailPage = () => {
 
     // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 / 댓글 이름별출력도 이걸로함
     const findUser = sign.userlist.find((user)=> user.id == users.id);
+
 
 
     const [comment, setComment] = useState(
@@ -86,6 +89,8 @@ const DetailPage = () => {
       }, [users]);
 
 
+    // Pagination
+    const [page, setPage] = useState(1);
 
     // detail-nav
     const reviewNav = () => {
@@ -139,7 +144,7 @@ const DetailPage = () => {
 
 
             {
-                reviewfind.map((a)=>{
+                reviewfind.slice(3   * (page - 1), 3 * (page - 1) + 3).map((a)=>{
                     let star = a.rate
                     const showStar = () => {
                         switch(star) {
@@ -219,6 +224,7 @@ const DetailPage = () => {
                     )
                 })
             }
+            <Pagenation page={page} reviewfind={reviewfind} setPage={setPage}/>
 
 
             {

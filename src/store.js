@@ -5,7 +5,6 @@ import commentReducer from "./redux/comment";
 import signupReducer from "./redux/singup";
 import userReuducer from "./redux/user";
 import reviewReducer from "./redux/review";
-import pidReducer from "./redux/reviewPid";
 
 // redux-parsist
 import storage from "redux-persist/lib/storage"; // 로컬 스토리지
@@ -20,14 +19,13 @@ const reducers = combineReducers({
   user: userReuducer,
   signup: signupReducer,
   review: reviewReducer,
-  pid : pidReducer
 });
 
 const persistConfig = {
   key: "Root", // 체크박스기능하는데 오류날때마다 문자열 바꿔줘야 오류안생기고 로그인됨 원인 : ????
   // 로컬스토리지를 사용할것이기 때문에 storage를 적어주었다
   storage: storage,
-  list: ["players", "main", "comment", "user", "signup", "review", "pid"],
+  list: ["players", "main", "comment", "user", "signup", "review"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
