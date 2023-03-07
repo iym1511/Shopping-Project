@@ -246,6 +246,7 @@ const DetailPage = () => {
                 )
             }
 
+
             {
                 commentfind.map((a, i) => (
                     <div className="map-box">

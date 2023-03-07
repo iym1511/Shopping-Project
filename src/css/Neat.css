@@ -202,9 +202,3 @@
 
 
 
-/* 반응형 */
-@media screen and (max-width: 1860px) {
-  .neat-recent-mapbox{
-    display: none;
-  }
-}

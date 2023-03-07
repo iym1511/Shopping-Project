@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/Recent.css';
 
@@ -5,14 +6,17 @@ const Recent = () => {
 
     const navigate = useNavigate()
 
+    const [fold, setFold] = useState(false)
+
     // 세션에저장한 최근눌렀던 상품 가져옴
     const ssesstionRecent = sessionStorage.getItem("recent")  
     const RecentJSON = JSON.parse(ssesstionRecent)
 
     return (  
         <div>
-            <div className="recent-recent-mapbox">
+            <div className="recent-mapbox">
                 <div className="recent-recentTitle">최근 본 상품</div>
+                <div className='recent-fold'>접기</div>
                 {  
                     ssesstionRecent != undefined  ? (
                         RecentJSON.map((a,i)=>(

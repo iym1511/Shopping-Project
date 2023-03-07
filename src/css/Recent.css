@@ -1,7 +1,12 @@
+/* 스크롤 no */
+::-webkit-scrollbar {
+  display: none;
+  }
 
-.recent-recent-mapbox{
+
+.recent-mapbox{
     width: 100px;
-    height: 500px;
+    height: 450px;
     -webkit-box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.51); 
     box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.51);
     position: fixed;
@@ -11,18 +16,17 @@
     border-radius: 7px;
     overflow-y: hidden;
     overflow-y: scroll;
-  
+    padding-top: 40px;
+    transition: 0.5s;
   }
   
   .recent-recent{
     margin: auto;
-    padding-top: 55px;
+    padding-top: 30px;
     /* padding-bottom: 15px; */
     width: 70px;
   }
-  .box::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
-}
+
   .recent-recentTitle{
     position: fixed;
     top: 180px;
@@ -46,3 +50,27 @@
     margin: auto;
     text-align: center;
   }
+  .recent-fold{
+    position: fixed;
+    width: 30px;
+    border-radius: 2px;
+    text-align: center;
+    z-index: 11;
+    right: 80px;
+    margin-top: 10px;
+    font-size: 4px;
+    color: rgb(51, 51, 51);
+    background-color: white;
+    padding: 1px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    cursor: pointer;
+  }
+
+  /* 반응형 */
+@media screen and (max-width: 1860px) {
+  .recent-mapbox{
+    /* display: none; */
+    height: 30px;
+    transition: 0.5s;
+  }
+}
