@@ -1,18 +1,16 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCount, deleteCount, minuseCount } from "../redux/shop";
-import '../css/Cart.css'
-import { useState } from "react";
-import { useEffect } from "react";
+import '../css/Cart.css';
 
-import { deleteChecked, shopaddCount, shopAlldelete, shopdelete, shopminuseCount, toggleCheckbox, toggleCheckboxAll } from "../redux/main";
 import { useNavigate } from "react-router-dom";
-import { ADDIT_SHOP, ADDIT_USER } from "../redux/singup";
+import { deleteChecked, shopaddCount, shopAlldelete, shopdelete, shopminuseCount, toggleCheckbox, toggleCheckboxAll } from "../redux/main";
+import { ADDIT_USER } from "../redux/singup";
+import Recent from "./Recent";
 
      // 배열을 구매해
     let purchaseArray = [];
 
 
-    let sessionCart = JSON.parse(sessionStorage.getItem("cartmypage"))
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -220,9 +218,11 @@ const Cart = () => {
                 ) : (   
                     <></>
                 )
-            }            
+            } 
+
+            <Recent />           
         </div>
     );
 }
- 
+
 export default Cart;

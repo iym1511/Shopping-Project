@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import '../css/Neat.css'
 import { shopcartAdd, shopdeleteCount } from "../redux/main";
 import { cartAdd } from "../redux/shop";
+import Recent from "./Recent";
+// import Pagination from "react-js-pagination";
 
 let recentPush = []
 
@@ -28,8 +30,7 @@ const Neat = () => {
     })
     
 
-    const ssesstionRecent = sessionStorage.getItem("recent")  
-    const RecentJSON = JSON.parse(ssesstionRecent)
+
 
     const recent = (i) => {
         const findRecent = recentPush.find((a)=> a.id == i.id)
@@ -42,11 +43,7 @@ const Neat = () => {
     }
 
 
-   
 
-    useEffect(()=>{
-        console.log(RecentJSON)
-    },[])
     
     // 장바구니 기능 추가할려면 리덕스 따로만들어서 홈에서 찜하기누르는거따로 담기는거따로 해줘야함
     // 그래서 홈에서 장바구니redux 리듀서를 가져와서 사용해주면 장바구니에 추가됨
@@ -114,12 +111,14 @@ const Neat = () => {
             }
          </div>
 
-    <div className="neat-recent-mapbox">
+            <Recent />
+    {/* <div className="neat-recent-mapbox">
+        <div className="neat-recentTitle">최근 본 상품</div>
          {  
             ssesstionRecent != undefined  ? (
                 RecentJSON.map((a,i)=>(
                     <div className="neat-recent" key={i}>
-                        <img src={a.image} className="neat-recentImg"/>
+                        <img src={a.image} className="neat-recentImg" onClick={()=>{navigate(`/detailpage/${a.id}`)}}/>
                         <div className="neat-recentName">{a.name}</div>
                     </div>
                 ))
@@ -127,11 +126,13 @@ const Neat = () => {
                 <div>최근본거없음</div>
             )
         }
-    </div>
+    </div> */}
         
         </div>
     );
 }
 
 export default Neat;
+
+
 

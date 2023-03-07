@@ -197,32 +197,10 @@
     margin-top: -15px;
 }
 
-.neat-recent-mapbox{
-  width: 150px;
-  -webkit-box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.51); 
-  box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.51);
-  position: fixed;
-  top: 260px;
-  left: 1700px;
-  background-color: white;
-}
-
-.neat-recent{
-  margin: auto;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  width: 100px;
-}
 
 
-.neat-recentImg{
-  width: 100px;
-}
-.neat-recentName{
-  font-size: 15px;
-  margin: auto;
-  text-align: center;
-}
+
+
 
 /* 반응형 */
 @media screen and (max-width: 1860px) {

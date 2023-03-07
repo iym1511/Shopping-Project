@@ -12,6 +12,7 @@ import { removeReview } from "../redux/review";
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 import Pagenation from "./Pagenation";
+import Recent from "./Recent";
 
 
 const DetailPage = () => {
@@ -263,6 +264,7 @@ const DetailPage = () => {
                 ))
             }
             
+            <Recent />
 
             {/* <div className="detail-outlet">
                 <div className="detail-navbox">
