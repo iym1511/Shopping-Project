@@ -86,20 +86,12 @@ const DetailPage = () => {
     // 로그인 판별
     useEffect(() => {
         setLogin(users.isLoggedIn ? true : false);
-      }, [users]);
+    }, [users]);
 
 
     // Pagination
     const [page, setPage] = useState(1);
 
-    // detail-nav
-    const reviewNav = () => {
-        navigate(`/detailpage/${id}`)
-    }
-
-    const QAnav = () => {
-        navigate(`/detailpage/${id}/detailnav2`)
-    }
 
 
 
@@ -142,7 +134,10 @@ const DetailPage = () => {
             }
 
 
+            {
+                reviewfind.length != 0 ? (
 
+            <div className="detail-reviewBox">
             {
                 reviewfind.slice(3   * (page - 1), 3 * (page - 1) + 3).map((a)=>{
                     let star = a.rate
@@ -222,8 +217,15 @@ const DetailPage = () => {
                             </div>
                         </div>
                     )
-                })
+                    
+                }) 
             }
+            </div>
+            ) : (
+                <p>리뷰가 없습니다.</p>
+            )
+
+        }
             <Pagenation page={page} reviewfind={reviewfind} setPage={setPage}/>
 
 

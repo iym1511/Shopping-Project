@@ -13,12 +13,10 @@ import { useNavigate } from "react-router-dom";
 
 const MyPage = ()=> {
 
-  
-
     // 세션으로 주소 불러오기
     const sesstionAddress = sessionStorage.getItem("address");
     const sesstionZonecode = sessionStorage.getItem("zonecode");
- 
+
     const reviews = useSelector((state)=> state.review);
     const sign = useSelector((state)=> state.signup);
     const users = useSelector((state)=> state.user);
@@ -225,15 +223,15 @@ const MyPage = ()=> {
                             {   
                                 // map안에선 setState가 안먹으니 이대로 생으로 삼항연산자사용하자 ★
                                 findUser.purchaseArray.find((e)=> e.id == a.id).reviewCheck ? (
-                                <button key={a.id} onClick={()=>{reviewClick(a.id)}}>Review</button>
+                                    <button onClick={()=>{reviewClick(a.id)}}>Review</button>
                                 ) : (
-                                <div>리뷰작성끝</div>
+                                    <div>리뷰 작성 완료</div>
                                 ) 
                             }
                         </div>
                     ))
                 )
-              
+            
             }
 
 

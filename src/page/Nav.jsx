@@ -104,7 +104,7 @@ const Nav = () => {
             </div> */}
 
             <div className={`nav-shoes ${scrollActive ? ' ' : 'nav-shoes2'}`}>
-              <NavLink to="/shoes" className="nav-text">SHOSE</NavLink>
+              <NavLink to="/about" className="nav-text">ABOUT</NavLink>
             </div>
 {/* 
             <div className={`nav-bottom ${scrollActive ? ' ' : 'nav-bottom2'}`}>
@@ -130,11 +130,14 @@ const Nav = () => {
                     <p className="nav-cart-length">{cart.length}</p>
                     <div className="nav-userbox">
                       <div className="nav-userhi">{userName.name}님 반갑습니다.</div>
-                      <button className="nav-logoutBtn" onClick={logOut}>로그아웃</button>
+                      <div className="nav-log-mypageBox">
+                        <button className="nav-logoutBtn" onClick={logOut}>로그아웃</button>
+                        <NavLink to="/mypage">
+                          <div className="nav-mypage">마이페이지</div>
+                        </NavLink>
+                      </div>
                     </div>
-                    <NavLink to="/mypage">
-                      <div className="nav-mypage">마이페이지</div>
-                    </NavLink>
+                    
                   </div>
                 </div>
               ) : (

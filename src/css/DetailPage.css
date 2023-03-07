@@ -45,6 +45,10 @@
     width: 500px;
     margin: auto;
 }
+.detail-reviewBox{
+    height: 530px;
+}
+
 .detail-mapbox{
     width: 42%;
     display: flex;

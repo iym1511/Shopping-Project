@@ -203,10 +203,10 @@ const Cart = () => {
             {
                 sum == 0 ? (
                     <div>
-                        <p className="cart-moneysum">총 금액 : {moneysum} + 배송비 : 0 = 0</p>
+                        <p className="cart-moneysum">총 금액 : {moneysum} + 배송비 : 0 = 0 원</p>
                     </div>
                 ) : (
-                    <p className="cart-moneysum">총 금액 : {moneysum} + 배송비 : {deliverymoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} = {moneysum2} \</p>
+                    <p className="cart-moneysum">총 금액 : {moneysum} + 배송비 : {deliverymoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} = {moneysum2} 원</p>
                 )
             }
 
