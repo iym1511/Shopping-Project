@@ -148,21 +148,6 @@ const MyPage = ()=> {
         // 툴킷안에서 유저 맞는거 확인후 그 유저꺼 가져옴
         dispatch(pushPid({...findUser, pid : a}))
         console.log(findUser.purchaseArray.find((e)=> e.id == a).reviewCheck)
-        // 유저 주문목록에 reviewCheck를 false로 바꿔줌
-
-        // dispatch(purchaseBoolean({...findUser, pid : a}))
-        // const checkuser = findUser.purchaseArray.find((e)=> e.id == a)
-        
-        // console.log(checkuser.id == a)
-        // find유저를 밖에빼서 해줘야 어떻게든 한다 ★★★★
-        // setNewPurchase(checkuser.id)
-        // setNewPurchase(checkuser.id)
-        // console.log(newPurchase)
-        // const purchase = JSON.stringify(findUser.purchaseArray.find((e)=> e.id == a))
-        // sessionStorage.setItem(`${findUser.id}`, purchase)  
-        // parchaseJSON.forEach((e)=> e.id == a ? e.reviewCheck = false : e)
-        // console.log( parchaseJSON.id == a)
-        // a값을 review usePharam이랑 비교해줘야함
       }
 
     
@@ -207,6 +192,7 @@ const MyPage = ()=> {
                         <button type="submit">배송지 저장</button>
                     </form>
                 </div>
+                
             </div>
 
             {   
@@ -218,6 +204,7 @@ const MyPage = ()=> {
                             <img src={a.image} alt="" />
                             <p>{a.name}</p>
                             <p>수량 : {a.count}</p>
+                            <p>{a.date}</p>
                             <p>배송완료</p>
                             <p>{a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                             {   

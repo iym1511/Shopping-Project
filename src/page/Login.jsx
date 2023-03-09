@@ -13,9 +13,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // 이메일,패스워드 조건이 충족하는지 확인용
-  const [emailValid, setEmailValid] = useState(false);
-  const [pwValid, setPwValid] = useState(false);
   // useEffect로 한자한자입력할때마다 확인해서 
   // 이메일,패스워드 두개의 조건이 충족하면
   // 버튼을 활성화 시켜주는데 사용
@@ -69,6 +66,16 @@ const Login = () => {
         }
       };
 
+      useEffect(()=>{
+        // 둘다 모두 true면 버튼활성화를 풀어줌
+        if(id && password){
+            setNotAllow(false);
+            return;
+        }else{
+            setNotAllow(true);
+        }
+  
+    },[id, password])
       
 
     return (  
@@ -79,7 +86,7 @@ const Login = () => {
                 <input type="text" onChange={onChangeId}/>     
                 <div>PW</div>
                 <input type="password" onChange={onChangePassword}/>                
-                <button className='login-btn' type='submit'>로그인</button>
+                <button className='login-btn' type='submit' disabled={notAllow}>로그인</button>
             </form>
             <button onClick={clicksignup}>회원가입</button>
         </div>

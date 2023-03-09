@@ -25,6 +25,7 @@ const Neat = () => {
         setSearched(search);
     }
 
+    // 검색 기능
     const filterShop = shop.players.filter((a)=>{
         return a.name.replace(" ","").toLocaleLowerCase().includes(searched.toLocaleLowerCase().replace(" ",""))
     })

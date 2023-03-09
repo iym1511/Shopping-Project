@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const date = new Date();
+const year = date.getFullYear();
+const month = String(date.getMonth() + 1).padStart(2, "0");
+const today = String(date.getDate()).padStart(2, "0");
+const useDate = `${year}-${month}-${today}`
+
 const initialState = [
   {
     id: 0,
@@ -10,7 +16,8 @@ const initialState = [
     save: 21900,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 1,
@@ -21,7 +28,8 @@ const initialState = [
     save: 31000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 2,
@@ -32,7 +40,8 @@ const initialState = [
     save: 26000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 3,
@@ -43,7 +52,8 @@ const initialState = [
     save: 18000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 4,
@@ -54,7 +64,8 @@ const initialState = [
     save: 51000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 5,
@@ -65,7 +76,8 @@ const initialState = [
     save: 36000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 6,
@@ -76,7 +88,8 @@ const initialState = [
     save: 33000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 7,
@@ -87,7 +100,8 @@ const initialState = [
     save: 43000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 8,
@@ -98,7 +112,8 @@ const initialState = [
     save: 39000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 9,
@@ -109,7 +124,8 @@ const initialState = [
     save: 47000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 10,
@@ -120,7 +136,8 @@ const initialState = [
     save: 21000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
   {
     id: 11,
@@ -131,7 +148,8 @@ const initialState = [
     save: 30000,
     delivery: 2500,
     checked: false,
-    reviewCheck : true
+    reviewCheck : true,
+    date : useDate
   },
 ];
 
