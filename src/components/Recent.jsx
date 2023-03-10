@@ -50,7 +50,7 @@ const Recent = () => {
 
     return (  
         <div>
-            <div className={`recent-mapbox ${sessionStorage.getItem("fold") == "false" ?  'recent-mapbox' : 'recent-fold-mapbox'}`}>
+            <div className={`recent-mapbox ${sessionStorage.getItem("fold") == "false" ?  'recent-fold-mapbox' : 'recent-mapbox'}`}>
                 <div className="recent-recentTitle">최근 본 상품</div>
                 <div className='recent-fold' onClick={recentFold}>접기</div>
                 {  

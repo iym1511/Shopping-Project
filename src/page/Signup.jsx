@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../css/Signup.css'
 import useInput from '../hooks/useInput';
-import {ADDIT_USER, createUser, pushAddCart, updateAddress} from '../redux/singup';
+import {ADDIT_USER, createUser, pushAddCart,} from '../redux/singup';
 import DaumPostcode from 'react-daum-postcode';
+import { updateAddress } from '../redux/user';
 
 const Signup = () => {
 
@@ -20,6 +21,10 @@ const Signup = () => {
     const [email, onChangeEmail] = useInput("");
     // const [address, onChangeAddress] = useInput("");
     const [phonNumber, onChangephonNumber] = useInput("");
+    const [realAddress, onChangeaddress] = useState("");
+    const [realZoneCode, onChangeZone] = useState("");
+    const [realDetail, onChangeDetail] = useInput("");
+
     const [passwordCheck, setPasswordCheck] = useState("");
     const [passwordError, setPasswordError] = useState(false);
 
@@ -28,7 +33,7 @@ const Signup = () => {
     const [apiaddress, setApiaddress] = useState("");
     const [apizonecode, setApizoneCode] = useState("");
 
-    const findUsers = sign.userlist.find((user)=> user.id == users.id)
+   
 
     const onChangePasswordCheck = useCallback(
         (e) => {
@@ -46,9 +51,10 @@ const Signup = () => {
         // address,
         apiaddress,
         apizonecode,
+        realDetail,
         phonNumber,
         item : [], // 장바구니 담기는 곳 
-        pid : []
+        // pid : []
       };
     
       const findUser = sign.userlist.find(
@@ -73,9 +79,28 @@ const Signup = () => {
         } else if (email === findUser.email) {
           alert("이미 사용중인 email입니다.");
         }
+        
+      //   dispatch(ADDIT_USER({
+      //       ...findUsers,
+      //       apiaddress,
+      //       apizonecode,
+      //       detailAddress,
+      //   }));
+      //   dispatch(updateAddress({
+      //       ...users,
+      //       apiaddress,
+      //       apizonecode,
+      //       detailAddress,
+      //   }));
+      //   console.log(        dispatch(ADDIT_USER({
+      //     ...findUsers,
+      //     apiaddress,
+      //     apizonecode,
+      //     detailAddress,
+      // })))
       };
 
-
+      const findUsers = sign.userlist.find((user)=> user.id == users.id)
       // 세션으로 주소 불러오기
     const sesstionAddress = sessionStorage.getItem("address");
     const sesstionZonecode = sessionStorage.getItem("zonecode");
@@ -84,6 +109,8 @@ const Signup = () => {
     const [address, setAddress] = useState(findUsers.apiaddress);
     const [zonecode, setZonecode] = useState(findUsers.apizonecode)
     const [detailAddress, setDetailAddress] = useState(findUsers.detailAddress);
+
+
 
     const onChangeAddress = (e) => {
         setAddress(e.target.value)
@@ -133,6 +160,8 @@ const Signup = () => {
             `)
             setApiaddress(data.address);
             setApizoneCode(data.zonecode);
+            onChangeaddress(data.address);
+            onChangeZone(data.zonecode);
             sessionStorage.setItem("address", data.address)
             sessionStorage.setItem("zonecode", data.zonecode)
             setOpenPostcode(false);
@@ -143,24 +172,21 @@ const Signup = () => {
     }
 
       const deliveryAddress = (e) => {
-        dispatch(ADDIT_USER({
-            ...findUser,
-            apiaddress,
-            apizonecode,
-            detailAddress,
-        })
-        );
-        dispatch(updateAddress({
-            ...users,
-            apiaddress,
-            apizonecode,
-            detailAddress,
-        })
-        );
-        console.log(users)
-        console.log(findUser)
-        console.log(sign)
-        alert("배송지 저장 완료")
+        // dispatch(ADDIT_USER({
+        //     ...findUsers,
+        //     apiaddress,
+        //     apizonecode,
+        //     detailAddress,
+        // }));
+        // dispatch(updateAddress({
+        //     ...users,
+        //     apiaddress,
+        //     apizonecode,
+        //     detailAddress,
+        // }));
+        // console.log(users)
+        // console.log(findUsers)
+        // console.log(sign)
     }
 
     
@@ -182,16 +208,11 @@ const Signup = () => {
                 <input type="text" required value={email} onChange={onChangeEmail} />
                 <div>PhoneNumber</div>
                 <input type="text" required value={phonNumber} onChange={onChangephonNumber}/>
-                
-                <label>주소</label>
-                        <div className="mypage-addressContainer">
-                            <input type="text" placeholder="우편번호"  value={apizonecode ? sesstionZonecode : zonecode} onChange={onChangeZonecode} className="mypage-addressNum" disabled/> 
-                            <button onClick={handle.clickButton} className="mypage-apibtn">주소 검색</button>
-                        </div>
-                        <input type="text" placeholder="기본주소" value={apiaddress ? sesstionAddress : address} onChange={onChangeAddress} disabled className="mypage-address"/>
-                        <input type="text" placeholder="나머지 주소" value={detailAddress || ""} onChange={(e)=>{setDetailAddress(e.target.value)}} className="mypage-address"/>
-            
-
+                <div>주소</div>
+                  <input type="text" placeholder="우편번호"  value={apizonecode} onChange={onChangeZone}  disabled/> 
+                  <input type="text" placeholder="기본주소" value={apiaddress} onChange={onChangeaddress} disabled />
+                    <button onClick={handle.clickButton} >주소 검색</button>
+                  <input type="text" placeholder="나머지 주소"  onChange={onChangeDetail} />
                 <button type="submit" className='signup-btn' onClick={deliveryAddress}>Sign up</button>
             </form>
 

@@ -20,17 +20,17 @@ const initialState = {
 export const signupSlice = createSlice({
   name: "signup",
   initialState,
-  reducers: {
+  reducers: { 
     createUser: (state, action) => {
       const newUser = {
         id: action.payload.id,
         name: action.payload.name,
         password: action.payload.password,
         email: action.payload.email,
-        address: action.payload.address,
-        zonecode: action.payload.zonecode,
+        apiaddress: action.payload.apiaddress,
+        apizonecode: action.payload.apizonecode,
         phonNumber: action.payload.phonNumber,
-        detailAddress: action.payload.detailAddress,
+        detailAddress: action.payload.realDetail,
         delComment: action.payload.delComment,
         item: action.payload.item,
         mypageitem: action.payload.mypageitem,
@@ -44,12 +44,13 @@ export const signupSlice = createSlice({
         // 받아온id랑 안에있는 id가 같으면 받아온거로 아니면 원래껄로
         return action.payload.id === user.id ? action.payload : user;
       }); // 맵이니까 하나씩 리턴해서 다 출력해줌
+      console.log(action.payload);
     },
     updateAddress: (state, action) => {
       state.newUser.address = action.payload.address;
     },
 
-    // 테스트
+    
     pushPid: (state, action) => {
       state.userlist = state.userlist.map((a)=>{
         console.log(action.payload.pid)

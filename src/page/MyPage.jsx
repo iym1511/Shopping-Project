@@ -28,9 +28,7 @@ const MyPage = ()=> {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // parchaseArray세션으로 불러옴
-    const parchaseSesstion = sessionStorage.getItem(`${findUser.id}`)  
-    const parchaseJSON = JSON.parse(parchaseSesstion)
+
     
     // 사용자 배송지 정보
     const [address, setAddress] = useState(findUser.apiaddress);
