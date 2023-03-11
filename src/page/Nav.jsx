@@ -51,13 +51,6 @@ const Nav = () => {
     console.log(log)
   };
 
-  // 원래대로 시도한거
-  const scrolloriginal = () => {
-    if (scrollY == 100) {
-      setScrollY(window.pageYOffset);
-      setScrollActive(false);
-    }
-  }
 
   const scrollFixed = () => {
     if (scrollY > 70) {
@@ -132,7 +125,7 @@ const Nav = () => {
                       <div className="nav-userhi">{userName.name}님 반갑습니다.</div>
                       <div className="nav-log-mypageBox">
                         <button className="nav-logoutBtn" onClick={logOut}>로그아웃</button>
-                        <NavLink to="/mypage">
+                        <NavLink to="/mypage" className="nav-mypage-btn">
                           <div className="nav-mypage">마이페이지</div>
                         </NavLink>
                       </div>

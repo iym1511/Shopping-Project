@@ -26,7 +26,6 @@ const Recent = () => {
     const recentFold = () => {
         // useEffect 화면랜더용 / session값은 랜더를해줘야 값변경이되서 useEffect필수 💙
         setFold(!fold)
-
         if(sessionStorage.getItem("fold") == null || sessionStorage.getItem("fold") == "false"){
             sessionStorage.setItem("fold", true);
             console.log(sessionStorage.getItem("fold"))

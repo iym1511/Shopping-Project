@@ -225,12 +225,12 @@ td{
 }
 
 /* 반응형 */
-@media screen and (max-width: 1083px) {
+@media screen and (max-width: 1090px) {
     .cart-Cartbox{
-        width: 800px;
+        width: 807px;
     }
     .cart-listbox{
-        width: 800px;
+        width: 807px;
     }
     .cart-title{
         width: 400px;
@@ -241,7 +241,14 @@ td{
         margin-left: 80px;
     }
     .cart-order{
-        
         margin-left: 490px;
+    }
+    .cart-order-none{
+        margin-left: 490px;
+    }
+
+    .Cart-zero{
+        width: 400px;
+        margin-left: 340px;
     }
 }

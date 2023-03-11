@@ -194,34 +194,61 @@ const MyPage = ()=> {
                         <button type="submit">배송지 저장</button>
                     </form>
                 </div>
-                
             </div>
 
+            <table className="mypage-table">
+                <tr className="mypage-title-tr">
+                    <th>이미지</th>
+                    <th>상품 정보</th>
+                    <th>수량</th>
+                    <th>구매 날짜</th>
+                    <th>배송 상태</th>
+                    <th>가격</th>
+                    <th>리뷰</th>
+                </tr>
             {   
                 findUser.purchaseArray == null ? (
-                    <div>주문 내역 없음</div>
+                    <div className="mypage-noneOrder">주문 내역 없음</div>
                 ) : (
+                    
                     findUser.purchaseArray.map((a, i)=>(
-                        <div>
-                            <img src={a.image} alt="" />
-                            <p>{a.name}</p>
-                            <p>수량 : {a.count}</p>
-                            <p>{a.date}</p>
-                            <p>배송완료</p>
-                            <p>{a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                        <tr className="mypage-tr-map">
+                            <th style={{border:"1px solid red"}}>
+                                <img src={a.image} className="mypage-th-img" />
+                            </th>
+                            <th>
+                                <p>{a.name}</p>
+                            </th>
+                            <th>
+                                <p>수량 : {a.count}</p>
+                            </th>
+                            <th>
+                                <p>{a.date}</p>
+                            </th>
+                            <th>
+                                <p>배송 완료</p>
+                            </th>
+                            <th>
+                                <p>{a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                            </th>
+                                
+  
                             {   
                                 // map안에선 setState가 안먹으니 이대로 생으로 삼항연산자사용하자 ★
                                 findUser.purchaseArray.find((e)=> e.id == a.id).reviewCheck ? (
-                                    <button onClick={()=>{reviewClick(a.id)}}>Review</button>
+                                    <th>
+                                        <button onClick={()=>{reviewClick(a.id)}}>Review</button>
+                                    </th>
                                 ) : (
-                                    <div>리뷰 작성 완료</div>
-                                ) 
+                                    <th>리뷰 작성 완료</th>
+                                )
                             }
-                        </div>
+                        </tr>
                     ))
                 )
             
             }
+            </table>
 
 
                 <div className={`mypage-apiModal ${openPostcode ? 'mypage-apiModalbod' : ''}`} ref={modalRef}>

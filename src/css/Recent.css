@@ -78,7 +78,7 @@
   }
 
   /* 반응형 */
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 890px) {
   .recent-mapbox{
     display: none;
   }

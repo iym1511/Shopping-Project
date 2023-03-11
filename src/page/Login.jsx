@@ -87,16 +87,35 @@ const Login = () => {
           <Notfound />
           ) : (
             <div className='login-box'>
-            <h1 className="login-text">로그인페이지</h1>
-            <form onSubmit={onSubmitForm} className="login-form">
-                <div>ID</div>
-                <input type="text" onChange={onChangeId}/>     
-                <div>PW</div>
-                <input type="password" onChange={onChangePassword}/>                
-                <button className='login-btn' type='submit' disabled={notAllow}>로그인</button>
-            </form>
-            <button onClick={clicksignup}>회원가입</button>
-        </div>
+                <div className='login-all-form'>
+                  <div className='login-form-box'>
+
+                    <div className='login-form2-box'>
+                      <div className='login-form2-title'>TOMMORROW</div>&<div>WORLD</div>
+                      <p class="login-form2-subtitle"> pick your perfect <span>Fashion</span></p>
+                      <img src={require('../img/login-img.png')} className='login-form2-img'></img>
+                      <p class="login-form2-subtitle2">don't have an account?</p>
+                      <button className='login-create-btn' onClick={clicksignup}>SIGN IN</button>
+                    </div>
+
+                    <div className='login-form2-box2'>
+                      
+                    </div>
+
+                  </div>
+
+                  <div className='login-form-box2'>
+                    <form onSubmit={onSubmitForm} className="login-form">
+                      <h1 className='login-subtitle'>LOGIN</h1>
+                        <div>ID</div>
+                        <input className='login-input-id' type="text" placeholder='username' onChange={onChangeId}/>     
+                        <div>PW</div>
+                        <input className='login-input-pw' type="password" placeholder='password' onChange={onChangePassword}/>                
+                        <button className={`${notAllow ? 'login-btn' : 'login-btn-false'}`} type='submit' disabled={notAllow}>LOGIN</button>
+                    </form>
+                </div>
+              </div>
+          </div>
         )
       }
       </>
