@@ -6,6 +6,7 @@ import useInput from '../hooks/useInput';
 import {ADDIT_USER, createUser, pushAddCart,} from '../redux/singup';
 import DaumPostcode from 'react-daum-postcode';
 import { updateAddress } from '../redux/user';
+import Notfound from '../components/Notfound';
 
 const Signup = () => {
 
@@ -80,24 +81,6 @@ const Signup = () => {
           alert("이미 사용중인 email입니다.");
         }
         
-      //   dispatch(ADDIT_USER({
-      //       ...findUsers,
-      //       apiaddress,
-      //       apizonecode,
-      //       detailAddress,
-      //   }));
-      //   dispatch(updateAddress({
-      //       ...users,
-      //       apiaddress,
-      //       apizonecode,
-      //       detailAddress,
-      //   }));
-      //   console.log(        dispatch(ADDIT_USER({
-      //     ...findUsers,
-      //     apiaddress,
-      //     apizonecode,
-      //     detailAddress,
-      // })))
       };
 
       const findUsers = sign.userlist.find((user)=> user.id == users.id)
@@ -171,63 +154,56 @@ const Signup = () => {
         },
     }
 
-      const deliveryAddress = (e) => {
-        // dispatch(ADDIT_USER({
-        //     ...findUsers,
-        //     apiaddress,
-        //     apizonecode,
-        //     detailAddress,
-        // }));
-        // dispatch(updateAddress({
-        //     ...users,
-        //     apiaddress,
-        //     apizonecode,
-        //     detailAddress,
-        // }));
-        // console.log(users)
-        // console.log(findUsers)
-        // console.log(sign)
-    }
 
     
 
-    return (   // value = key값 상태가 바뀌었을때 같이 바뀜
+    return (   
+      <>
+      {
+        users.isLoggedIn ? (
+          <Notfound/>
+        ) : (
+              // value = key값 상태가 바뀌었을때 같이 바뀜
         <div className='signup-box'>
-            <h1 className='signup-title'>회원가입</h1>
-            <form className='signup-formbox' onSubmit={onSubmitForm}>
-                <div>Name</div>
-                <input type="text" required value={name} onChange={onChangeName}/>
-                <div>ID</div>
-                <input type="text" required value={id} onChange={onChangeId} />  
-                <div>Password</div>
-                <input type="password" required value={password} onChange={onChangePassword} />
-                <div>Password Check</div>
-                <input type="password" required value={passwordCheck} onChange={onChangePasswordCheck} />
-                {passwordError && <p>Password가 일치하지 않습니다.</p>}
-                <div>Email</div>
-                <input type="text" required value={email} onChange={onChangeEmail} />
-                <div>PhoneNumber</div>
-                <input type="text" required value={phonNumber} onChange={onChangephonNumber}/>
-                <div>주소</div>
-                  <input type="text" placeholder="우편번호"  value={apizonecode} onChange={onChangeZone}  disabled/> 
-                  <input type="text" placeholder="기본주소" value={apiaddress} onChange={onChangeaddress} disabled />
-                    <button onClick={handle.clickButton} >주소 검색</button>
-                  <input type="text" placeholder="나머지 주소"  onChange={onChangeDetail} />
-                <button type="submit" className='signup-btn' onClick={deliveryAddress}>Sign up</button>
-            </form>
+        <h1 className='signup-title'>회원가입</h1>
+        <form className='signup-formbox' onSubmit={onSubmitForm}>
+            <div>Name</div>
+            <input type="text" required value={name} onChange={onChangeName}/>
+            <div>ID</div>
+            <input type="text" required value={id} onChange={onChangeId} />  
+            <div>Password</div>
+            <input type="password" required value={password} onChange={onChangePassword} />
+            <div>Password Check</div>
+            <input type="password" required value={passwordCheck} onChange={onChangePasswordCheck} />
+            {passwordError && <p>Password가 일치하지 않습니다.</p>}
+            <div>Email</div>
+            <input type="text" required value={email} onChange={onChangeEmail} />
+            <div>PhoneNumber</div>
+            <input type="text" required value={phonNumber} onChange={onChangephonNumber}/>
+            <div>주소</div>
+              <input type="text" placeholder="우편번호"  value={apizonecode} onChange={onChangeZone}  disabled/> 
+              <input type="text" placeholder="기본주소" value={apiaddress} onChange={onChangeaddress} disabled />
+                <button onClick={handle.clickButton} >주소 검색</button>
+              <input type="text" placeholder="나머지 주소"  onChange={onChangeDetail} />
+            <button type="submit" className='signup-btn' >Sign up</button>
+        </form>
 
 
-            <div className={`mypage-apiModal ${openPostcode ? 'mypage-apiModalbod' : ''}`} ref={modalRef}>
-                    {
-                        openPostcode && 
-                            <DaumPostcode className="mypage-api"
-                                onComplete={handle.selectAddress}  // 값을 선택할 경우 실행되는 이벤트
-                                autoClose={false} // 값을 선택할 경우 사용되는 DOM을 제거하여 자동 닫힘 설정
-                                defaultQuery='판교역로 235' // 팝업을 열때 기본적으로 입력되는 검색어 
-                            />
-                    }
-                </div>
-        </div>
+        <div className={`mypage-apiModal ${openPostcode ? 'mypage-apiModalbod' : ''}`} ref={modalRef}>
+                {
+                    openPostcode && 
+                        <DaumPostcode className="mypage-api"
+                            onComplete={handle.selectAddress}  // 값을 선택할 경우 실행되는 이벤트
+                            autoClose={false} // 값을 선택할 경우 사용되는 DOM을 제거하여 자동 닫힘 설정
+                            defaultQuery='판교역로 235' // 팝업을 열때 기본적으로 입력되는 검색어 
+                        />
+                }
+            </div>
+    </div>
+        )
+    
+        }
+        </>
     );
 }
 

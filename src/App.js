@@ -20,6 +20,7 @@ import MyPage from "./page/MyPage";
 import Review from "./components/Review";
 import DetailNav from "./components/DetailNav";
 import DetailNav2 from "./components/DetailNav2";
+import Notfound from "./components/Notfound";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/mypage" element={<MyPage />}></Route>
           <Route path="/review/:id" element={<Review />} />
         </Route>
+          <Route path="/*" element={<Notfound />}></Route>
       </Routes>
     </div>
   );

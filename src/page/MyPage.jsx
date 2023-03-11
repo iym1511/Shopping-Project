@@ -8,6 +8,7 @@ import { loginChange, loginUser, updateAddress } from "../redux/user";
 import DaumPostcode from 'react-daum-postcode';
 import Review from "../components/Review";
 import { useNavigate } from "react-router-dom";
+import Notfound from "../components/Notfound";
 
 
 
@@ -151,6 +152,9 @@ const MyPage = ()=> {
     
 
     return (  
+        <>
+        {
+            users.isLoggedIn || null ? (
         <div className="mypage-box">
             <h1 className="mypage-title">MY PAGE</h1>
             <div className="mypage-sujung-box">
@@ -233,7 +237,12 @@ const MyPage = ()=> {
             
             
         </div>
+        ) :(
+            <Notfound />
+        )
+        }
+        </>
     );
 }
- 
+
 export default MyPage;

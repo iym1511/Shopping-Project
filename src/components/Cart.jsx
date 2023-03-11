@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { deleteChecked, shopaddCount, shopAlldelete, shopdelete, shopminuseCount, toggleCheckbox, toggleCheckboxAll } from "../redux/main";
 import { ADDIT_USER } from "../redux/singup";
 import Recent from "./Recent";
+import Notfound from "./Notfound";
 
      // 배열을 구매해
     let purchaseArray = [];
@@ -153,6 +154,9 @@ const Cart = () => {
     // main에 있는 배열값을 map으로 풀어서 main안에서 비교할수있게 id를 한번더 전달해줌
     
     return (  
+        <>
+        {
+            users.isLoggedIn ? (
         <div className="cart-box">
             <h1 className="cart-title">SHOPPING CART</h1>
             <button onClick={handleDelete} className="cart-pickdelete">선택 삭제</button>
@@ -211,7 +215,7 @@ const Cart = () => {
             {    // 로그인 구분해주고 장바구니가 비어있을때는 상품x출력
                 login ? (
                     mainshop.main.length == 0 ? (
-                        <button className="cart-order" onClick={()=>{alert("상품이 없습니다.")}}>주문하기</button>
+                        <button className="cart-order-none" disabled={mainshop.main.length == 0} onClick={()=>{alert("상품이 없습니다.")}}>주문하기</button>
                     ) : (
                         <button className="cart-order" onClick={purchaseProduct}>주문하기</button>
                     )
@@ -219,9 +223,13 @@ const Cart = () => {
                     <></>
                 )
             } 
-
             <Recent />           
         </div>
+            ) : (
+                <Notfound />
+            )
+        }
+        </>
     );
 }
 

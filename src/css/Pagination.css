@@ -48,11 +48,7 @@
     border-radius: 50%;
   }
   
-  ul.pagination li a:hover,
-  ul.pagination li a.active {
-    color: rgb(255, 255, 255);
-  }
-  
+
   .page-selection {
     width: 48px;
     height: 30px;

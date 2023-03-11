@@ -12,6 +12,7 @@ let recentPush = []
 
 const Neat = () => {
     const shop = useSelector((state) => state)
+    const users = useSelector((state) => state.user)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -81,7 +82,6 @@ const Neat = () => {
 
     return (
         <div className="home-box">
-        
         <h1 className="home-bestTitle">BEST 3</h1>
          <div className="shoes-wrapper">
                 <section className="sec01" onClick={()=>{navigate('/detailpage/9')}}></section>

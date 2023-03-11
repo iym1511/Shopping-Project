@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Notfound from '../components/Notfound';
 import '../css/Login.css'
 import { add } from '../redux/singup';
 import { loginUser } from '../redux/user';
@@ -16,6 +17,7 @@ const Login = () => {
   // useEffect로 한자한자입력할때마다 확인해서 
   // 이메일,패스워드 두개의 조건이 충족하면
   // 버튼을 활성화 시켜주는데 사용
+
   const [notAllow, setNotAllow] = useState(true);
 
   const [id, setId] = useState("");
@@ -79,7 +81,12 @@ const Login = () => {
       
 
     return (  
-        <div className='login-box'>
+      <>
+      {
+        user.isLoggedIn ? (
+          <Notfound />
+          ) : (
+            <div className='login-box'>
             <h1 className="login-text">로그인페이지</h1>
             <form onSubmit={onSubmitForm} className="login-form">
                 <div>ID</div>
@@ -90,7 +97,10 @@ const Login = () => {
             </form>
             <button onClick={clicksignup}>회원가입</button>
         </div>
-    );
+        )
+      }
+      </>
+  );
 }
  
 export default Login;
