@@ -156,8 +156,24 @@ const initialState = [
 export const shopSlice = createSlice({
   name: "players",
   initialState,
+  reducers : {
+    CountPlus(state, action) {
+      // 위 배열안의 id와 값을올려줄 물건id가 같으면 증가
+      let nums = state.findIndex((a) => a.id === action.payload);
+      state[nums].count++;
+      // 가격에다가 수량증가하면 가격++
+      state[nums].money += state[nums].save;
+    },
+    CountMinuse(state, action) {
+      let nums = state.findIndex((a) => a.id === action.payload);
+      if (state[nums].count > 1) {
+        state[nums].count--;
+        state[nums].money -= state[nums].save;
+      }
+    },
+  }
 });
 
-export const {} = shopSlice.actions;
+export const {CountPlus,CountMinuse} = shopSlice.actions;
 
 export default shopSlice.reducer;

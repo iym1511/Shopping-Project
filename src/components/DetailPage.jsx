@@ -13,6 +13,7 @@ import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 import Pagenation from "./Pagenation";
 import Recent from "./Recent";
+import { CountMinuse, CountPlus } from "../redux/shop";
 
 
 const DetailPage = () => {
@@ -112,7 +113,12 @@ const DetailPage = () => {
                         <div className="detail-textbox">
                             <div className="detail-fixbox">
                             <p className="detail-text">{shoplist.name}</p>
-                            <p className="detail-money">판매가 KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                            <div className="detail-count-box">
+                                <button onClick={()=>{dispatch(CountPlus(shoplist.id))}}>+</button>
+                                <div className="detail-count">{shoplist.count}</div>
+                                <button onClick={()=>{dispatch(CountMinuse(shoplist.id))}}>-</button>
+                            </div>
+                            <p className="detail-money"><span>총 삼품금액</span><span>(수량)</span> KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                             <button onClick={cartAdd}>장바구니 담기</button>
                             </div>
                         </div>

@@ -34,7 +34,16 @@ const Signup = () => {
     const [apiaddress, setApiaddress] = useState("");
     const [apizonecode, setApizoneCode] = useState("");
 
-   
+    const [sginbtn, setSginbtn] = useState(true);
+
+  useEffect(()=>{
+    if(id && password && name && email && phonNumber && realDetail && apiaddress && apizonecode){
+      setSginbtn(false);
+      return;
+  }else{
+    setSginbtn(true);
+  }
+  },[name, id, password, email, phonNumber, realDetail, apiaddress, apizonecode])
 
     const onChangePasswordCheck = useCallback(
         (e) => {
@@ -80,7 +89,6 @@ const Signup = () => {
         } else if (email === findUser.email) {
           alert("이미 사용중인 email입니다.");
         }
-        
       };
 
       const findUsers = sign.userlist.find((user)=> user.id == users.id)
@@ -88,19 +96,6 @@ const Signup = () => {
     const sesstionAddress = sessionStorage.getItem("address");
     const sesstionZonecode = sessionStorage.getItem("zonecode");
 
-       // 사용자 배송지 정보
-    const [address, setAddress] = useState(findUsers.apiaddress);
-    const [zonecode, setZonecode] = useState(findUsers.apizonecode)
-    const [detailAddress, setDetailAddress] = useState(findUsers.detailAddress);
-
-
-
-    const onChangeAddress = (e) => {
-        setAddress(e.target.value)
-    }
-    const onChangeZonecode = (e) => {
-        setZonecode(e.target.value)
-    }
 
     // 모달 외부 클릭시 끄기 처리---------------
     // Modal 창을 useRef로 취득
@@ -165,29 +160,32 @@ const Signup = () => {
         ) : (
               // value = key값 상태가 바뀌었을때 같이 바뀜
         <div className='signup-box'>
-        <h1 className='signup-title'>회원가입</h1>
-        <form className='signup-formbox' onSubmit={onSubmitForm}>
-            <div>Name</div>
-            <input type="text" required value={name} onChange={onChangeName}/>
-            <div>ID</div>
-            <input type="text" required value={id} onChange={onChangeId} />  
-            <div>Password</div>
-            <input type="password" required value={password} onChange={onChangePassword} />
-            <div>Password Check</div>
-            <input type="password" required value={passwordCheck} onChange={onChangePasswordCheck} />
-            {passwordError && <p>Password가 일치하지 않습니다.</p>}
-            <div>Email</div>
-            <input type="text" required value={email} onChange={onChangeEmail} />
-            <div>PhoneNumber</div>
-            <input type="text" required value={phonNumber} onChange={onChangephonNumber}/>
-            <div>주소</div>
-              <input type="text" placeholder="우편번호"  value={apizonecode} onChange={onChangeZone}  disabled/> 
-              <input type="text" placeholder="기본주소" value={apiaddress} onChange={onChangeaddress} disabled />
-                <button onClick={handle.clickButton} >주소 검색</button>
-              <input type="text" placeholder="나머지 주소"  onChange={onChangeDetail} />
-            <button type="submit" className='signup-btn' >Sign up</button>
-        </form>
-
+        <div className='signup-container'>
+          <h1 className='signup-title'>SIGN UP</h1>
+          <form className='signup-formbox' onSubmit={onSubmitForm}>
+              <label>Name</label>
+              <input type="text" required value={name} onChange={onChangeName}/>
+              <label>ID</label>
+              <input type="text" required value={id} onChange={onChangeId} />  
+              <label>Password</label>
+              <input type="password" required value={password} onChange={onChangePassword} />
+              <label>Password Check</label>
+              <input type="password" required value={passwordCheck} onChange={onChangePasswordCheck} />
+              {passwordError && <p className='signup-pwCheck'>Password가 일치하지 않습니다.</p>}
+              <label>Email</label>
+              <input type="text" required value={email} onChange={onChangeEmail} />
+              <label>PhoneNumber</label>
+              <input type="text" required value={phonNumber} onChange={onChangephonNumber}/>
+              <label>Address</label>
+              <div>
+                <input type="text" className='signup-input-zone' placeholder="우편번호" required value={apizonecode} onChange={onChangeZone}  disabled/> 
+                <button onClick={handle.clickButton} className='signup-input-search'>주소 검색</button>
+              </div>
+                <input type="text" className='signup-input-address' placeholder="기본주소" required value={apiaddress} onChange={onChangeaddress} disabled />
+                <input type="text" placeholder="나머지 주소" required onChange={onChangeDetail} />
+              <button type="submit" className={`signup-btn ${sginbtn ? 'signup-btn' : 'signup-btn2' }`} disabled={sginbtn}>Create</button>
+          </form>
+        </div>
 
         <div className={`mypage-apiModal ${openPostcode ? 'mypage-apiModalbod' : ''}`} ref={modalRef}>
                 {

@@ -23,10 +23,34 @@
 }
 
 .detail-text{
-    width: 100px;
+    width: 200px;
 }
+.detail-count-box{
+    display: flex;
+    border: 1px solid rgb(171, 171, 171);
+    width: 70px;
+}
+.detail-count{
+    margin-top: 3px;
+}
+.detail-count-box > button {
+    background-color: white;
+    border: none;
+    width: 50px;
+    color: rgb(70, 70, 70);
+    cursor: pointer;
+}
+
 .detail-money{
     width: 300px;
+}
+.detail-money > span{
+    font-size: 13px;
+    color: rgb(192, 192, 192);
+}
+.detail-money > span:nth-child(1){
+    color: gray;
+    font-size: 15px;
 }
 .detail-btn{
     margin: auto;

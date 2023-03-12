@@ -17,7 +17,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const navigater = useNavigate();
 
-    const [sesstionCart, setSesstionCart] = useState()
+
 
     // main.js
     const mainshop = useSelector((state) => state);

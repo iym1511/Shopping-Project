@@ -198,22 +198,24 @@ const MyPage = ()=> {
 
             <table className="mypage-table">
                 <tr className="mypage-title-tr">
-                    <th>이미지</th>
-                    <th>상품 정보</th>
-                    <th>수량</th>
-                    <th>구매 날짜</th>
-                    <th>배송 상태</th>
-                    <th>가격</th>
-                    <th>리뷰</th>
+                    <th className="mypage-title-th">이미지</th>
+                    <th className="mypage-title-th">상품 정보</th>
+                    <th className="mypage-title-th">수량</th>
+                    <th className="mypage-title-th">구매 날짜</th>
+                    <th className="mypage-title-th">배송 상태</th>
+                    <th className="mypage-title-th">가격</th>
+                    <th className="mypage-title-th">리뷰</th>
                 </tr>
             {   
                 findUser.purchaseArray == null ? (
-                    <div className="mypage-noneOrder">주문 내역 없음</div>
+                    <div>
+                        <th className="mypage-noneOrder"></th>
+                    </div>
                 ) : (
                     
                     findUser.purchaseArray.map((a, i)=>(
                         <tr className="mypage-tr-map">
-                            <th style={{border:"1px solid red"}}>
+                            <th>
                                 <img src={a.image} className="mypage-th-img" />
                             </th>
                             <th>
@@ -237,7 +239,7 @@ const MyPage = ()=> {
                                 // map안에선 setState가 안먹으니 이대로 생으로 삼항연산자사용하자 ★
                                 findUser.purchaseArray.find((e)=> e.id == a.id).reviewCheck ? (
                                     <th>
-                                        <button onClick={()=>{reviewClick(a.id)}}>Review</button>
+                                        <button onClick={()=>{reviewClick(a.id)}} className="mypage-review-btn">Review</button>
                                     </th>
                                 ) : (
                                     <th>리뷰 작성 완료</th>
