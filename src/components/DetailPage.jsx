@@ -14,6 +14,7 @@ import styled from 'styled-components';
 import Pagenation from "./Pagenation";
 import Recent from "./Recent";
 import { CountMinuse, CountPlus } from "../redux/shop";
+import { useMediaQuery } from "react-responsive";
 
 
 const DetailPage = () => {
@@ -94,7 +95,9 @@ const DetailPage = () => {
     // Pagination
     const [page, setPage] = useState(1);
 
-
+    const isPc = useMediaQuery ({
+        query : "(min-width :1020px)"
+      });
 
 
 
@@ -109,7 +112,12 @@ const DetailPage = () => {
                     <div className="detail-container">
                         <div className="detail-imgbox">
                             <img src={shoplist.image} className="detail-img"/>
+                            <img src={shoplist.image2} className="detail-img2"/>
+                            <img src={shoplist.image3} className="detail-img2"/>
+                            <img src={shoplist.image4} className="detail-img2"/>
+                            <img src={shoplist.image5} className="detail-img2"/>
                         </div>
+                        {               
                         <div className="detail-textbox">
                             <div className="detail-fixbox">
                             <p className="detail-text">{shoplist.name}</p>
@@ -119,20 +127,32 @@ const DetailPage = () => {
                                 <button onClick={()=>{dispatch(CountMinuse(shoplist.id))}}>-</button>
                             </div>
                             <p className="detail-money"><span>총 삼품금액</span><span>(수량)</span> KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-                            <button onClick={cartAdd}>장바구니 담기</button>
+                            <button onClick={cartAdd} className="detail-cartbtn">장바구니 담기</button>
                             </div>
                         </div>
+                        }
                     </div>
                 </div>
                 ) : (
-                    <div className="detail-item">
+                <div className="detail-item">
                     <div className="detail-container">
-                        <img src={shoplist.image} className="detail-img"/>
+                        <div className="detail-imgbox">
+                            <img src={shoplist.image} className="detail-img"/>
+                            <img src={shoplist.image2} className="detail-img2"/>
+                            <img src={shoplist.image3} className="detail-img2"/>
+                            <img src={shoplist.image4} className="detail-img2"/>
+                            <img src={shoplist.image5} className="detail-img2"/>
+                        </div>
                         <div className="detail-textbox">
                             <div className="detail-fixbox">
                                 <p className="detail-text">{shoplist.name}</p>
-                                <p className="detail-money">판매가 KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-                                <button onClick={logoutMode}>장바구니 담기</button>
+                                <div className="detail-count-box">
+                                <button onClick={()=>{dispatch(CountPlus(shoplist.id))}}>+</button>
+                                <div className="detail-count">{shoplist.count}</div>
+                                <button onClick={()=>{dispatch(CountMinuse(shoplist.id))}}>-</button>
+                            </div>
+                            <p className="detail-money"><span>총 삼품금액</span><span>(수량)</span> KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                                <button onClick={logoutMode} className="detail-cartbtn">장바구니 담기</button>
                             </div>
                         </div>
                     </div>

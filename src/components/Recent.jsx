@@ -4,18 +4,12 @@ import '../css/Recent.css';
 
 const Recent = () => {
 
-    
-
     const navigate = useNavigate()
-
     const [fold, setFold] = useState(false)
-    
 
     // 세션에저장한 최근눌렀던 상품 가져옴
     const ssesstionRecent = sessionStorage.getItem("recent")  
     const RecentJSON = JSON.parse(ssesstionRecent)
-
-
 
     useEffect(()=>{
         sessionStorage.getItem("fold")
@@ -53,7 +47,14 @@ const Recent = () => {
                 ssesstionRecent != undefined ? (
                     <div className={`recent-mapbox ${sessionStorage.getItem("fold") == "false" ?  'recent-fold-mapbox' : 'recent-mapbox'}`}>
                     <div className="recent-recentTitle">최근 본 상품</div>
-                        <div className='recent-fold' onClick={recentFold}>접기</div>
+                    {
+                        sessionStorage.getItem("fold") == "false" ? (
+                            <div className='recent-fold' onClick={recentFold}>펼치기</div>
+                        ) : (
+                            <div className='recent-fold' onClick={recentFold}>접기</div>
+                        )
+                    }
+                        
                             {  
                                 ssesstionRecent != undefined  ? (
                                     RecentJSON.map((a,i)=>(
