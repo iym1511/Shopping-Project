@@ -1,4 +1,5 @@
 import '../css/Main.css'
+import PopView from './PopView';
 
 const Main = () => {
     return (  
@@ -60,6 +61,7 @@ const Main = () => {
                 <div className='main-link'> 
                     여기에 아이콘
                 </div>
+                <PopView></PopView>
 
                 {/* 문자가 카운터되듯 올라가는 css */}
                 {/* <div className="main-container2">

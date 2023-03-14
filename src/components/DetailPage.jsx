@@ -69,11 +69,13 @@ const DetailPage = () => {
         e.preventDefault()
         if(comment.text !== ""){
             dispatch(add(comment))
+            onReset();
         }else{
             alert("댓글을 작성해주세요")
         }
         onReset();
-        document.querySelector(".input").value="";
+        document.querySelector("input").value="";
+        
     }
     
     const cartAdd = () => {
@@ -97,9 +99,15 @@ const DetailPage = () => {
 
     const isPc = useMediaQuery ({
         query : "(min-width :1020px)"
-      });
+    });
 
-
+    let length = 9;
+    let shopname = shoplist.name.length ;
+    let shopNames = () => {
+        if(shopname.length > length) {
+            return shopname = shopname(0, length - 2) + '...' ;
+        }
+    }
 
     return (  
         <div className="detail-box">
@@ -147,11 +155,11 @@ const DetailPage = () => {
                             <div className="detail-fixbox">
                                 <p className="detail-text">{shoplist.name}</p>
                                 <div className="detail-count-box">
-                                <button onClick={()=>{dispatch(CountPlus(shoplist.id))}}>+</button>
-                                <div className="detail-count">{shoplist.count}</div>
-                                <button onClick={()=>{dispatch(CountMinuse(shoplist.id))}}>-</button>
-                            </div>
-                            <p className="detail-money"><span>총 삼품금액</span><span>(수량)</span> KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                                    <button onClick={()=>{dispatch(CountPlus(shoplist.id))}}>+</button>
+                                    <div className="detail-count">{shoplist.count}</div>
+                                    <button onClick={()=>{dispatch(CountMinuse(shoplist.id))}}>-</button>
+                                </div>
+                                <p className="detail-money"><span>총 삼품금액</span><span>(수량)</span> KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                                 <button onClick={logoutMode} className="detail-cartbtn">장바구니 담기</button>
                             </div>
                         </div>
@@ -249,7 +257,7 @@ const DetailPage = () => {
             }
             </div>
             ) : (
-                <p>리뷰가 없습니다.</p>
+                <div className="detail-noneReview"><p>작성된 리뷰가 없습니다.</p></div>
             )
 
         }
