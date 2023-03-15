@@ -97,17 +97,16 @@ const DetailPage = () => {
     // Pagination
     const [page, setPage] = useState(1);
 
-    const isPc = useMediaQuery ({
-        query : "(min-width :1020px)"
-    });
+    // const isPc = useMediaQuery ({
+    //     query : "(min-width :1020px)"
+    // });
 
-    let length = 9;
-    let shopname = shoplist.name.length ;
-    let shopNames = () => {
-        if(shopname.length > length) {
-            return shopname = shopname(0, length - 2) + '...' ;
-        }
+    let length = 14; // 표시할 글자수 기준
+    let str = shoplist.name;
+    if (str.length > length) {
+        str = str.substr(0, length - 2) + '...';
     }
+    console.log(str);
 
     return (  
         <div className="detail-box">
@@ -129,6 +128,7 @@ const DetailPage = () => {
                         <div className="detail-textbox">
                             <div className="detail-fixbox">
                             <p className="detail-text">{shoplist.name}</p>
+                            <p className="detail-text2">{str}</p>
                             <div className="detail-count-box">
                                 <button onClick={()=>{dispatch(CountPlus(shoplist.id))}}>+</button>
                                 <div className="detail-count">{shoplist.count}</div>
@@ -154,6 +154,7 @@ const DetailPage = () => {
                         <div className="detail-textbox">
                             <div className="detail-fixbox">
                                 <p className="detail-text">{shoplist.name}</p>
+                                <p className="detail-text2">{str}</p>
                                 <div className="detail-count-box">
                                     <button onClick={()=>{dispatch(CountPlus(shoplist.id))}}>+</button>
                                     <div className="detail-count">{shoplist.count}</div>

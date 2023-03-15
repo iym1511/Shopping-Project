@@ -115,7 +115,7 @@ const Nav = () => {
 
             {
               login ? (
-                <div  className={`nav-cart ${scrollActive ? ' ' : 'nav-cart2'}`}>
+                <div className={`nav-cart ${scrollActive ? ' ' : 'nav-cart2'}`}>
                   <div className="nav-login-icon">
                     <NavLink to="/cart">
                         <img src={require("../img/shopping-cart.png")} width={25} />
