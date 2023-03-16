@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion"
 import '../css/Modal.css'
 
 const Modal = ({setShowModal}) => {
@@ -33,20 +34,22 @@ const Modal = ({setShowModal}) => {
     });
 
     return (  
-        <div className="modal-box" ref={modalRef}>
-            <div>
+        <motion.div initial={{opacity: 0 ,transform : 'translateY(50px)', transition:'transform 0.33s ease'}}
+        animate={{opacity: 1 ,transform : 'translateY(0px)', transition:'transform 0.33s ease'}}
+        exit={{opacity: 0 ,transform : 'translateY(50px)', transition:'transform 0.33s ease'}} className="modal-box" ref={modalRef}>
+            <div className="modal-container">
                 <p>선택하신 상품이 
                     <br /> 장바구니에 추가되었습니다.
                 </p>
-                <div>  {/* 창 사라지게 하기*/}
-                    <button onClick={modalChange}>쇼핑 계속하기</button>
+                <div className="modal-buttons">  {/* 창 사라지게 하기*/}
+                    <button className="modal-button1" onClick={modalChange}>쇼핑 계속하기</button>
                     <Link to="/cart">
-                        <button>장바구니로 이동</button>
+                        <button className="modal-button2">장바구니로 이동</button>
                     </Link>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
- 
+
 export default Modal;

@@ -18,7 +18,7 @@ const initialState = [
     image5: [require("../img/neat-1-5.PNG")],
     money: 21900,
     save: 21900,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -34,7 +34,7 @@ const initialState = [
     image5: [require("../img/neat-2-5.PNG")],
     money: 31000,
     save: 31000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -50,7 +50,7 @@ const initialState = [
     image5: [require("../img/neat-3-5.PNG")],
     money: 26000,
     save: 26000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -66,7 +66,7 @@ const initialState = [
     image5: [require("../img/neat-4-5.PNG")],
     money: 18000,
     save: 18000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -82,7 +82,7 @@ const initialState = [
     image5: [require("../img/neat-5-5.PNG")],
     money: 51000,
     save: 51000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -98,7 +98,7 @@ const initialState = [
     image5: [require("../img/neat-6-5.PNG")],
     money: 36000,
     save: 36000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -114,7 +114,7 @@ const initialState = [
     image5: [require("../img/neat-7-5.PNG")],
     money: 33000,
     save: 33000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -130,7 +130,7 @@ const initialState = [
     image5: [require("../img/neat-8-5.PNG")],
     money: 43000,
     save: 43000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -146,7 +146,7 @@ const initialState = [
     image5: [require("../img/neat-9-5.PNG")],
     money: 39000,
     save: 39000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -162,7 +162,7 @@ const initialState = [
     image5: [require("../img/neat-10-5.PNG")],
     money: 47000,
     save: 47000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -178,7 +178,7 @@ const initialState = [
     image5: [require("../img/neat-11-5.PNG")],
     money: 21000,
     save: 21000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate
@@ -194,7 +194,7 @@ const initialState = [
     image5: [require("../img/neat-12-5.PNG")],
     money: 30000,
     save: 30000,
-    delivery: 2500,
+    delivery: "-",
     checked: false,
     reviewCheck : true,
     date : useDate

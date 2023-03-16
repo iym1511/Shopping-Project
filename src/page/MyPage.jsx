@@ -170,6 +170,8 @@ const MyPage = ()=> {
                     }
                 }} 
                 className="mypage-form">
+                    <label>Name</label>
+                    <input type="text" value={users.name} disabled></input>
                     <label>ID</label>
                     <input className="mypage-id" type="text" name="id" defaultValue={users.id} onChange={onChange} disabled />
                     <label>E-mail</label>
@@ -178,12 +180,12 @@ const MyPage = ()=> {
                     <input type="password" name="password" defaultValue={findUser ? findUser.password : ""} onChange={onChange} />
                     <label className="user-info_label">Password check</label>
                     <input type="password" name="password-check" value={checkPass} onChange={(e) => setCheckPass(e.target.value)} />
-                <button type="submit">회원정보 수정</button>
+                <button type="submit" className="mypage-sujungbtn">회원정보 수정</button>
                 </form>
             
                 {/* 주소 api */}
                 <div className="mypage-addressbox">
-                    <form onSubmit={deliveryAddress}>
+                    <form onSubmit={deliveryAddress} className="mypage-addressForm">
                         <label>주소</label>
                         <div className="mypage-addressContainer">
                             <input type="text" placeholder="우편번호"  value={apizonecode ? sesstionZonecode : zonecode} onChange={onChangeZonecode} className="mypage-addressNum" disabled/> 
@@ -234,7 +236,6 @@ const MyPage = ()=> {
                                 <p>{a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                             </th>
                                 
-  
                             {   
                                 // map안에선 setState가 안먹으니 이대로 생으로 삼항연산자사용하자 ★
                                 findUser.purchaseArray.find((e)=> e.id == a.id).reviewCheck ? (

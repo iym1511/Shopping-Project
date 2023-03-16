@@ -167,7 +167,7 @@ const Cart = () => {
                     <tr className="cart-trmulgun">상품정보</tr>
                     <tr className="cart-trcount">수량</tr>
                     <tr className="cart-trmoney">상품금액</tr>
-                    <tr className="cart-trdelivery">배송비</tr>
+                    <tr className="cart-trdelivery">적립금</tr>
                     <tr className="cart-trdeliverymoney">총 금액</tr>
                     <tr className="cart-trpick">선택</tr>
                 </div>

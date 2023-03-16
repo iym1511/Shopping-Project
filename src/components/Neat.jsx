@@ -88,6 +88,7 @@ const Neat = () => {
                 <section className="sec02" onClick={()=>{navigate('/detailpage/6')}}></section>
                 <section className="sec03" onClick={()=>{navigate('/detailpage/8')}}></section>
             </div>
+            {/* <div className="alternative">BEST 3 NEATS<div className='shoes-subtitle'>MADE</div></div> */}
             <div className="home-titleBox">
             <h1 className="home-title">NEAT</h1>
         </div>
@@ -111,23 +112,7 @@ const Neat = () => {
                 ))
             }
          </div>
-
             <Recent />
-    {/* <div className="neat-recent-mapbox">
-        <div className="neat-recentTitle">최근 본 상품</div>
-         {  
-            ssesstionRecent != undefined  ? (
-                RecentJSON.map((a,i)=>(
-                    <div className="neat-recent" key={i}>
-                        <img src={a.image} className="neat-recentImg" onClick={()=>{navigate(`/detailpage/${a.id}`)}}/>
-                        <div className="neat-recentName">{a.name}</div>
-                    </div>
-                ))
-            ) : (
-                <div>최근본거없음</div>
-            )
-        }
-    </div> */}
         
         </div>
     );

@@ -66,7 +66,34 @@
     cursor: pointer;
     padding: 10px;
     width: 220px;
+    transition: all 0.2s linear 0s;
 }
+.detail-cartbtn:before {
+    content: "\27F6";
+    font-size: 15px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 160px;
+    bottom: -180px;
+    top: 111px;
+    opacity: 0;
+    height: 60px;
+    width: 40px;
+    color: rgb(255, 255, 255);
+    transition: all 0.2s linear 0s;
+  }
+  .detail-cartbtn:hover {
+    text-indent: -20px;
+    background-color: black;
+    color: white;
+  }
+  .detail-cartbtn:hover:before {
+    opacity: 1;
+    text-indent: 0px;
+  }
+
 .detail-btn{
     margin: auto;
     margin-top: 10px;
@@ -303,6 +330,7 @@
         background-color: black;
         color: white;
         font-size: 13px;
+        transition: none;
     }  
     .detail-money{
         display: flex;
@@ -347,4 +375,23 @@
         width:80%;
         margin: auto;
     }
+    .detail-cartbtn:before {
+        content: "";
+        font-size: 15px;
+       
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 0px;
+        bottom: 0px;
+        top: 0;
+        transition: none;
+      }
+      .detail-cartbtn:hover {
+        text-indent: 0px;
+      }
+      .detail-cartbtn:hover:before {
+        opacity: 0;
+        text-indent: 0px;
+      }
 }

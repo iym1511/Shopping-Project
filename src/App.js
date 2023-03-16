@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Cart from "./components/Cart";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./components/Neat";
 import Layout from "./page/Layout";
 
@@ -21,10 +21,13 @@ import Review from "./components/Review";
 import DetailNav from "./components/DetailNav";
 import DetailNav2 from "./components/DetailNav2";
 import Notfound from "./components/Notfound";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
+  const location = useLocation();
   return (
     <div className="App">
+      <AnimatePresence>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/neat" element={<Neat />}></Route>
@@ -41,6 +44,7 @@ function App() {
         </Route>
           <Route path="/*" element={<Notfound />}></Route>
       </Routes>
+      </AnimatePresence>
     </div>
   );
 }

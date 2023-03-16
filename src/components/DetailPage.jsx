@@ -24,6 +24,7 @@ const DetailPage = () => {
     const reviewComment = useSelector((state) => state.review);
     const users = useSelector((state) => state.user);
     const sign = useSelector((state) => state.signup);
+    const main = useSelector((state)=> state.main);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -80,7 +81,16 @@ const DetailPage = () => {
     
     const cartAdd = () => {
         dispatch(shopcartAdd(shoplist))
-        setShowModal(true)
+        // shop 옷 데이터에있는 id와 장바구니에있는 옷id를 비교하기위해
+        // map으로 배열안에있는 객체안의id를 찾아줌
+        const mainmap = main.map((a)=> a.id == shoplist.id)
+        // 배열로 출력된 boolean값들을 some으로 같은것이있는지 확인
+        const mainsome = mainmap.some((a)=> a == true)
+        // 중복된값에따라 모달창 출력
+        if(!mainsome){
+            setShowModal(true)
+        }
+            
     }
 
     const logoutMode = () => {
@@ -106,7 +116,6 @@ const DetailPage = () => {
     if (str.length > length) {
         str = str.substr(0, length - 2) + '...';
     }
-    console.log(str);
 
     return (  
         <div className="detail-box">

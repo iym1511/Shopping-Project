@@ -36,7 +36,6 @@ export const mainSlice = createSlice({
       // 값이 있으면 true 값이 없으면 false
       // 처음에 빈배열이라 false 반환하니 거꾸로 true로 만들어줘서 if문 실행
       if (!someCheck) {
-        alert("장바구니에 추가되었습니다.");
         state.push(action.payload);
       } else {
         alert("이미있는 상품입니다.");
