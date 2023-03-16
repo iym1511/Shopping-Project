@@ -50,6 +50,7 @@
   cursor: pointer;
 }
 
+
 @media screen and (max-width: 1240px) {
   .modal-box{
     left: 30%;
