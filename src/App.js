@@ -6,7 +6,7 @@ import Home from "./components/Neat";
 import Layout from "./page/Layout";
 
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DetailPage from "./components/DetailPage";
 
 import Login from "./page/Login";
@@ -25,6 +25,13 @@ import { AnimatePresence } from "framer-motion";
 
 function App() {
   const location = useLocation();
+
+  // 이 윈도우가 한번 열릴때 세션에 true값줌
+  // useEffect 한번만줌
+  useEffect(()=>{
+    sessionStorage.setItem("fold", true);
+  },[window.onload])
+
   return (
     <div className="App">
       <AnimatePresence>

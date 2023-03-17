@@ -1,5 +1,4 @@
 @font-face {
-    font-family: 'Hahmlet-Regular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
@@ -33,8 +32,11 @@ input{
     margin-right: 100px;
 }
 .mypage-form > label {
-    font-size: 19px;
+    font-size: 20px;
+    font-weight: bold;
     margin-top: 10px;
+    font-family: 'Hahmlet-Regular';
+
 }
 .mypage-form > input{
     border: none;
@@ -49,6 +51,13 @@ input{
     height: 40px;
     border: 1px solid rgb(0, 0, 0);
     cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+.mypage-sujungbtn:hover{
+    transition: 0.3s;
+    background-color: black;
+    color: white;
 }
 .mypage-id{
     border: 1px solid rgba(255, 0, 0, 0);
@@ -122,6 +131,9 @@ input{
     display: flex;
     flex-direction: column;
     width: 320px;
+    font-family: 'Hahmlet-Regular';
+    font-size: 20px;
+    font-weight: bold;
 }
 .mypage-addressForm > input{
     border: none;
@@ -138,6 +150,7 @@ input{
     border-bottom: 1px solid gray;
     background-color: white;
     padding: 5px;
+    margin-top: 15px;
 }
 
 .mypage-apibtn{
@@ -159,9 +172,82 @@ input{
 
 .mypage-address{
     width: 320px;
+    margin-top: 15px;
+}
+.mypage-deliverySave{
+    background-color: white;
+    border: none;
+    width: 330px;
+    height: 40px;
+    border: 1px solid rgb(0, 0, 0);
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+.mypage-deliverySave:hover{
+    transition: 0.3s;
+    background-color: black;
+    color: white;
 }
 .mypage-api{
     background-color: rgba(0, 0, 0, 0.438);
     width: 100%;
     height: 400px;
+}
+
+@media screen and (max-width: 870px) {
+    .mypage-sujung-box{
+        display: flex;
+        flex-direction: column;
+    }
+    .mypage-form{
+        margin: auto;
+        width: 100%;
+    }
+    .mypage-form > input{
+        width: 80%;
+        margin: auto;
+    }
+    .mypage-form > label{
+        width: 80%;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+    .mypage-addressbox{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+        margin-top: 50px;
+    }
+    .mypage-addressForm{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: auto;
+    }
+    .mypage-address{
+        width: 100%;
+        margin: auto;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    .mypage-sujungbtn{
+        width: 60%;
+        margin: auto;
+        margin-top: 30px;
+    }
+    .mypage-deliverySave{
+        width: 75%;
+        margin: auto;
+        margin-top: 30px;
+    }
+    .mypage-addressNum{
+        width: 20%;
+        padding: 5px;
+    }
+    .mypage-addressContainer{
+        
+    }
 }

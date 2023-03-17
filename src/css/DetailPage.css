@@ -93,6 +93,23 @@
     opacity: 1;
     text-indent: 0px;
   }
+  .detail-info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 30px;
+    }
+    .detail-info > span {
+        color: red;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        border-top: 1.5px solid rgba(0, 0, 0, 0.417);
+        width: 220px;
+    }
+    .detail-info > p{
+        margin-top: 0px;
+        font-size: 13px;
+    }
 
 .detail-btn{
     margin: auto;
@@ -393,5 +410,8 @@
       .detail-cartbtn:hover:before {
         opacity: 0;
         text-indent: 0px;
+      }
+      .detail-info{
+        display: none;
       }
 }

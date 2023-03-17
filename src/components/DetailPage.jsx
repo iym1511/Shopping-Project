@@ -145,6 +145,13 @@ const DetailPage = () => {
                             </div>
                             <p className="detail-money"><span>총 삼품금액</span><span>(수량)</span> KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                             <button onClick={cartAdd} className="detail-cartbtn">장바구니 담기</button>
+                            <div className="detail-info">
+                                <span>INFO</span>
+                                <p>{shoplist.info}</p>
+                                <p>{shoplist.info2}</p>
+                                <p>{shoplist.info3}</p>
+                                <p>{shoplist.info4}</p>
+                            </div>
                             </div>
                         </div>
                         }
@@ -171,6 +178,13 @@ const DetailPage = () => {
                                 </div>
                                 <p className="detail-money"><span>총 삼품금액</span><span>(수량)</span> KRW {shoplist.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                                 <button onClick={logoutMode} className="detail-cartbtn">장바구니 담기</button>
+                                <div className="detail-info">
+                                    <span>INFO</span>
+                                    <p>{shoplist.info}</p>
+                                    <p>{shoplist.info2}</p>
+                                    <p>{shoplist.info3}</p>
+                                    <p>{shoplist.info4}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

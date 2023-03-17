@@ -17,23 +17,20 @@ const Cart = () => {
     const dispatch = useDispatch();
     const navigater = useNavigate();
 
-
-
     // main.js
     const mainshop = useSelector((state) => state);
     const usercart = useSelector((state)=> state.user.item);
     
       // 로그인
-      const users = useSelector((state) => state.user);
+    const users = useSelector((state) => state.user);
 
     // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 / 댓글 이름별출력도 이걸로함
     const sign = useSelector((state)=> state.signup)
     const findUser = sign.userlist.find((user)=> user.id == users.id)
     
 
-  
       // 로그인 유무 체크
-  const [login, setLogin] = useState(false);
+    const [login, setLogin] = useState(false);
 
     const moneylist = [];
     const moneylist2 = []; // 배송비
@@ -76,7 +73,7 @@ const Cart = () => {
     const handleToggleAll = () => {
         const AllChecked = mainshop.main.every(item => item.isChecked);
         dispatch(toggleCheckboxAll(!AllChecked));
-      };
+    };
 
     
     // 돈 합계 

@@ -186,14 +186,14 @@ const MyPage = ()=> {
                 {/* 주소 api */}
                 <div className="mypage-addressbox">
                     <form onSubmit={deliveryAddress} className="mypage-addressForm">
-                        <label>주소</label>
+                        <label>Address</label>
                         <div className="mypage-addressContainer">
                             <input type="text" placeholder="우편번호"  value={apizonecode ? sesstionZonecode : zonecode} onChange={onChangeZonecode} className="mypage-addressNum" disabled/> 
                             <button onClick={handle.clickButton} className="mypage-apibtn">주소 검색</button>
                         </div>
                         <input type="text" placeholder="기본주소" value={apiaddress ? sesstionAddress : address} onChange={onChangeAddress} disabled className="mypage-address"/>
                         <input type="text" placeholder="나머지 주소" value={detailAddress || ""} onChange={(e)=>{setDetailAddress(e.target.value)}} className="mypage-address"/>
-                        <button type="submit">배송지 저장</button>
+                        <button type="submit" className="mypage-deliverySave">배송지 저장</button>
                     </form>
                 </div>
             </div>
