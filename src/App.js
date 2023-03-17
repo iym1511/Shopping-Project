@@ -26,7 +26,7 @@ import { AnimatePresence } from "framer-motion";
 function App() {
   const location = useLocation();
 
-  // 이 윈도우가 한번 열릴때 세션에 true값줌
+  // 이 윈도우가 한번 열릴때 세션에 true값줌 (recent값)
   // useEffect 한번만줌
   useEffect(()=>{
     sessionStorage.setItem("fold", true);
@@ -40,7 +40,7 @@ function App() {
           <Route path="/neat" element={<Neat />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/detailpage/:id" element={<DetailPage />}></Route>
-          <Route path="/login" element={<Login />}></Route>
+          <Route path="/login" element={<Login />}></Route> 
           {/* <Route path="/shirt" element={<Shirt />}></Route> */}
           <Route path="/about" element={<Shoes />}></Route>
           {/* <Route path="/bottom" element={<Bottom />}></Route> */}
