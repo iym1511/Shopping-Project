@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Hahmlet-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .detail-box{
     border: 1px solid rgba(0, 0, 0, 0);
     width: 99.9%;
@@ -113,9 +120,19 @@
 
 .detail-btn{
     margin: auto;
-    margin-top: 10px;
-    height: 30px;
+    margin-top: 100px;
+    width: 70px;
+    height: 37px;
     margin-left: 10px;
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.detail-btn:hover{
+    background-color: black;
+    color: white;
+    transition: 0.5s;
 }
 
 .detail-container{
@@ -130,7 +147,6 @@
 }
 .detail-reviewBox{
     height: 380px;
-    
 }
 
 .detail-mapbox{
@@ -146,6 +162,11 @@
     margin-left: 15.4%;
     padding-bottom: 10px;
     border-bottom: 1px solid rgb(207, 207, 207);
+}
+.detail-reviewbox{
+    /* display: flex;
+    width: 100%;
+    border-bottom: 1px solid gray; */
 }
 .detail-userbox{
     width: 200px;
@@ -192,23 +213,53 @@
     margin: auto;
     color: gray;
 }
-
+.detail-QnAcontainer{
+    margin: auto;
+    /* width: 38%; */
+    width: 50%;
+    margin-top: 200px;
+    /* margin-left: 15.4%; */
+    margin-left: 10%;
+    margin-bottom: 100px;
+}
+.detail-QnAtitle{
+    font-family: 'Hahmlet-Regular';
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid gray;
+    padding-top: 50px;
+    font-weight: lighter;
+}
 .detail-flexbox{
     display: flex;
     width: 100%;
 }
 .text{
-    
     margin: auto;
 }
 .map-box{
-
+    width: 80%;
+    margin: auto;
 }
 .detail-form{
     margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+.detail-formDiv{
+    margin: auto;
+    padding-left: 30%;
+    width: 80%;
+    /* border: 1px solid red; */
 }
 .detail-input{
     margin-top: 100px;
+    width: 40%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid black;
 }
 
 .inputbox{
@@ -216,20 +267,26 @@
     border-bottom: 1px solid rgb(206, 206, 206);
     margin: auto;
     padding-left: 30px;
-    margin-top: 20px;
+    margin-top: 45px;
     padding-bottom: 10px;
-    width: 30%;
+    width: 100%;
 }
 
 
 .detail-name{
-    width: 15%;
+    width: 90px;
 }
 .inputtext{
     width: 100%;
     display: flex;
 }
-
+.detail-noneQnA{
+    width: 200px;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+    color: gray;
+}
 
 .xbtn{
     margin: auto;
@@ -307,6 +364,7 @@
         left: 0;
         margin: auto;
         width: 100%;
+        height: 45px;
         z-index: 500;
     }
     .detail-fixbox{
@@ -414,4 +472,33 @@
       .detail-info{
         display: none;
       }
+
+    .detail-form{
+        display: flex;
+
+    }
+    .detail-btn{
+        margin-top: 100px;
+        width: 70px;
+        background-color: white;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+    .detail-QnAcontainer{
+        margin: auto;
+        width: 70%;
+        margin-top: 200px;
+        margin-bottom: 100px;
+    }
+    .detail-noneQnA{
+        margin: auto;
+        width: 70%;
+        text-align: center;
+        margin-top: 50px;
+    }
+    .detail-formDiv{
+        margin: auto;
+        padding-left: 40%;
+        width: 80%;
+    }
 }

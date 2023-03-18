@@ -96,9 +96,9 @@ const Nav = () => {
               <NavLink to="/shirt" className="nav-text">SHIRT</NavLink>
             </div> */}
 
-            <div className={`nav-shoes ${scrollActive ? ' ' : 'nav-shoes2'}`}>
+            {/* <div className={`nav-shoes ${scrollActive ? ' ' : 'nav-shoes2'}`}>
               <NavLink to="/about" className="nav-text">ABOUT</NavLink>
-            </div>
+            </div> */}
 {/* 
             <div className={`nav-bottom ${scrollActive ? ' ' : 'nav-bottom2'}`}>
               <NavLink to="/bottom" className="nav-text">BOTTOM</NavLink>

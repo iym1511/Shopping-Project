@@ -146,6 +146,7 @@ const MyPage = ()=> {
         navigate(`/review/${a}`)
         // 툴킷안에서 유저 맞는거 확인후 그 유저꺼 가져옴
         dispatch(pushPid({...findUser, pid : a}))
+        // dispatch(purchaseBoolean({...findUser, pid : a}))
         console.log(findUser.purchaseArray.find((e)=> e.id == a).reviewCheck)
       }
 
@@ -198,6 +199,7 @@ const MyPage = ()=> {
                 </div>
             </div>
 
+            <h1 className="mypage-shoptitle">SHOPLIST</h1>
             <table className="mypage-table">
                 <tr className="mypage-title-tr">
                     <th className="mypage-title-th">이미지</th>

@@ -15,9 +15,15 @@
 }
 .cart-pickdelete{
     margin-left: 140px;
+    border: 1px solid gray;
+    background-color: white;
+    cursor: pointer;
 }
 .cart-allpick{
-    
+    border: 1px solid gray;
+    background-color: white;
+    margin-left: 10px;
+    cursor: pointer;
 }
 .cart-list{
     /* border: 1px solid red; */
@@ -179,6 +185,7 @@ td{
 .Cart-zero{
     margin: auto;
     margin-top: 100px;
+    padding-bottom: 90px;
     text-align: center;
 }
 .cart-moneysum{
@@ -187,7 +194,7 @@ td{
     margin: auto;
     height: 6vh;
     font-size: 20px;
-    margin-top: 100px;
+    margin-top: 10px;
     padding-top: 20px;
     border-top: 3px solid rgba(0, 0, 0, 0.445);
     border-bottom: 3px solid rgba(0, 0, 0, 0.445);

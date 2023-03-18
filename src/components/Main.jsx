@@ -1,5 +1,12 @@
 import '../css/Main.css'
 import PopView from './PopView';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faTwitterSquare,
+    faInstagram,
+    faYoutube,
+    faGithub
+  } from "@fortawesome/free-brands-svg-icons";
 
 const Main = () => {
     return (  
@@ -59,9 +66,12 @@ const Main = () => {
                     </h1>
                 </div>
                 <div className='main-link'> 
-                    여기에 아이콘
+                    <a href='https://www.instagram.com/' target="_blank" className='main-insta'><FontAwesomeIcon icon={faInstagram}/></a>
+                    <a href='https://twitter.com/i/trends' target="_blank" className='main-twitter'><FontAwesomeIcon icon={faTwitterSquare}/></a>
+                    <a href='https://www.youtube.com/' target="_blank" className='main-youtube'><FontAwesomeIcon icon={faYoutube}/></a>
+                    <a href='https://github.com/iym1511' target="_blank" className='main-github'><FontAwesomeIcon icon={faGithub} /></a>
                 </div>
-                <PopView></PopView>
+                <PopView/>
 
                 {/* 문자가 카운터되듯 올라가는 css */}
                 {/* <div className="main-container2">
@@ -93,5 +103,5 @@ const Main = () => {
         </div>
     );
 }
- 
+
 export default Main;

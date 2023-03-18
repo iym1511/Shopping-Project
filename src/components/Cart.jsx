@@ -8,14 +8,16 @@ import { ADDIT_USER } from "../redux/singup";
 import Recent from "./Recent";
 import Notfound from "./Notfound";
 
-     // 배열을 구매해
-    let purchaseArray = [];
+
 
 
 
 const Cart = () => {
     const dispatch = useDispatch();
     const navigater = useNavigate();
+
+         // 배열을 구매해
+        let purchaseArray = [];
 
     // main.js
     const mainshop = useSelector((state) => state);
@@ -112,7 +114,7 @@ const Cart = () => {
     useEffect((a)=>{
         const list = moneylist.reduce(function add(sum, currValue){
             return sum + currValue.money;
-           },0);
+        },0);
         setSum(list)
     },[moneylist])
 
@@ -125,16 +127,16 @@ const Cart = () => {
     useEffect((a)=>{
         const list2 = moneylist2.reduce(function add(sum2, currValue){
             return sum2 + currValue.money;
-           },0);
-           if(sum < 70000){
+        },0);
+        if(sum < 40000){
             setSum2(list2 + 2500)
             setDeliberymoney(2500)
-           }else if(sum == 0){
+        }else if(sum == 0){
             setDeliberymoney(0)
-           }else if(sum > 70000){
+        }else if(sum > 40000){
             setDeliberymoney(0)
             setSum2(list2)
-           }
+        }
     },[moneylist2])
 
     useEffect(()=>{
@@ -142,9 +144,9 @@ const Cart = () => {
     },[moneylist2])
 
       // 로그인 판별
-  useEffect(() => {
-    setLogin(users.isLoggedIn ? true : false);
-  }, [users]);
+    useEffect(() => {
+        setLogin(users.isLoggedIn ? true : false);
+    }, [users]);
 
 
 

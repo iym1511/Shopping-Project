@@ -257,13 +257,14 @@ const DetailPage = () => {
 
                     return (
                         <div className="detail-mapbox">
+                            {/* <div className="detail-reviewbox"> */}
                             <div className="detail-userbox">
                                 <div className="detail-rate">{showStar()}</div>
                                 <div className="detail-reviewName">NAME : {a.name}</div>
                                 <div className="detail-reviewDate">{a.date}</div>
                             </div>
                             <div className="detail-flexbox">
-                                <div className="detail-reviewText">{a.text}</div>
+                                <p className="detail-reviewText">{a.text}</p>
                                 {
                                     findUser.name == a.name ? ( // purchaseTrue는 삭제시 리뷰값을 true로 되돌려서 다시 리뷰작성할수있게
                                         <button onClick={()=>{dispatch(removeReview(a.id))
@@ -274,6 +275,7 @@ const DetailPage = () => {
                                     )
                                 }
                             </div>
+                            {/* </div> */}
                         </div>
                     )
                     
@@ -287,42 +289,49 @@ const DetailPage = () => {
         }
             <Pagenation page={page} reviewfind={reviewfind} setPage={setPage}/>
 
-
+            <div className="detail-QnAcontainer">
+                <h1 className="detail-QnAtitle">QnA</h1>
             {
                 users.isLoggedIn ? (
                     <form onSubmit={addtext} className="detail-form">
-                    <input type="text" className="detail-input" onChange={handleText} placeholder="댓글을 입력하여 주십시요"/>
-                    <button className="detail-btn">QnA작성</button>
+                        <div className="detail-formDiv">
+                            <input type="text" className="detail-input" onChange={handleText} placeholder="댓글을 입력하여 주십시요"/>
+                            <button className="detail-btn">QnA작성</button>
+                        </div>
                 </form>
                 ) : (
                     <div>
                         <form onSubmit={addtext}>
-                            <input type="text" className="input" onChange={handleText} disabled placeholder="로그인 후 이용해 주십시요"/>
+                            <input type="text" className="detail-input" onChange={handleText} disabled placeholder="로그인 후 이용해 주십시요"/>
                             <button className="detail-btn">QnA작성</button>
                         </form>
                     </div>
                 )
             }
-
-
-            {
-                commentfind.map((a, i) => (
-                    <div className="map-box">
-                        <div className="inputbox">
-                        <p className="detail-name">{a.name} : </p>
-                        <p className="inputtext">{a.text}</p>
-                        {   // 로그인 유저 name이랑 코멘드에서 나오는 name 같으면 x할수있게
-                            findUser.name == a.name ? (
-                                <button onClick={()=>{dispatch(remove(a.id))}} className="xbtn">x</button>
-                                ) : (
-                                    <p></p>
-                            )
-                        }    
-                        </div>
-                    </div>   
-                ))
-            }
             
+
+            {   
+                commentfind.length != 0 ? (
+                    commentfind.map((a, i) => (
+                        <div className="map-box">
+                            <div className="inputbox">
+                            <p className="detail-name">{a.name} : </p>
+                            <p className="inputtext">{a.text}</p>
+                            {   // 로그인 유저 name이랑 코멘드에서 나오는 name 같으면 x할수있게
+                                findUser.name == a.name ? (
+                                    <button onClick={()=>{dispatch(remove(a.id))}} className="xbtn">x</button>
+                                    ) : (
+                                        <p></p>
+                                )
+                            }    
+                            </div>
+                        </div>   
+                    ))
+                ) : (
+                    <div className="detail-noneQnA">작성된 QnA 없습니다.</div>
+                )
+            }
+            </div>
             <Recent />
 
             {/* <div className="detail-outlet">

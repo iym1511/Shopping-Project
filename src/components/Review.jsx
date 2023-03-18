@@ -72,7 +72,7 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
               alert("댓글을 작성해주세요")
           }
           onReset();
-          document.querySelector(".input").value="";
+          document.querySelector("input").value="";
           
       }
 
@@ -80,7 +80,6 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
         if(checkuser.id == id){
           dispatch(purchaseBoolean({...findUser}))
           console.log(checkuser)
-
         }
       }
       
@@ -113,7 +112,7 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
 
    
     
-
+    // 별점기능
     const handleStarClick = index => {
         let clickStates = [...clicked];
         for (let i = 0; i < 5; i++) {
@@ -162,16 +161,16 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
                             );
                             })
                         }
-                    </Stars>
+                </Stars>
                 <form onSubmit={addtext}>
-                    <input type="text" onChange={handleText}  className='review-input'/>
+                    <textarea type="text" onChange={handleText}  className='review-input'/>
                     <button type='submit' onClick={addboolean} className='review-btn'>리뷰 작성</button>
                 </form>
             </div>
         </div>
     );
 }
- 
+
 export default Review;
 
 const Stars = styled.div`

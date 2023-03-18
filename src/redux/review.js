@@ -18,7 +18,6 @@ export const reviewSlice = createSlice({
         date: action.payload.date,
         rate: action.payload.rate
       });
-      console.log(action.payload.rate);
     },
     removeReview: (state, action) => {
       alert("삭제되었습니다.");
