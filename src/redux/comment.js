@@ -15,6 +15,7 @@ export const commentSlice = createSlice({
         pid: action.payload.pid, // pid하나만선택
         name: action.payload.name,
         text: action.payload.text, // text하나만 선택
+        date: action.payload.date
       });
       console.log(nextId);
     },

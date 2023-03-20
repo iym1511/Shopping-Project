@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import '../css/Nav.css'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/user";
 import { shopAlldelete } from "../redux/main";
@@ -17,6 +17,8 @@ const Nav = () => {
   // 로그인 유무 체크
   const [login, setLogin] = useState(false);
   
+  const [check, setCheck] = useState()
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -62,6 +64,14 @@ const Nav = () => {
     }
   };
 
+  const changeCheck = (e) => {
+    if (e.target.checked) {
+      setCheck(true)
+    } else {
+      setCheck(false)
+    }
+  }
+
   useEffect(() => {
     const scrollListener = () => {
       window.addEventListener('scroll', scrollFixed);
@@ -77,6 +87,29 @@ const Nav = () => {
     setLogin(users.isLoggedIn ? true : false);
   }, [users]);
 
+    // 모달 외부 클릭시 끄기 처리
+    // Modal 창을 useRef로 취득
+    const modalRef = useRef(null);
+    
+    useEffect(() => {
+        // 이벤트 핸들러 함수
+        const handler = (event) => {
+            // mousedown 이벤트가 발생한 영역이 모달창이 아닐 때, 모달창 제거 처리
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
+              setCheck(false)
+            }
+        };
+        
+        // 이벤트 핸들러 등록
+        document.addEventListener('mousedown', handler);
+        // document.addEventListener('touchstart', handler); // 모바일 대응
+        
+        return () => {
+            // 이벤트 핸들러 해제
+            document.removeEventListener('mousedown', handler);
+            // document.removeEventListener('touchstart', handler); // 모바일 대응
+        };
+    });
   
 
     return (  
@@ -147,7 +180,25 @@ const Nav = () => {
               </div>
               )
             }
-
+              <input type="checkbox" id="check_box" checked={check} onClick={(e)=>{changeCheck(e)}}/>
+              <label for="check_box" className={`nav-hamLabel ${scrollActive ? '': 'nav-hamLabel2'}`} ref={modalRef}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </label>
+              <div id="side_menu">
+                <ul>
+                  <li><a href="#">menu1</a></li>
+                  <li><a href="#">menu2</a></li>
+                  <li><a href="#">menu3</a></li>
+                </ul>
+              </div>
+              <div className={`nav-main ${scrollActive ? ' ' : 'nav-main2'}`}>
+              <NavLink to="/" className="nav-text">
+                {/* <img src={require("../img/logo-1.png")} className="nav-logo" /> */}
+                <div className="nav-img2"></div>
+              </NavLink>
+            </div>
             {/* {
               login ? (
                 <div>

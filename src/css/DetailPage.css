@@ -272,10 +272,28 @@
     width: 100%;
 }
 
-
-.detail-name{
-    width: 90px;
+.detail-QnA-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
+.detail-QnA-box{
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+}
+.detail-name{
+    /* width: 90px; */
+}
+.detail-date{
+    color: gray;
+    font-size: 13px;
+    margin-top: -15px;
+}
+.detail-QnA-textbox{
+    /* border: 1px solid red; */
+}
+
 .inputtext{
     width: 100%;
     display: flex;

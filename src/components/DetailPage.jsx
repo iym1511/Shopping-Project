@@ -28,6 +28,13 @@ const DetailPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // 날짜
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const today = String(date.getDate()).padStart(2, "0");
+    const useDate = `${year}-${month}-${today}`
+
 
     // 모달창
     const [showModal, setShowModal] = useState(false);
@@ -55,6 +62,7 @@ const DetailPage = () => {
             pid: id,
             name: findUser.name, // 일치한 유저 찾아서 댓글에 넣어줌
             text : "",
+            date : useDate
         }
     )
 
@@ -315,8 +323,15 @@ const DetailPage = () => {
                     commentfind.map((a, i) => (
                         <div className="map-box">
                             <div className="inputbox">
-                            <p className="detail-name">{a.name} : </p>
-                            <p className="inputtext">{a.text}</p>
+                            <div className="detail-QnA-container">
+                            <div className="detail-QnA-box">
+                                <p className="detail-name">{a.name}</p>
+                                <p className="detail-date">{a.date}</p>
+                            </div>
+                            <div className="detail-QnA-textbox">
+                                <p className="inputtext">{a.text}</p>
+                            </div>
+                            </div>
                             {   // 로그인 유저 name이랑 코멘드에서 나오는 name 같으면 x할수있게
                                 findUser.name == a.name ? (
                                     <button onClick={()=>{dispatch(remove(a.id))}} className="xbtn">x</button>
