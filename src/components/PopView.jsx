@@ -4,9 +4,6 @@ import PopModal from "./PopModal";
 const PopView = () => {
     const [modalVisible, setModalVisible] = useState(true)
 
-    // const openModal = () => {
-    //     setModalVisible(true)
-    // }
     const closeModal = () => {
         setModalVisible(false)
     }

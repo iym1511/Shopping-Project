@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import { shopcartAdd, shoptextAdd } from "../redux/main";
 import '../css/DetailPage.css'
-import { add, remove } from "../redux/comment";
+import { add, remove, replyAdd } from "../redux/comment";
 import { addCart, loginUser, shopcartAddtt } from "../redux/user";
 import { cartadd, purchaseBoolean} from "../redux/singup";
 import Modal from "./Modal";
@@ -62,16 +62,29 @@ const DetailPage = () => {
             pid: id,
             name: findUser.name, // 일치한 유저 찾아서 댓글에 넣어줌
             text : "",
+            reply: "",
             date : useDate
         }
     )
 
+    // 댓글 입력받는 함수
     const handleText = (e) => {
         setComment({...comment, text : e.target.value})
     }
 
+    // 리플 입력받는 함수
+    const replyHandleText = (e) => {
+        setComment({...comment, reply : e.target.value})
+    }
+
+    // 댓글 입력 후 초기화 
     const onReset = () => {
         setComment({...comment, text : ""})
+    }
+
+    // 리플 입력 후 초기화 
+    const onReplyReset = () => {
+        setComment({...comment, reply : ""})
     }
 
     const addtext = (e) =>{
@@ -84,7 +97,18 @@ const DetailPage = () => {
         }
         onReset();
         document.querySelector("input").value="";
-        
+    }
+
+    const addreply = (e) =>{
+        e.preventDefault()
+        if(comment.reply !== ""){
+            dispatch(replyAdd(comment))
+            onReplyReset();
+        }else{
+            alert("댓글을 작성해주세요")
+        }
+        onReset();
+        document.querySelector("input").value="";
     }
     
     const cartAdd = () => {
@@ -330,6 +354,10 @@ const DetailPage = () => {
                             </div>
                             <div className="detail-QnA-textbox">
                                 <p className="inputtext">{a.text}</p>
+                                <label>답글</label>
+                                <input type="text" onChange={replyHandleText}/>
+                                <button onClick={addreply}>작성</button>
+                                <p>{a.reply}</p>
                             </div>
                             </div>
                             {   // 로그인 유저 name이랑 코멘드에서 나오는 name 같으면 x할수있게

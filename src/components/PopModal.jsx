@@ -69,7 +69,7 @@ const PopModal = ({ className, onClose, maskClosable, closable, visible }) => {
             <ModalInner tabIndex="0" className="modal-inner">
                 <ModalInner2>
                     <ImgStyle>
-                        <img src={popimg} style={{ width: '100%', height: '100%' }} alt="" />
+                        <img src={popimg} style={{ width: '100%', height: '100%'}} alt="" />
                     </ImgStyle>
                     {closable && (
                         <CloseStyle>
@@ -127,7 +127,7 @@ const ModalWrapper = styled.div`
     top: 100px;
     right: 0;
     bottom: 0;
-    left: 100px;
+    left: 500px;
     z-index: 1000;
     overflow: auto;
     outline: 0;

@@ -23,23 +23,9 @@ const Recent = () => {
         setFold(!fold)
         if(sessionStorage.getItem("fold") == null || sessionStorage.getItem("fold") == "false"){
             sessionStorage.setItem("fold", true);
-            console.log(sessionStorage.getItem("fold"))
-            console.log("진혜")
-            
-            // setFold(foldSessionGet)
         }else{
             sessionStorage.setItem("fold", false);
-            console.log("esle쪽")
-            // setFold(foldSessionGet)
-            // console.log(foldSessionGet)
         }
-        // console.log(foldSessionGet)
-        // if(fold){
-        //     setFold(false) 
-        // }else{
-        //     setFold(true)
-        // }    
-        // console.log(fold)
     }
 
     return (  
