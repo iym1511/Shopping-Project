@@ -22,9 +22,18 @@ import DetailNav from "./components/DetailNav";
 import DetailNav2 from "./components/DetailNav2";
 import Notfound from "./components/Notfound";
 import { AnimatePresence } from "framer-motion";
+import Loading from "./page/Loading";
 
 function App() {
   const location = useLocation();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000); // 3초 후에 로딩 페이지 종료
+  }, []);
 
   // 이 윈도우가 한번 열릴때 세션에 true값줌 (recent값)
   // useEffect 한번만줌
@@ -34,6 +43,10 @@ function App() {
 
   return (
     <div className="App">
+      {
+        loading ? (
+          <Loading />
+        ):(
       <AnimatePresence>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -42,7 +55,7 @@ function App() {
           <Route path="/detailpage/:id" element={<DetailPage />}></Route>
           <Route path="/login" element={<Login />}></Route> 
           {/* <Route path="/shirt" element={<Shirt />}></Route> */}
-          <Route path="/about" element={<Shoes />}></Route>
+          {/* <Route path="/about" element={<Shoes />}></Route> */}
           {/* <Route path="/bottom" element={<Bottom />}></Route> */}
           <Route index path="/" element={<Main />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
@@ -52,6 +65,8 @@ function App() {
           <Route path="/*" element={<Notfound />}></Route>
       </Routes>
       </AnimatePresence>
+      )
+      }
     </div>
   );
 }

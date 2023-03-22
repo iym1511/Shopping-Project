@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
-import { shopcartAdd, shoptextAdd } from "../redux/main";
+import { useNavigate, useParams } from "react-router-dom";
+import { shopcartAdd} from "../redux/main";
 import '../css/DetailPage.css'
-import { add, remove, replyAdd } from "../redux/comment";
-import { addCart, loginUser, shopcartAddtt } from "../redux/user";
-import { cartadd, purchaseBoolean} from "../redux/singup";
+import { add, remove} from "../redux/comment";
+import { purchaseBoolean} from "../redux/singup";
 import Modal from "./Modal";
 import { removeReview } from "../redux/review";
 import { FaStar } from 'react-icons/fa';
@@ -14,8 +13,8 @@ import styled from 'styled-components';
 import Pagenation from "./Pagenation";
 import Recent from "./Recent";
 import { CountMinuse, CountPlus } from "../redux/shop";
-import { useMediaQuery } from "react-responsive";
-
+import Footer from "../page/Footer";
+import { motion } from "framer-motion";
 
 const DetailPage = () => {
     let {id} = useParams();
@@ -99,17 +98,7 @@ const DetailPage = () => {
         document.querySelector("input").value="";
     }
 
-    const addreply = (e) =>{
-        e.preventDefault()
-        if(comment.reply !== ""){
-            dispatch(replyAdd(comment))
-            onReplyReset();
-        }else{
-            alert("댓글을 작성해주세요")
-        }
-        onReset();
-        document.querySelector("input").value="";
-    }
+
     
     const cartAdd = () => {
         dispatch(shopcartAdd(shoplist))
@@ -150,7 +139,9 @@ const DetailPage = () => {
     }
 
     return (  
-        <div className="detail-box">
+        <motion.div initial={{opacity: 0 }}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}} className="detail-box">
             {/* 모달창 */}
             {showModal ? <Modal setShowModal={setShowModal}/> : null}
             {/* 같은 이미지 출력 */}
@@ -289,7 +280,6 @@ const DetailPage = () => {
 
                     return (
                         <div className="detail-mapbox">
-                            {/* <div className="detail-reviewbox"> */}
                             <div className="detail-userbox">
                                 <div className="detail-rate">{showStar()}</div>
                                 <div className="detail-reviewName">NAME : {a.name}</div>
@@ -334,8 +324,10 @@ const DetailPage = () => {
                 ) : (
                     <div>
                         <form onSubmit={addtext}>
-                            <input type="text" className="detail-input" onChange={handleText} disabled placeholder="로그인 후 이용해 주십시요"/>
-                            <button className="detail-btn">QnA작성</button>
+                            <div className="detail-formDiv">
+                                <input type="text" className="detail-input" onChange={handleText} disabled placeholder="로그인 후 이용해 주십시요"/>
+                                <button className="detail-btn">QnA작성</button>
+                            </div>
                         </form>
                     </div>
                 )
@@ -354,10 +346,6 @@ const DetailPage = () => {
                             </div>
                             <div className="detail-QnA-textbox">
                                 <p className="inputtext">{a.text}</p>
-                                <label>답글</label>
-                                <input type="text" onChange={replyHandleText}/>
-                                <button onClick={addreply}>작성</button>
-                                <p>{a.reply}</p>
                             </div>
                             </div>
                             {   // 로그인 유저 name이랑 코멘드에서 나오는 name 같으면 x할수있게
@@ -376,7 +364,7 @@ const DetailPage = () => {
             }
             </div>
             <Recent />
-
+            <Footer />
             {/* <div className="detail-outlet">
                 <div className="detail-navbox">
                     <div className="detail-nav1" onClick={reviewNav}>Review</div>
@@ -386,7 +374,7 @@ const DetailPage = () => {
                     <Outlet /> Outlet은 본인 Route안에 있는것들 보여줌
                 </div>
             </div> */}
-        </div>
+        </motion.div>
     );
 }
  

@@ -9,6 +9,8 @@ import DaumPostcode from 'react-daum-postcode';
 import Review from "../components/Review";
 import { useNavigate } from "react-router-dom";
 import Notfound from "../components/Notfound";
+import Footer from "./Footer";
+import { motion} from "framer-motion";
 
 
 
@@ -153,7 +155,9 @@ const MyPage = ()=> {
     
 
     return (  
-        <>
+        <motion.div initial={{opacity: 0 }}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}>
         {
             users.isLoggedIn || null ? (
         <div className="mypage-box">
@@ -199,7 +203,7 @@ const MyPage = ()=> {
                 </div>
             </div>
 
-            <h1 className="mypage-shoptitle">SHOPLIST</h1>
+            <h1 className="mypage-shoptitle"></h1>
             <table className="mypage-table">
                 <tr className="mypage-title-tr">
                     <th className="mypage-title-th">이미지</th>
@@ -267,13 +271,13 @@ const MyPage = ()=> {
                     }
                 </div>
             
-            
+                <Footer />  
         </div>
         ) :(
             <Notfound />
         )
         }
-        </>
+        </motion.div>
     );
 }
 

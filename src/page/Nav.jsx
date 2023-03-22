@@ -48,6 +48,7 @@ const Nav = () => {
     dispatch(logout());
     dispatch(shopAlldelete());
     navigate("");
+    setCheck(false)
     console.log(users)
     console.log(findUser)
     console.log(log)
@@ -163,7 +164,7 @@ const Nav = () => {
                         </NavLink>
                       </div>
                     </div>
-                    
+          
                   </div>
                 </div>
               ) : (
@@ -180,18 +181,39 @@ const Nav = () => {
               </div>
               )
             }
-              <input type="checkbox" id="check_box" checked={check} onClick={(e)=>{changeCheck(e)}}/>
-              <label for="check_box" className={`nav-hamLabel ${scrollActive ? '': 'nav-hamLabel2'}`} ref={modalRef}>
+              <input type="checkbox" id="check_box" checked={check} onClick={(e)=>{changeCheck(e)}} />
+              <label for="check_box" className={`nav-hamLabel ${scrollActive ? '': 'nav-hamLabel2'}`} >
                 <span></span>
                 <span></span>
                 <span></span>
               </label>
-              <div id="side_menu">
-                <ul>
-                  <li><a href="#">menu1</a></li>
-                  <li><a href="#">menu2</a></li>
-                  <li><a href="#">menu3</a></li>
+              <div id="side_menu" ref={modalRef}>
+                {
+                  login ? (
+                    <>
+                    <div className="nav-userbox" style={{marginLeft:"90px"}}>
+                      <div className="nav-userhi" style={{marginTop:"-20px"}}>{userName.name}님 반갑습니다.</div>
+                      <div className="nav-log-mypageBox">
+                        <button className="nav-logoutBtn" onClick={logOut} >로그아웃</button>
+                      </div>
+                    </div>
+                <ul style={{marginTop:"40px"}}>
+                  <li>-<NavLink to="/neat" className="nav-HamLoginBtn" onClick={()=>{setCheck(false)}}>NEAT</NavLink></li>
+                  <li>-<NavLink to="/cart" className="nav-HamLoginBtn" onClick={()=>{setCheck(false)}}>CART</NavLink></li>
+                  <li>-<NavLink to="/mypage" className="nav-HamLoginBtn" onClick={()=>{setCheck(false)}}>MYPAGE</NavLink></li>
                 </ul>
+                    </>
+                  ) : (
+                    <>
+                    <div className="nav-HamNoneLoginText">로그인 후 이용해주세요.</div>
+                    <NavLink to="/login" onClick={()=>{setCheck(false)}} style={{textDecoration:"none"}}>
+                      <div className="nav-HamNoneLogin">LOGIN</div>
+                    </NavLink>
+                    <div style={{marginTop:"5px"}}>-<NavLink to="/neat" className="nav-HamLogoutBtn" onClick={()=>{setCheck(false)}}>NEAT</NavLink></div>
+                    </>
+                  )
+                }
+              
               </div>
               <div className={`nav-main ${scrollActive ? ' ' : 'nav-main2'}`}>
               <NavLink to="/" className="nav-text">

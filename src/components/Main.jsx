@@ -6,11 +6,14 @@ import {
     faInstagram,
     faYoutube,
     faGithub
-  } from "@fortawesome/free-brands-svg-icons";
+} from "@fortawesome/free-brands-svg-icons";
+import { motion} from "framer-motion";
 
 const Main = () => {
     return (  
-        <div className='main-box'>
+        <motion.div initial={{opacity: 0 }}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}} className='main-box'>
             <div className='main-imgbox'>
                 <div class="hello-parent">
                     <svg class="hello-word" width="365" height="365" viewBox="0 0 365 365">
@@ -100,7 +103,7 @@ const Main = () => {
                 </div> */}
                 
             </div>                      
-        </div>
+        </motion.div>
     );
 }
 

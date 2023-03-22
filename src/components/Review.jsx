@@ -153,10 +153,10 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
                             starArray.map((el, idx) => {
                             return (
                                 <FaStar
-                                key={idx}
-                                size="30"
-                                onClick={() => handleStarClick(el)}
-                                className={clicked[el] && 'yellowStar'}
+                                  key={idx}
+                                  size="30"
+                                  onClick={() => handleStarClick(el)}
+                                  className={clicked[el] && 'yellowStar'}
                                 />
                             );
                             })

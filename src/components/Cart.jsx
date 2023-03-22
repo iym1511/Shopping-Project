@@ -7,7 +7,8 @@ import { deleteChecked, shopaddCount, shopAlldelete, shopdelete, shopminuseCount
 import { ADDIT_USER } from "../redux/singup";
 import Recent from "./Recent";
 import Notfound from "./Notfound";
-
+import Footer from "../page/Footer";
+import { motion} from "framer-motion";
 
 
 
@@ -16,8 +17,8 @@ const Cart = () => {
     const dispatch = useDispatch();
     const navigater = useNavigate();
 
-         // 배열을 구매해
-        let purchaseArray = [];
+    // 배열을 구매해
+    let purchaseArray = [];
 
     // main.js
     const mainshop = useSelector((state) => state);
@@ -153,7 +154,9 @@ const Cart = () => {
     // main에 있는 배열값을 map으로 풀어서 main안에서 비교할수있게 id를 한번더 전달해줌
     
     return (  
-        <>
+        <motion.div initial={{opacity: 0 }}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}>
         {
             users.isLoggedIn ? (
         <div className="cart-box">
@@ -222,13 +225,13 @@ const Cart = () => {
                     <></>
                 )
             } 
-            <Recent />           
+            <Recent />  
         </div>
             ) : (
                 <Notfound />
             )
         }
-        </>
+        </motion.div>
     );
 }
 

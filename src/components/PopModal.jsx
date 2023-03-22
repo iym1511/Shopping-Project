@@ -124,7 +124,7 @@ const ModalWrapper = styled.div`
     box-sizing: border-box;
     display: ${(props) => (props.visible ? 'block' : 'none')};
     position: fixed;
-    top: 100px;
+    top: 150px;
     right: 0;
     bottom: 0;
     left: 500px;
@@ -132,8 +132,8 @@ const ModalWrapper = styled.div`
     overflow: auto;
     outline: 0;
     border: 1px solid #b5b5b5ff;
-    width: 370px;
-    height: 535px;
+    width: 350px;
+    height: 515px;
     background-color: #ffffff;
 `
 
@@ -144,7 +144,7 @@ const ModalOverlay = styled.div`
 const ModalInner = styled.div`
     position: relative;
     width: 360px;
-    max-width: 480px;
+    max-width: 340px;
     top: 50%;
     transform: translateY(-50%);
     margin: 0 auto;

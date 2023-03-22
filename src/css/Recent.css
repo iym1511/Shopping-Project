@@ -18,6 +18,7 @@
     overflow-y: scroll;
     padding-top: 40px;
     transition: 0.5s;
+    z-index: 999;
   }
   .recent-fold-mapbox{
     height: 30px;

@@ -3,9 +3,11 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import '../css/Neat.css'
+import Footer from "../page/Footer";
 import { shopcartAdd, shopdeleteCount } from "../redux/main";
 import { cartAdd } from "../redux/shop";
 import Recent from "./Recent";
+import { motion} from "framer-motion";
 // import Pagination from "react-js-pagination";
 
 let recentPush = []
@@ -81,7 +83,9 @@ const Neat = () => {
     // </div>
 
     return (
-        <div className="home-box">
+        <motion.div initial={{opacity: 0 }}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}} className="home-box">
         <h1 className="home-bestTitle">BEST 3</h1>
          <div className="shoes-wrapper">
                 <section className="sec01" onClick={()=>{navigate('/detailpage/9')}}></section>
@@ -113,8 +117,8 @@ const Neat = () => {
             }
          </div>
             <Recent />
-        
-        </div>
+            <Footer />
+        </motion.div>
     );
 }
 

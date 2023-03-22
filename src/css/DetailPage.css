@@ -493,7 +493,6 @@
 
     .detail-form{
         display: flex;
-
     }
     .detail-btn{
         margin-top: 100px;
@@ -516,7 +515,7 @@
     }
     .detail-formDiv{
         margin: auto;
-        padding-left: 40%;
+        padding-left: 30%;
         width: 80%;
     }
 }
