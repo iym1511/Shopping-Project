@@ -15,9 +15,9 @@ const Nav = () => {
   const [scrollActive, setScrollActive] = useState(false);
 
   // 로그인 유무 체크
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState();
   
-  const [check, setCheck] = useState()
+  const [check, setCheck] = useState(false)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -65,12 +65,13 @@ const Nav = () => {
     }
   };
 
-  const changeCheck = (e) => {
-    if (e.target.checked) {
-      setCheck(true)
-    } else {
-      setCheck(false)
-    }
+  const ham = (e) => {
+  if(e.target.checked){
+    setCheck(true)
+  }else{
+    setCheck(false)
+  }
+    console.log(check)
   }
 
   useEffect(() => {
@@ -98,9 +99,9 @@ const Nav = () => {
             // mousedown 이벤트가 발생한 영역이 모달창이 아닐 때, 모달창 제거 처리
             if (modalRef.current && !modalRef.current.contains(event.target)) {
               setCheck(false)
+              console.log(check)
             }
         };
-        
 
         // 이벤트 핸들러 등록
         document.addEventListener('mousedown', handler);
@@ -118,7 +119,6 @@ const Nav = () => {
         <div className={`nav-box ${scrollActive ? 'nav-shadow' : 'nav-box2'}`}>
             <div className={`nav-main ${scrollActive ? ' ' : 'nav-main2'}`}>
               <NavLink to="/" className="nav-text">
-                {/* <img src={require("../img/logo-1.png")} className="nav-logo" /> */}
                 <div className="nav-img"></div>
               </NavLink>
             </div>
@@ -126,26 +126,6 @@ const Nav = () => {
             <div className={`nav-neat ${scrollActive ? ' ' : 'nav-neat2'}`} >
               <NavLink to="/neat" className="nav-text">NEAT</NavLink>
             </div>
-{/*             
-            <div className={`nav-shirt ${scrollActive ? ' ' : 'nav-shirt2'}`}>
-              <NavLink to="/shirt" className="nav-text">SHIRT</NavLink>
-            </div> */}
-
-            {/* <div className={`nav-shoes ${scrollActive ? ' ' : 'nav-shoes2'}`}>
-              <NavLink to="/about" className="nav-text">ABOUT</NavLink>
-            </div> */}
-{/* 
-            <div className={`nav-bottom ${scrollActive ? ' ' : 'nav-bottom2'}`}>
-              <NavLink to="/bottom" className="nav-text">BOTTOM</NavLink>
-            </div> */}
-
-            
-            
-                {/* <div className={`nav-cart ${scrollActive ? ' ' : 'nav-cart2'}`}>
-                  <NavLink to="/cart">
-                      <img src={require("../img/shopping-cart.png")} width={25} />
-                  </NavLink>
-                </div> */}
 
 
             {
@@ -159,7 +139,7 @@ const Nav = () => {
                     <div className="nav-userbox">
                       <div className="nav-userhi">{userName.name}님 반갑습니다.</div>
                       <div className="nav-log-mypageBox">
-                        <button className="nav-logoutBtn" onClick={logOut}>로그아웃</button>
+                        <button className="nav-logoutBtn" onClick={logOut}>LOGOUT</button>
                         <NavLink to="/mypage" className="nav-mypage-btn">
                           <div className="nav-mypage">마이페이지</div>
                         </NavLink>
@@ -182,20 +162,22 @@ const Nav = () => {
               </div>
               )
             }
-              <input type="checkbox" id="check_box" checked={check} onClick={(e)=>{changeCheck(e)}} />
-              <label for="check_box" className={`nav-hamLabel ${scrollActive ? '': 'nav-hamLabel2'}`} >
-                <span ref={modalRef}></span>
-                <span ref={modalRef}></span>
+
+            <div ref={modalRef}>
+              <input type="checkbox" id="check_box" checked={check} onClick={(e)=>{ham(e)}}/>
+              <label for="check_box" className={`nav-hamLabel ${scrollActive ? '': 'nav-hamLabel2'}`}>
+                <span></span>
+                <span></span>
                 <span></span>
               </label>
-              <div id="side_menu" ref={modalRef}>
+              <div id="side_menu" >
                 {
                   login ? (
                     <>
                     <div className="nav-userbox" style={{marginLeft:"90px"}}>
                       <div className="nav-userhi" style={{marginTop:"-20px"}}>{userName.name}님 반갑습니다.</div>
                       <div className="nav-log-mypageBox">
-                        <button className="nav-logoutBtn" onClick={logOut} >로그아웃</button>
+                        <button className="nav-logoutBtn" onClick={logOut} >LOGOUT</button>
                       </div>
                     </div>
                 <ul style={{marginTop:"40px"}}>
@@ -216,11 +198,12 @@ const Nav = () => {
                 }
               
               </div>
-              <div className={`nav-main ${scrollActive ? ' ' : 'nav-main2'}`}>
-              <NavLink to="/" className="nav-text">
-                <div className="nav-img2"></div>
-              </NavLink>
             </div>
+              <div className={`nav-main ${scrollActive ? ' ' : 'nav-main2'}`}>
+                <NavLink to="/" className="nav-text">
+                  <div className="nav-img2"></div>
+                </NavLink>
+              </div>
             
         </div>
     );

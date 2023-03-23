@@ -27,13 +27,29 @@ import Loading from "./page/Loading";
 function App() {
   const location = useLocation();
 
+  // useEffect 반응용
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000); // 3초 후에 로딩 페이지 종료
-  }, []);
+    const handleLoad = () => {
+      setTimeout(function(){
+        setLoading(false)
+        sessionStorage.setItem("key", true)
+      },3000)
+    };
+    window.addEventListener('load', handleLoad);
+
+    return () => {
+      window.removeEventListener('load', handleLoad);
+      
+    };
+  }, [window.onload]);
+
+  // 1초후에 보낸 true키값도 인식하기위해 한번더 가져와서 랜더해줌
+  useEffect(()=>{
+    sessionStorage.getItem("key")
+  },[loading])
+
 
   // 이 윈도우가 한번 열릴때 세션에 true값줌 (recent값)
   // useEffect 한번만줌
@@ -41,10 +57,11 @@ function App() {
     sessionStorage.setItem("fold", true);
   },[window.onload])
 
+
   return (
     <div className="App">
       {
-        loading ? (
+        sessionStorage.getItem("key") == null ? (
           <Loading />
         ):(
       <AnimatePresence>
