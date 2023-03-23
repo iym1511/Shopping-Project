@@ -30,20 +30,29 @@ function App() {
   // useEffect 반응용
   const [loading, setLoading] = useState(true);
   
-  useEffect(() => {
-    const handleLoad = () => {
-      setTimeout(function(){
-        setLoading(false)
-        sessionStorage.setItem("key", true)
-      },3000)
-    };
-    window.addEventListener('load', handleLoad);
-
-    return () => {
-      window.removeEventListener('load', handleLoad);
+  // useEffect(() => {
+  //   const handleLoad = () => {
+  //     setInterval(()=>{
+  //       setLoading(false)
+  //       sessionStorage.setItem("key", true)
+  //     },3000)
+  //   };
+  //   window.addEventListener('load', handleLoad);
+  //   clearInterval(handleLoad)
+  //   return () => {
+  //     window.removeEventListener('load', handleLoad);
       
-    };
-  }, [window.onload]);
+  //   };
+  // }, [window.onload]);
+
+  const handleLoad = () => {
+          setLoading(false)
+          sessionStorage.setItem("key", true)
+          console.log("셋인터벌")
+      };
+    setInterval(handleLoad, 3000)
+    clearInterval(handleLoad) // 안되는거 수정하기
+  
 
   // 1초후에 보낸 true키값도 인식하기위해 한번더 가져와서 랜더해줌
   useEffect(()=>{
@@ -61,7 +70,7 @@ function App() {
   return (
     <div className="App">
       {
-        sessionStorage.getItem("key") == null ? (
+        sessionStorage.getItem("key") == undefined ? (
           <Loading />
         ):(
       <AnimatePresence>
