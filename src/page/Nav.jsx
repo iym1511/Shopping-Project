@@ -101,6 +101,7 @@ const Nav = () => {
             }
         };
         
+
         // 이벤트 핸들러 등록
         document.addEventListener('mousedown', handler);
         // document.addEventListener('touchstart', handler); // 모바일 대응
@@ -183,8 +184,8 @@ const Nav = () => {
             }
               <input type="checkbox" id="check_box" checked={check} onClick={(e)=>{changeCheck(e)}} />
               <label for="check_box" className={`nav-hamLabel ${scrollActive ? '': 'nav-hamLabel2'}`} >
-                <span></span>
-                <span></span>
+                <span ref={modalRef}></span>
+                <span ref={modalRef}></span>
                 <span></span>
               </label>
               <div id="side_menu" ref={modalRef}>
@@ -217,25 +218,12 @@ const Nav = () => {
               </div>
               <div className={`nav-main ${scrollActive ? ' ' : 'nav-main2'}`}>
               <NavLink to="/" className="nav-text">
-                {/* <img src={require("../img/logo-1.png")} className="nav-logo" /> */}
                 <div className="nav-img2"></div>
               </NavLink>
             </div>
-            {/* {
-              login ? (
-                <div>
-                <NavLink to="/mypage">
-                  <div className="nav-mypage">마이페이지</div>
-                </NavLink>
-                </div>
-              ):(
-                <div></div>
-              )
-            } */}
-            
             
         </div>
     );
 }
- 
+
 export default Nav;
