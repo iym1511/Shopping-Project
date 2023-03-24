@@ -48,10 +48,10 @@ function App() {
   const handleLoad = () => {
           setLoading(false)
           sessionStorage.setItem("key", true)
-          console.log("셋인터벌")
       };
     setInterval(handleLoad, 3000)
-    clearInterval(handleLoad) // 안되는거 수정하기
+  
+
   
 
   // 1초후에 보낸 true키값도 인식하기위해 한번더 가져와서 랜더해줌

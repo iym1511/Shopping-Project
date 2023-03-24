@@ -41,6 +41,7 @@
     animation: appear-img1 1.25s ease-out forwards;
     animation-delay: 0.3s;
     /* animation: appear-img 2s 1.25s ease-out forwards; */
+    transition: 0.5s;
 }
 @keyframes appear-img1 {
     from {
@@ -59,6 +60,7 @@
     margin-left: 140px;
     opacity: 0;
     animation: appear-img2 1.25s ease-out forwards;
+    transition: 0.5s;
 }
 @keyframes appear-img2 {
     from {
@@ -77,6 +79,7 @@
     margin-top: 600px;
     width: 500px;
     animation: appear-text 1.25s ease-out forwards;
+    transition: 0.5s;
 }
 @keyframes appear-text {
     from {
@@ -316,6 +319,7 @@
     position: relative;
     right: 1050px;
     margin-top: 100px;
+    transition: 0.5s;
   }
   
 
@@ -478,7 +482,7 @@
     background: #5d5d5d;
     transition: 0.2s;
   }
-    
+  
   .main-link:hover {
       opacity: 0.8;
   }    
@@ -794,4 +798,91 @@
     100% {
       stroke-width: 44px;
     }
+  }
+
+/* 반응형 */
+  @media screen and (max-width: 1500px){
+    .main-img1{
+      width: 330px;
+      height: 400px;
+      margin-top: 180px;
+      margin-right: 300px;
+      position: relative;
+      /* left: -30%; */
+      /* right: 400px; */
+      top: 150px;
+      opacity: 0;
+      animation: appear-img1 1.25s ease-out forwards;
+      animation-delay: 0.3s;
+      /* animation: appear-img 2s 1.25s ease-out forwards; */
+      transition: 0.5s;
+  }
+  @keyframes appear-img1 {
+      from {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+  }
+  .main-img2{
+      width: 500px;
+      height: 300px;
+      margin-top: 200px;
+      margin-left:10%;
+      opacity: 0;
+      animation: appear-img2 1.25s ease-out forwards;
+      transition: 0.5s;
+  }
+  @keyframes appear-img2 {
+      from {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+  }
+      /* 메인 Tommorow 글씨효과 코드팬 */
+    .main-container {
+      display: flex;
+      justify-content: center;
+      height: 200px;
+      width: 600px;
+      position: relative;
+      /* right: 900px; */
+      margin-top: 100px;
+      transition: 0.5s;
+    }
+
+    .main-textbox{
+      position: relative;
+      right: 400px;
+      margin-top: 500px;
+      width: 500px;
+      animation: appear-text 1.25s ease-out forwards;
+      transition: 0.5s;
+  }
+  @keyframes appear-text {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+  }
+  .main-text{
+    font-family: 'Hahmlet-Regular';
+      font-weight: bold;
+      width: 300px;
+      font-size: 17px;
+  }
+  .main-text2{
+    font-family: 'Hahmlet-Regular';
+      font-size: 12px;
+      margin-top: -10px;
+  }
   }

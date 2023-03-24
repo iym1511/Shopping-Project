@@ -4,15 +4,17 @@ const initialState = {
   userlist: [
     // 임시데이터
     {
-      id: "qwe",
-      name: "더미데이터",
-      password: "qwe",
+      id: "iym1511",
+      name: "문일윤",
+      password: "iym1511",
       email: "iym1511@naver.com",
-      address: null,
-      detailAddress: null,
+      apiaddress: "땡땡아파트",
+      apizonecode:"41234",
+      detailAddress: "302동 201호",
       isLoggedIn: true,
       item: [],
-      comment: [],
+      mypageitem: null,
+      phonNumber : "01023126324",
     },
   ],
 };

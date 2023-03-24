@@ -13,7 +13,7 @@ const Main = () => {
     return (  
         <motion.div initial={{opacity: 0 }}
         animate={{opacity: 1}}
-        exit={{opacity: 0, transition:"0.5s"}} className='main-box'>
+        exit={{opacity: 0}} className='main-box'>
             <div className='main-imgbox'>
                 <div class="hello-parent">
                     <svg class="hello-word" width="365" height="365" viewBox="0 0 365 365">

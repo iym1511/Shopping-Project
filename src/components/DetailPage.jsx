@@ -71,20 +71,11 @@ const DetailPage = () => {
         setComment({...comment, text : e.target.value})
     }
 
-    // 리플 입력받는 함수
-    const replyHandleText = (e) => {
-        setComment({...comment, reply : e.target.value})
-    }
-
     // 댓글 입력 후 초기화 
     const onReset = () => {
         setComment({...comment, text : ""})
     }
 
-    // 리플 입력 후 초기화 
-    const onReplyReset = () => {
-        setComment({...comment, reply : ""})
-    }
 
     const addtext = (e) =>{
         e.preventDefault()
@@ -364,7 +355,7 @@ const DetailPage = () => {
             }
             </div>
             <Recent />
-            <Footer />
+            <Footer/>
             {/* <div className="detail-outlet">
                 <div className="detail-navbox">
                     <div className="detail-nav1" onClick={reviewNav}>Review</div>

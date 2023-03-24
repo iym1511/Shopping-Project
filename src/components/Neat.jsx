@@ -97,7 +97,7 @@ const Neat = () => {
             <h1 className="home-title">NEAT</h1>
         </div>
          <form onSubmit={searchChange}>
-            <input type="text" className="neat-input" onChange={(e)=>{setSearch(e.target.value)}} />
+            <input type="text" className="neat-input" placeholder=" Search" onChange={(e)=>{setSearch(e.target.value)}} />
             <img src={require("../img/neat-input.png")} className="neat-icon"/>
          </form>
          <div className="neat-mapbox">
