@@ -5,7 +5,7 @@ import Portal from "./Portal";
 import popimg from "../img/Pop-img.png";
 
 
-const PopModal = ({ className, onClose, maskClosable, closable, visible }) => {
+const PopModal = ({ className, onClose, closable, visible }) => {
     
     // 배경 클릭시 삭제
     // const onMaskClick = (e) => {

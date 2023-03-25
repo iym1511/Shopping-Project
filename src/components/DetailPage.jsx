@@ -98,7 +98,7 @@ const DetailPage = () => {
         const mainmap = main.map((a)=> a.id == shoplist.id)
         // 배열로 출력된 boolean값들을 some으로 같은것이있는지 확인
         const mainsome = mainmap.some((a)=> a == true)
-        // 중복된값에따라 모달창 출력
+        // 중복된값에따라 모달창 출력(이미있는alert는 redux에서 출력)
         if(!mainsome){
             setShowModal(true)
         }
@@ -118,10 +118,6 @@ const DetailPage = () => {
 
     // Pagination
     const [page, setPage] = useState(1);
-
-    // const isPc = useMediaQuery ({
-    //     query : "(min-width :1020px)"
-    // });
 
     let length = 14; // 표시할 글자수 기준
     let str = shoplist.name;

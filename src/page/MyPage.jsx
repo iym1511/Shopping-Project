@@ -38,9 +38,6 @@ const MyPage = ()=> {
     const [zonecode, setZonecode] = useState(findUser.apizonecode)
     const [detailAddress, setDetailAddress] = useState(findUser.detailAddress);
     const [delcomment, setDelcomment] = useState(users.delComment);
-
-    // purchase 비교하는곳
-    const [newPurchase, setNewPurchase] = useState()
     
 
     const onChangeAddress = (e) => {
@@ -49,8 +46,6 @@ const MyPage = ()=> {
     const onChangeZonecode = (e) => {
         setZonecode(e.target.value)
     }
-
-
 
 
     const [trans, setTrans] = useState(null);
@@ -146,10 +141,8 @@ const MyPage = ()=> {
       // map 에서 id를 넘겨주어 그 페이지로 이동
       const reviewClick = (a) => {
         navigate(`/review/${a}`)
-        // 툴킷안에서 유저 맞는거 확인후 그 유저꺼 가져옴
+        // 툴킷안에서 유저 맞는거 확인후 그 유저꺼 가져옴 원래 회원정보에서 pid만 추가
         dispatch(pushPid({...findUser, pid : a}))
-        // dispatch(purchaseBoolean({...findUser, pid : a}))
-        console.log(findUser.purchaseArray.find((e)=> e.id == a).reviewCheck)
       }
 
     

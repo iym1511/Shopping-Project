@@ -74,34 +74,7 @@ const Main = () => {
                     <a href='https://www.youtube.com/' target="_blank" className='main-youtube'><FontAwesomeIcon icon={faYoutube}/></a>
                     <a href='https://github.com/iym1511' target="_blank" className='main-github'><FontAwesomeIcon icon={faGithub} /></a>
                 </div>
-                <PopView/>
-
-                {/* 문자가 카운터되듯 올라가는 css */}
-                {/* <div className="main-container2">
-                    <div className="main-togrther-title">
-                        <div>Together we&ensp;</div>
-                            <div className="word can">
-                                <span>C</span>
-                                <span>A</span>
-                                <span>N</span>
-                            </div>
-                            <div className="word will">
-                                <span>W</span>
-                                <span>I</span>
-                                <span>L</span>
-                                <span>L</span>
-                            </div>
-                            <div className="word thrive">
-                                <span>T</span>
-                                <span>H</span>
-                                <span>R</span>
-                                <span>I</span>
-                                <span>V</span>
-                                <span>E</span>
-                        </div>
-                    </div>
-                </div> */}
-                
+                <PopView/>                
             </div>                      
         </motion.div>
     );

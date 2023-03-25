@@ -7,7 +7,6 @@
 
 .main-box{
     height: 818px;
-
 }
 .main-imgbox{
     display: flex;
@@ -16,7 +15,7 @@
     /* background-size: cover; */
     background-position: 300px;
     background-attachment: fixed;
-    height: 100vh;
+    height: 102vh;
 
 }
 .main-backimg{

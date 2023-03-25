@@ -1,7 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import '../css/Nav.css'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/user";
@@ -10,7 +8,6 @@ import { shopAlldelete } from "../redux/main";
 const Nav = () => {
 
   // 스크롤 관련
-  const [navActive, setNavActive] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [scrollActive, setScrollActive] = useState(false);
 
@@ -34,7 +31,6 @@ const Nav = () => {
 
   // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 (지워도댐 확인용)
   const sign = useSelector((state) => state.signup);
-  const findUser = sign.userlist.find((user)=> user.id == users.id)
 
   // 장바구니 로그인 & 로그아웃
   const loginMarket = () => {

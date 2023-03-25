@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import '../css/Neat.css'
 import Footer from "../page/Footer";
-import { shopcartAdd, shopdeleteCount } from "../redux/main";
-import { cartAdd } from "../redux/shop";
 import Recent from "./Recent";
 import { motion} from "framer-motion";
 // import Pagination from "react-js-pagination";
@@ -14,13 +11,17 @@ let recentPush = []
 
 const Neat = () => {
     const shop = useSelector((state) => state)
-    const users = useSelector((state) => state.user)
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     // 검색기능 State
     const [searched, setSearched] = useState("");
     const [search, setSearch] = useState("");
+
+    // Tag를 위한 State
+    const [filter, setFilter] = useState("옷")
+
+    // tag 체크
+    const [tag, setTag] = useState(false)
 
     // 검색기능 함수
     const searchChange = (e) => {
@@ -33,7 +34,25 @@ const Neat = () => {
         return a.name.replace(" ","").toLocaleLowerCase().includes(searched.toLocaleLowerCase().replace(" ",""))
     })
     
-
+    const activeStyle = { color: "#000000", background:"red" };
+    // Tag 함수
+    const NeatTag = () => {
+        setFilter("니트")
+    }
+    const CardiganTag = () => {
+        setFilter("가디건")
+    }
+    const defaultTag = () => {
+        setFilter("옷")
+    }
+    const ModernTag = () => {
+        setFilter("모던")
+    }
+    const CasualTag = () => {
+        setFilter("캐쥬얼")
+    }
+    // 검색기능으로 필터한걸 Tag로 한번더 필터 (includes)
+    let filterTagShop = filterShop.filter((a)=> a.tag.includes(`${filter}`));
 
 
     const recent = (i) => {
@@ -87,7 +106,7 @@ const Neat = () => {
         animate={{opacity: 1}}
         exit={{opacity: 0}} className="home-box">
         <h1 className="home-bestTitle">BEST 3</h1>
-         <div className="shoes-wrapper">
+            <div className="shoes-wrapper">
                 <section className="sec01" onClick={()=>{navigate('/detailpage/9')}}></section>
                 <section className="sec02" onClick={()=>{navigate('/detailpage/6')}}></section>
                 <section className="sec03" onClick={()=>{navigate('/detailpage/8')}}></section>
@@ -96,15 +115,22 @@ const Neat = () => {
             <div className="home-titleBox">
             <h1 className="home-title">NEAT</h1>
         </div>
-         <form onSubmit={searchChange}>
+        <form onSubmit={searchChange}>
             <input type="text" className="neat-input" placeholder=" Search" onChange={(e)=>{setSearch(e.target.value)}} />
             <img src={require("../img/neat-input.png")} className="neat-icon"/>
-         </form>
-         <div className="neat-mapbox">
+        </form>
+        <div className="neat-tagBox">
+            <button onClick={defaultTag} className="neat-tag">ALL</button>
+            <button onClick={NeatTag} className="neat-tag">NEAT</button>
+            <button onClick={CardiganTag} className="neat-tag">CARDIGAN</button>
+            <button onClick={ModernTag} className="neat-tag">MODERN</button>
+            <button onClick={CasualTag} className="neat-tag">CASUAL</button>
+        </div>
+        <div className="neat-mapbox">
             {
-                filterShop.map((a,i)=>(
+                filterTagShop.map((a,i)=>(
                     <div className="list-Container">                                    {/* index값을주면 map에서 0,1,2,3 페이지로감 */}
-                            <img src={filterShop[i].image} alt="이미지없음" className="neat-mulgun" onClick={()=>{navigate(`/detailpage/${filterShop[i].id}`)
+                            <img src={filterTagShop[i].image} alt="이미지없음" className="neat-mulgun" onClick={()=>{navigate(`/detailpage/${filterTagShop[i].id}`)
                             recent(a)}}/>
                             <div className="neat-name">{a.name}</div>
                                 {/* map에서 i키값을 함수로보내줘서 위에서도 사용할수있게했음 중요 */}

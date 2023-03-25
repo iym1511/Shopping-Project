@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion"
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion"
 import '../css/Modal.css'
 
 const Modal = ({setShowModal}) => {
@@ -24,12 +24,10 @@ const Modal = ({setShowModal}) => {
         
         // 이벤트 핸들러 등록
         document.addEventListener('mousedown', handler);
-        // document.addEventListener('touchstart', handler); // 모바일 대응
         
         return () => {
             // 이벤트 핸들러 해제
             document.removeEventListener('mousedown', handler);
-            // document.removeEventListener('touchstart', handler); // 모바일 대응
         };
     });
 

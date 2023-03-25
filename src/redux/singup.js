@@ -52,15 +52,17 @@ export const signupSlice = createSlice({
       state.newUser.address = action.payload.address;
     },
 
-    
+    //  툴킷안에서 유저 맞는거 확인후 그 유저꺼 가져옴 원래 회원정보에서 pid만 추가
     pushPid: (state, action) => {
       state.userlist = state.userlist.map((a)=>{
-        console.log(action.payload.pid)
-        // console.log(newUser.purchaseArray.find((a)= a.id == newUser.pid))
         return a.id == action.payload.id ? action.payload : a
       })
     },
 
+    // 위에서 pid를 추가해줫슴
+    // 가입정보 == 로그인된유저 findUser 를받아옴
+    // 회원목록중에 로그인된 아이디랑 같은것이있는지 확인하고
+    // 위에서 추가한 pid랑 담겨있는 물건id 같은거찾아서 리뷰작성완료표시해주는곳에 접근
     purchaseBoolean: (state, action) => {
       const newUser = state.userlist.find((a)=> a.id == action.payload.id);
       const userpid = newUser.purchaseArray.find((a)=> a.id == action.payload.pid);
@@ -73,12 +75,6 @@ export const signupSlice = createSlice({
 
 
     },
-    // purchaseTrue: (state, action) => {
-    //   const newUser = state.userlist.find((a)=> a.id == action.payload.id);
-    //   const userpid = newUser.purchaseArray.find((a)=> a.id == action.payload.pid);
-    //   userpid.reviewCheck = true
-    //   console.log(userpid.reviewCheck)
-    // }
   },
 });
 

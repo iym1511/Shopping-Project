@@ -133,9 +133,34 @@
 }
 /* codepen css ---------------------------------------*/
 
+
 .neat-icon{
     width: 1.5%;
 }
+.neat-tagBox{
+  width: 100%;
+}
+.neat-tagBox button:nth-child(1){
+  margin-left: 5%;
+}
+.neat-tag{
+  width: 90px;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.6vw;
+  font-weight: bolder;
+  word-break: break-all;
+  font-family: 'Hahmlet-Regular';
+  margin-left: 10px;
+  color: gray;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+/* .neat-tag:focus{
+  background-color: #5e5e5e;
+  color: white;
+} */
 .neat-input{
     border: none;
     border-bottom: 1px solid black;
