@@ -144,7 +144,7 @@
   margin-left: 5%;
 }
 .neat-tag{
-  width: 90px;
+  width: 80px;
   height: 30px;
   border: none;
   border-radius: 20px;
@@ -156,6 +156,23 @@
   color: gray;
   margin-bottom: 20px;
   cursor: pointer;
+  transition: 0.5s;
+}
+.neat-tag2{
+  width: 80px;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.6vw;
+  font-weight: bolder;
+  word-break: break-all;
+  font-family: 'Hahmlet-Regular';
+  margin-left: 10px;
+  color: white;
+  background-color: #333;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.5s;
 }
 /* .neat-tag:focus{
   background-color: #5e5e5e;

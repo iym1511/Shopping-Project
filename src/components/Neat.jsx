@@ -21,7 +21,7 @@ const Neat = () => {
     const [filter, setFilter] = useState("옷")
 
     // tag 체크
-    const [tag, setTag] = useState(false)
+    const [tagClick, setTagClick] = useState('ALL');
 
     // 검색기능 함수
     const searchChange = (e) => {
@@ -34,23 +34,29 @@ const Neat = () => {
         return a.name.replace(" ","").toLocaleLowerCase().includes(searched.toLocaleLowerCase().replace(" ",""))
     })
     
-    const activeStyle = { color: "#000000", background:"red" };
+
     // Tag 함수
     const NeatTag = () => {
         setFilter("니트")
+        setTagClick('NEAT')
     }
     const CardiganTag = () => {
         setFilter("가디건")
+        setTagClick('CARDIGAN')
     }
     const defaultTag = () => {
         setFilter("옷")
+        setTagClick('ALL')
     }
     const ModernTag = () => {
         setFilter("모던")
+        setTagClick('MODERN')
     }
     const CasualTag = () => {
         setFilter("캐쥬얼")
+        setTagClick('CASUALTAG')
     }
+
     // 검색기능으로 필터한걸 Tag로 한번더 필터 (includes)
     let filterTagShop = filterShop.filter((a)=> a.tag.includes(`${filter}`));
 
@@ -64,6 +70,8 @@ const Neat = () => {
             sessionStorage.setItem("recent", sesstionRecent);
         }
     }
+
+    
 
 
 
@@ -101,6 +109,9 @@ const Neat = () => {
     //     }
     // </div>
 
+
+
+
     return (
         <motion.div initial={{opacity: 0 }}
         animate={{opacity: 1}}
@@ -120,11 +131,11 @@ const Neat = () => {
             <img src={require("../img/neat-input.png")} className="neat-icon"/>
         </form>
         <div className="neat-tagBox">
-            <button onClick={defaultTag} className="neat-tag">ALL</button>
-            <button onClick={NeatTag} className="neat-tag">NEAT</button>
-            <button onClick={CardiganTag} className="neat-tag">CARDIGAN</button>
-            <button onClick={ModernTag} className="neat-tag">MODERN</button>
-            <button onClick={CasualTag} className="neat-tag">CASUAL</button>
+            <button onClick={defaultTag} className={`neat-tag ${tagClick == 'ALL' ? 'neat-tag2' : ''}`}>ALL</button>
+            <button onClick={NeatTag} className={`neat-tag ${tagClick == 'NEAT' ? 'neat-tag2' : ''}`}>NEAT</button>
+            <button onClick={CardiganTag} className={`neat-tag ${tagClick == 'CARDIGAN' ? 'neat-tag2' : ''}`}>CARDIGAN</button>
+            <button onClick={ModernTag} className={`neat-tag ${tagClick == 'MODERN' ? 'neat-tag2' : ''}`}>MODERN</button>
+            <button onClick={CasualTag} className={`neat-tag ${tagClick == 'CASUALTAG' ? 'neat-tag2' : ''}`}>CASUAL</button>
         </div>
         <div className="neat-mapbox">
             {
