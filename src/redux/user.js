@@ -7,7 +7,7 @@ const initialState = {
   apiaddress: "땡땡아파트",
   apizonecode: "41234",
   detailAddress: "302동 201호",
-  isLoggedIn: true
+  isLoggedIn: false
 };
 
 export const userSlice = createSlice({
