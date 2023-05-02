@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Shopping-Project/static/css/main.4675fd42.css",
+    "main.css": "/Shopping-Project/static/css/main.afefabe7.css",
     "main.js": "/Shopping-Project/static/js/main.ac12c7ae.js",
     "static/js/787.a013360e.chunk.js": "/Shopping-Project/static/js/787.a013360e.chunk.js",
     "static/media/Pop-img.png": "/Shopping-Project/static/media/Pop-img.4ec2c28fe3dd2c7ba913.png",
@@ -74,12 +74,12 @@
     "static/media/neat-5-5.PNG": "/Shopping-Project/static/media/neat-5-5.9c9f615dc50d83ece7b3.PNG",
     "static/media/logo-white.png": "/Shopping-Project/static/media/logo-white.75f253315b5f732a3d2f.png",
     "index.html": "/Shopping-Project/index.html",
-    "main.4675fd42.css.map": "/Shopping-Project/static/css/main.4675fd42.css.map",
+    "main.afefabe7.css.map": "/Shopping-Project/static/css/main.afefabe7.css.map",
     "main.ac12c7ae.js.map": "/Shopping-Project/static/js/main.ac12c7ae.js.map",
     "787.a013360e.chunk.js.map": "/Shopping-Project/static/js/787.a013360e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4675fd42.css",
+    "static/css/main.afefabe7.css",
     "static/js/main.ac12c7ae.js"
   ]
 }
