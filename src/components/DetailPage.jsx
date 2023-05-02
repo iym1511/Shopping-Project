@@ -86,7 +86,6 @@ const DetailPage = () => {
             alert("댓글을 작성해주세요")
         }
         onReset();
-        document.querySelector("input").value="";
     }
 
 
@@ -304,7 +303,7 @@ const DetailPage = () => {
                 users.isLoggedIn ? (
                     <form onSubmit={addtext} className="detail-form">
                         <div className="detail-formDiv">
-                            <input type="text" className="detail-input" onChange={handleText} placeholder="댓글을 입력하여 주십시요"/>
+                            <input type="text" value={comment.text} className="detail-input" onChange={handleText} placeholder="댓글을 입력하여 주십시요"/>
                             <button className="detail-btn">QnA작성</button>
                         </div>
                 </form>
@@ -312,7 +311,7 @@ const DetailPage = () => {
                     <div>
                         <form onSubmit={addtext}>
                             <div className="detail-formDiv">
-                                <input type="text" className="detail-input" onChange={handleText} disabled placeholder="로그인 후 이용해 주십시요"/>
+                                <input type="text" value={comment.text} className="detail-input" onChange={handleText} disabled placeholder="로그인 후 이용해 주십시요"/>
                                 <button className="detail-btn">QnA작성</button>
                             </div>
                         </form>

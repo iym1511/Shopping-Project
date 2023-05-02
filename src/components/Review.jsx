@@ -68,17 +68,16 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
             //   dispatch(PidAdd(id)) 지워야댐 redux파일이랑같이 ★
               alert("리뷰 등록 완료!")
               navigate(`/detailpage/${id}`)
+              dispatch(purchaseBoolean({...findUser}))
           }else{
               alert("댓글을 작성해주세요")
           }
-          onReset();
-          document.querySelector("input").value="";
-          
+          onReset();          
       }
 
       const addboolean = () => {
         if(checkuser.id == id){
-          dispatch(purchaseBoolean({...findUser}))
+          // dispatch(purchaseBoolean({...findUser}))
           console.log(checkuser)
         }
       }
@@ -110,7 +109,7 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
         };
     });
 
-   
+
     
     // 별점기능
     const handleStarClick = index => {

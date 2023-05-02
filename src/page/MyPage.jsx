@@ -2,11 +2,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import '../css/MyPage.css'
-import useInput from "../hooks/useInput";
-import { ADDIT_USER, purchaseBoolean, pushPid} from "../redux/singup";
-import { loginChange, loginUser, updateAddress } from "../redux/user";
+import { ADDIT_USER,  pushPid} from "../redux/singup";
+import { loginUser, updateAddress } from "../redux/user";
 import DaumPostcode from 'react-daum-postcode';
-import Review from "../components/Review";
 import { useNavigate } from "react-router-dom";
 import Notfound from "../components/Notfound";
 import Footer from "./Footer";
@@ -145,6 +143,17 @@ const MyPage = ()=> {
         dispatch(pushPid({...findUser, pid : a}))
       }
 
+      const purchaseArray = findUser ? findUser.purchaseArray : undefined;
+      const totalMoney = purchaseArray ? purchaseArray.reduce((acc, curr) => acc + curr.money, 0) : undefined;
+      console.log(totalMoney); // 총 구매 금액 출력
+
+      const delivery = (a) => {
+        if(totalMoney < 40000){
+            return a.money + 2500
+        }else if(totalMoney > 40000){
+            return a.money
+        }
+    }
     
 
     return (  
@@ -232,7 +241,8 @@ const MyPage = ()=> {
                                 <p>배송 완료</p>
                             </th>
                             <th>
-                                <p>{a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                                {/* <p>{a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p> */}
+                                <p>{delivery(a).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                             </th>
                                 
                             {   

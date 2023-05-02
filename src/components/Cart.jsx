@@ -57,7 +57,6 @@ const Cart = () => {
         navigater("/mypage")
         const cartJSON = JSON.stringify(purchaseArray)
         sessionStorage.setItem(`${findUser.id}`, cartJSON)
-
         console.log(purchaseArray)
         console.log(findUser)
     }
@@ -82,11 +81,12 @@ const Cart = () => {
     // 돈 합계 
     const [sum, setSum] = useState(0)
     const [sum2, setSum2] = useState(0); // 배송비 포함
+
     // 정규식사용해서 화폐단위따로 또 저장해서 담아야되서 이렇게함
+    // 배송비 미포함 총 금액
     const [moneysum, setMoneysum] = useState(0);
-    const [moneysum2, setMoneysum2] = useState(0); // 배송비 포함
-
-
+    // 배송비 포함 총 금액
+    const [moneysum2, setMoneysum2] = useState(0);
     
     // 장바구니 물건 개수 증가
     const shopplusCount = (a) => {
@@ -96,6 +96,16 @@ const Cart = () => {
     // 장바구니 물건 개수 감소
     const shopbbagiCount = (a) => {
         dispatch(shopminuseCount(a.id))
+    }
+
+    const FinalMoney = (a) => {
+        let plusmoney = a.money + 2500
+        let zeromoney = a.money
+        if(deliverymoney == 2500){
+            return plusmoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        }else {
+            return zeromoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        }
     }
 
     // moneylist 배열에 mainshop 안에있는 돈을 넣어줌
@@ -138,6 +148,7 @@ const Cart = () => {
             setDeliberymoney(0)
             setSum2(list2)
         }
+        console.log(sum)
     },[moneylist2])
 
     useEffect(()=>{
@@ -148,7 +159,6 @@ const Cart = () => {
     useEffect(() => {
         setLogin(users.isLoggedIn ? true : false);
     }, [users]);
-
 
 
     // main에 있는 배열값을 map으로 풀어서 main안에서 비교할수있게 id를 한번더 전달해줌
@@ -197,7 +207,7 @@ const Cart = () => {
                                     </td>
                                     <td className="cart-savemoney">{a.save.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</td>
                                     <td className="cart-delivery">{a.delivery.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</td>
-                                    <td className="cart-money">{a.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</td>
+                                    <td className="cart-money">{FinalMoney(a)}원</td>
                                     <button onClick={()=>{dispatch(shopdelete(a.id))}} className="Cartbtn3">x</button>
                                 </tr>
                             ))

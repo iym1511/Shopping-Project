@@ -9,15 +9,27 @@ export const mainSlice = createSlice({
     shopaddCount(state, action) {
       // 위 배열안의 id와 값을올려줄 물건id가 같으면 증가
       let nums = state.findIndex((a) => a.id === action.payload);
+      let deliveryMoney = 2500;
       state[nums].count++;
+      console.log(state[nums].deliveryMoney);
       // 가격에다가 수량증가하면 가격++
-      state[nums].money += state[nums].save;
+      // if(state[nums].money < 40000){
+      //   state[nums].money += state[nums].deliveryMoney;
+      // }else{
+        state[nums].money += state[nums].save;
+      // }
     },
     shopminuseCount(state, action) {
       let nums = state.findIndex((a) => a.id === action.payload);
       if (state[nums].count > 1) {
         state[nums].count--;
         state[nums].money -= state[nums].save;
+        // console.log(state[nums].money);
+        // if(state[nums].money > 40000){
+        //   state[nums].money -= state[nums].deliveryMoney;
+        // }else{
+        //   state[nums].money -= state[nums].save;
+        // }
       }
     },
     shopdelete(state, action) {

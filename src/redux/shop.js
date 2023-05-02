@@ -18,6 +18,7 @@ const initialState = [
     image5: [require("../img/neat-1-5.PNG")],
     money: 21900,
     save: 21900,
+    deliveryMoney: "",
     delivery: "-",
     checked: false,
     reviewCheck : true,
