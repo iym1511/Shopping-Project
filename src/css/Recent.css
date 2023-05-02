@@ -71,6 +71,7 @@
   
   .recent-recentImg{
     width: 70px;
+    cursor: pointer;
   }
   .recent-recentName{
     font-size: 10px;
