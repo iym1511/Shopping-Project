@@ -76,14 +76,14 @@
 }
 .detail-cartbtn:before {
     content: "\27F6";
-    font-size: 11px;
+    font-size: 15px;
     display: flex;
     /* align-items: center; */
     justify-content: center;
-    padding-left: 140px;
+    padding-left: 150px;
     opacity: 0;
     height: 0px;
-    width: 50px;
+    width: 40px;
     color: rgb(255, 255, 255);
     transition: all 0.2s linear 0s;
   }
