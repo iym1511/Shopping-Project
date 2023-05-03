@@ -128,20 +128,34 @@ const DetailPage = () => {
     const [modifyText , setModifyText] = useState();
     const [modifyBoolean ,setModifyBoolean] = useState(false);
 
+
+		const [reviewfindId, setReviewfindId] = useState()
     // 댓글 수정버튼
     const ModifyStart = () => {
         setModifyBoolean(!modifyBoolean);
+				setReviewfindId("")
     }
 
+		// reviewfind에서 로그인된 유저랑 이름같은거 배열로 걸러줌
+		const reviewSearch = reviewfind.filter((a)=> a.name == findUser.name);
+		
+		// reviewfind map안에서 누른댓글 index id 값 가져와서 state에 담음
+		const findReviewId = (a) => {
+			const reviewfind = reviewSearch.find((e)=> e.id == a.id)
+			setReviewfindId(reviewfind.id)
+		}
+		
 
     // 댓글 수정(완료)버튼
     const Modify = (a) => {
 			// reviewfind(현제 페이지 리뷰출력)map으로 출력된것에서
 			// 눌러지는 댓글의 index객체값을 가져와서 dispatch전달
         if(modifyText !== ""){
+					// 원래값 유지하면서 같은key값인 text만 변경
             dispatch(modify({...a, text: modifyText}));
             setModifyText("")
             setModifyBoolean(!modifyBoolean);
+						setReviewfindId("")
         }else{
             alert("댓글을 입력해주세요")
         }
@@ -299,8 +313,9 @@ const DetailPage = () => {
                             </div>
                             <div className="detail-flexbox">
                                 {   // 내꺼 댓글단거중에 수정을눌른것만 수정창 띄워줌
+																		// reviewfind 배열안에서 id가 같은것만 수정input창 띄워줌
                                     findUser && findUser.name == a.name ? (
-                                        modifyBoolean ? (
+																			reviewfindId == a.id ? (
                                             <>
                                                 <input type="text" className="detail-modifyInput" value={modifyText} placeholder={a.text} onChange={ModifuonChange}/>
                                             </>
@@ -321,7 +336,8 @@ const DetailPage = () => {
                                     findUser && findUser.name == a.name ? ( // purchaseTrue는 삭제시 리뷰값을 true로 되돌려서 다시 리뷰작성할수있게
                                         <>
                                         {   // 내꺼 댓글단거중에 수정을 눌른것만 완료,취소 가능
-                                            modifyBoolean ? (
+																						// reviewfind 배열안에서 id가 같은것만 수정input창 띄워줌
+                                            reviewfindId == a.id ? (
                                                 <>
                                                   <button className="detail-reviewBtn" style={{marginTop:"3px", marginLeft:"3px",fontSize:"14px"}} onClick={()=>{Modify(a)}}>✓</button>
                                                   <button className="detail-reviewBtn" onClick={ModifyStart}>x</button>
@@ -331,7 +347,8 @@ const DetailPage = () => {
                                                   <button onClick={()=>{dispatch(removeReview(a.id))
                                                     dispatch(purchaseBoolean({...findUser}))}
                                                     } className="detail-reviewBtn">x</button>
-                                                  <button className="detail-reviewBtn" onClick={ModifyStart}>
+                                                  <button className="detail-reviewBtn" onClick={()=>{ModifyStart()
+																									findReviewId(a)}}>
                                                   	<img src={require("../img/ModifyPencil.png")} style={{width:"15px", marginTop:"5px"}} />
                                                 	</button>
                                                 </>
@@ -343,7 +360,6 @@ const DetailPage = () => {
                                     )
                                 }
                             </div>
-                            {/* </div> */}
                         </div>
                     )
                     
