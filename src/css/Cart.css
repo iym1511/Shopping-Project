@@ -111,6 +111,7 @@ td{
     word-break: break-all;
     word-wrap: break-word;
     margin-right: 30px;
+    accent-color: rgb(50, 50, 50);
 }
 .cart-image{
     width: 100px;

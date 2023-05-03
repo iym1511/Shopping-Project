@@ -9,7 +9,6 @@ import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 import { purchaseBoolean } from '../redux/singup';
 
-
 const Review = ({setShowReviewModal, showReviewModal}) => {
 
     let {id} = useParams();

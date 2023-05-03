@@ -121,9 +121,20 @@ export const reviewSlice = createSlice({
       alert("삭제되었습니다.");
       return state.filter((e) => e.id !== action.payload);
     },
+    modify: (state, action) => {
+      // state안에 댓글 name과 받아온 객체의 name이 같은걸 걸러줌
+      const findName = state.filter((e) => e.name == action.payload.name);
+      // name이 같은것 중에 pid가 같은걸 걸러줌
+      const Pid = findName.filter((a)=> a.pid === action.payload.pid)
+      // 마지막으로 pid와name둘다 같은것중에 같은id를 찾아줌
+      const Modify = Pid.find((a)=> a.id == action.payload.id)
+      
+      // 받아온값으로 수정해줌
+      Modify.text = action.payload.text
+    }
   },
 });
 
-export const { addReview, removeReview } = reviewSlice.actions;
+export const { addReview, removeReview, modify } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

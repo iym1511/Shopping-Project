@@ -24,7 +24,7 @@ const MyPage = ()=> {
     const shop = useSelector((state)=> state.players);
 
     // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 / 댓글 이름별출력도 이걸로함
-    const findUser = sign.userlist.find((user)=> user.id == users.id)
+    const findUser = sign.userlist.find((user)=> user.id == users.id);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -217,13 +217,12 @@ const MyPage = ()=> {
                     <th className="mypage-title-th">리뷰</th>
                 </tr>
             {   
-                findUser.purchaseArray == null ? (
+                findUser && findUser.purchaseArray == null ? (
                     <div>
                         <th className="mypage-noneOrder"></th>
                     </div>
                 ) : (
-                    
-                    findUser.purchaseArray.map((a, i)=>(
+                    findUser && findUser.purchaseArray.map((a, i)=>(
                         <tr className="mypage-tr-map">
                             <th>
                                 <img src={a.image} className="mypage-th-img" />
@@ -247,7 +246,7 @@ const MyPage = ()=> {
                                 
                             {   
                                 // map안에선 setState가 안먹으니 이대로 생으로 삼항연산자사용하자 ★
-                                findUser.purchaseArray.find((e)=> e.id == a.id).reviewCheck ? (
+                                findUser && findUser.purchaseArray.find((e)=> e.id == a.id).reviewCheck ? (
                                     <th>
                                         <button onClick={()=>{reviewClick(a.id)}} className="mypage-review-btn">Review</button>
                                     </th>
@@ -258,7 +257,6 @@ const MyPage = ()=> {
                         </tr>
                     ))
                 )
-            
             }
             </table>
 

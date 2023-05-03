@@ -66,13 +66,13 @@ input{
 }
 
 .mypage-table{
+    border-collapse: collapse;
     margin: auto;
     width: 80%;
     margin-top: 100px;
     margin-bottom: 100px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    
 }
 .mypage-shoptitle{
     font-family: 'Hahmlet-Regular';
@@ -85,18 +85,25 @@ input{
 
 .mypage-title-tr > th{
     width: 130px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
 }
 .mypage-title-th{
     height: 50px;
 }
 .mypage-tr-map{
-    border: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    
 }
 .mypage-tr-map > th{
     font-weight: lighter;
 }
 .mypage-th-img{
     width: 100px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .mypage-noneOrder{

@@ -7,7 +7,7 @@ import '../css/DetailPage.css'
 import { add, remove} from "../redux/comment";
 import { purchaseBoolean} from "../redux/singup";
 import Modal from "./Modal";
-import { removeReview } from "../redux/review";
+import { modify, removeReview } from "../redux/review";
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 import Pagenation from "./Pagenation";
@@ -61,7 +61,7 @@ const DetailPage = () => {
             pid: id,
             name: findUser.name, // 일치한 유저 찾아서 댓글에 넣어줌
             text : "",
-            reply: "",
+            modifyText: "",
             date : useDate
         }
     )
@@ -101,7 +101,6 @@ const DetailPage = () => {
         if(!mainsome){
             setShowModal(true)
         }
-            
     }
 
     const logoutMode = () => {
@@ -122,6 +121,33 @@ const DetailPage = () => {
     let str = shoplist.name;
     if (str.length > length) {
         str = str.substr(0, length - 2) + '...';
+    }
+
+		// const pidCheck2 = pidCheck.
+    // 수정할 댓글 입력하는곳
+    const [modifyText , setModifyText] = useState();
+    const [modifyBoolean ,setModifyBoolean] = useState(false);
+
+    // 댓글 수정버튼
+    const ModifyStart = () => {
+        setModifyBoolean(!modifyBoolean);
+    }
+
+
+    // 댓글 수정(완료)버튼
+    const Modify = (a) => {
+			// reviewfind(현제 페이지 리뷰출력)map으로 출력된것에서
+			// 눌러지는 댓글의 index객체값을 가져와서 dispatch전달
+        if(modifyText !== ""){
+            dispatch(modify({...a, text: modifyText}));
+            setModifyText("")
+            setModifyBoolean(!modifyBoolean);
+        }else{
+            alert("댓글을 입력해주세요")
+        }
+    }
+    const ModifuonChange = (e) => {
+        setModifyText(e.target.value);
     }
 
     return (  
@@ -272,12 +298,46 @@ const DetailPage = () => {
                                 <div className="detail-reviewDate">{a.date}</div>
                             </div>
                             <div className="detail-flexbox">
-                                <p className="detail-reviewText">{a.text}</p>
+                                {   // 내꺼 댓글단거중에 수정을눌른것만 수정창 띄워줌
+                                    findUser && findUser.name == a.name ? (
+                                        modifyBoolean ? (
+                                            <>
+                                                <input type="text" className="detail-modifyInput" value={modifyText} placeholder={a.text} onChange={ModifuonChange}/>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <p className="detail-reviewText">{a.text}</p>
+                                            </>
+                                        )
+                                    ) : (
+                                        <>
+                                        <p className="detail-reviewText">{a.text}</p>
+                                        </>
+                                    )
+                                    
+                                }
+                                
                                 {
-                                    findUser.name == a.name ? ( // purchaseTrue는 삭제시 리뷰값을 true로 되돌려서 다시 리뷰작성할수있게
-                                        <button onClick={()=>{dispatch(removeReview(a.id))
-                                            dispatch(purchaseBoolean({...findUser}))}
-                                        } className="detail-reviewBtn">x</button>
+                                    findUser && findUser.name == a.name ? ( // purchaseTrue는 삭제시 리뷰값을 true로 되돌려서 다시 리뷰작성할수있게
+                                        <>
+                                        {   // 내꺼 댓글단거중에 수정을 눌른것만 완료,취소 가능
+                                            modifyBoolean ? (
+                                                <>
+                                                  <button className="detail-reviewBtn" style={{marginTop:"3px", marginLeft:"3px",fontSize:"14px"}} onClick={()=>{Modify(a)}}>✓</button>
+                                                  <button className="detail-reviewBtn" onClick={ModifyStart}>x</button>
+                                                </>
+                                            ) : (
+                                                <>
+                                                  <button onClick={()=>{dispatch(removeReview(a.id))
+                                                    dispatch(purchaseBoolean({...findUser}))}
+                                                    } className="detail-reviewBtn">x</button>
+                                                  <button className="detail-reviewBtn" onClick={ModifyStart}>
+                                                  	<img src={require("../img/ModifyPencil.png")} style={{width:"15px", marginTop:"5px"}} />
+                                                	</button>
+                                                </>
+                                            )
+                                        }
+                                        </>
                                     ) : (
                                         <></>
                                     )
