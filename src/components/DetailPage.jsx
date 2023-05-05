@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -61,7 +61,6 @@ const DetailPage = () => {
             pid: id,
             name: findUser.name, // 일치한 유저 찾아서 댓글에 넣어줌
             text : "",
-            modifyText: "",
             date : useDate
         }
     )
@@ -109,7 +108,7 @@ const DetailPage = () => {
     }
 
     // 로그인 판별
-    useEffect(() => {
+    useCallback(() => {
         setLogin(users.isLoggedIn ? true : false);
     }, [users]);
 

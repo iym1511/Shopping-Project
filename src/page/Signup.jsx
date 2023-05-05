@@ -58,13 +58,11 @@ const Signup = () => {
         id,
         password,
         email,
-        // address,
         apiaddress,
         apizonecode,
         realDetail,
         phonNumber,
         item : [], // 장바구니 담기는 곳 
-        // pid : []
       };
     
       const findUser = sign.userlist.find(
@@ -127,7 +125,7 @@ const Signup = () => {
     const handle = {
         // 버튼클릭 이벤트
         clickButton: (e) => {
-            e.preventDefault() // api할때 이런오류 다반사 프리벤트 쓰자
+            e.preventDefault() // api할때 이런오류 다반사! 프리벤트 쓰자
             setOpenPostcode((current)=> !current);
         },
         // 주소 선택 이벤트
