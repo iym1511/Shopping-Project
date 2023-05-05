@@ -122,18 +122,19 @@ const DetailPage = () => {
     if (str.length > length) {
         str = str.substr(0, length - 2) + '...';
     }
-
-		// const pidCheck2 = pidCheck.
+		
     // 수정할 댓글 입력하는곳
     const [modifyText , setModifyText] = useState();
+		// 수정창
     const [modifyBoolean ,setModifyBoolean] = useState(false);
 
-
+		// 댓글id비교해서 수정창 띄워주는곳
 		const [reviewfindId, setReviewfindId] = useState()
+
     // 댓글 수정버튼
     const ModifyStart = () => {
         setModifyBoolean(!modifyBoolean);
-				setReviewfindId("")
+				setReviewfindId("");
     }
 
 		// reviewfind에서 로그인된 유저랑 이름같은거 배열로 걸러줌
