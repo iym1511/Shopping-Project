@@ -108,7 +108,7 @@ const DetailPage = () => {
     }
 
     // 로그인 판별
-    useCallback(() => {
+    useEffect(() => {
         setLogin(users.isLoggedIn ? true : false);
     }, [users]);
 
