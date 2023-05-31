@@ -225,10 +225,10 @@ const MyPage = ()=> {
                     findUser && findUser.purchaseArray.map((a, i)=>(
                         <tr className="mypage-tr-map">
                             <th>
-                                <img src={a.image} className="mypage-th-img" />
+                                <img src={a.image} className="mypage-th-img" onClick={()=>{navigate(`/detailpage/${a.id}`)}}/>
                             </th>
                             <th>
-                                <p>{a.name}</p>
+                                <p onClick={()=>{navigate(`/detailpage/${a.id}`)}}>{a.name}</p>
                             </th>
                             <th>
                                 <p>수량 : {a.count}</p>

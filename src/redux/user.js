@@ -48,13 +48,6 @@ export const userSlice = createSlice({
 export const {
   loginUser,
   logout,
-  shopaddCounttt,
-  shopminuseCounttt,
-  shopcartAddtt,
-  shopdelete,
-  toggleCheckbox,
-  toggleCheckboxAll,
-  deleteChecked,
   updateAddress,
 } = userSlice.actions;
 

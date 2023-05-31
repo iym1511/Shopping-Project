@@ -52,6 +52,8 @@ export const mainSlice = createSlice({
       }
     },
 
+    // payload로 받아온 체크된id랑 state안의 id찾아서 
+    // true / false값 바꿔주면서 체크on/off 해준다.
     toggleCheckbox(state, action) {
       state.forEach((item) => {
         if (item.id === action.payload) {
@@ -59,10 +61,17 @@ export const mainSlice = createSlice({
         }
       });
     },
+
+    // 카드의 전체 check상태를 받아와서  
+    // check값에 따라 직접 바꿔줌
     toggleCheckboxAll(state, action) {
       const isChecked = action.payload;
       state.forEach((item) => {
-        item.checked = isChecked;
+        if(item.checked == false){
+          item.checked = isChecked;
+        }else{
+          item.checked = !isChecked;
+        }
       });
     },
 
@@ -92,7 +101,6 @@ export const {
   shopminuseCount,
   shopdelete,
   shopcartAdd,
-  shoptextAdd,
   toggleCheckbox,
   deleteChecked,
   toggleCheckboxAll,

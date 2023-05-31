@@ -20,7 +20,7 @@ const Cart = () => {
     // 배열을 구매해
     let purchaseArray = [];
 
-    // main.js
+    // main.js / cart담기는곳
     const mainshop = useSelector((state) => state);
     const usercart = useSelector((state)=> state.user.item);
     
@@ -41,7 +41,7 @@ const Cart = () => {
 
     // 주문하기
     const purchaseProduct = () => {
-        mainshop.main.forEach((p)=>{ // p 상품 그 잡채다 💕
+        mainshop.main.forEach((p)=>{
             if(p){
                 let newPurchaseArray = purchaseArray.concat(p)
                 purchaseArray = newPurchaseArray
@@ -57,8 +57,6 @@ const Cart = () => {
         navigater("/mypage")
         const cartJSON = JSON.stringify(purchaseArray)
         sessionStorage.setItem(`${findUser.id}`, cartJSON)
-        console.log(purchaseArray)
-        console.log(findUser)
     }
 
     // 체크박스
@@ -72,15 +70,17 @@ const Cart = () => {
     }
 
     // 체크박스 전체선택
+    // main이 cart담기는곳
     const handleToggleAll = () => {
         const AllChecked = mainshop.main.every(item => item.isChecked);
         dispatch(toggleCheckboxAll(!AllChecked));
     };
 
     
-    // 돈 합계 
-    const [sum, setSum] = useState(0)
-    const [sum2, setSum2] = useState(0); // 배송비 포함
+    // 배송비 미포함
+    const [sum, setSum] = useState(0);
+    // 배송비 포함
+    const [sum2, setSum2] = useState(0);
 
     // 정규식사용해서 화폐단위따로 또 저장해서 담아야되서 이렇게함
     // 배송비 미포함 총 금액
@@ -148,7 +148,6 @@ const Cart = () => {
             setDeliberymoney(0)
             setSum2(list2)
         }
-        console.log(sum)
     },[moneylist2])
 
     useEffect(()=>{

@@ -99,11 +99,16 @@ input{
 .mypage-tr-map > th{
     font-weight: lighter;
 }
+.mypage-tr-map > th:nth-child(2) > p{
+    cursor: pointer;
+    font-weight: bolder;
+}
+
 .mypage-th-img{
     width: 100px;
-
     margin-top: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .mypage-noneOrder{
