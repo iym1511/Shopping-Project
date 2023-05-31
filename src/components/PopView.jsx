@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PopModal from "./PopModal";
 
 const PopView = () => {

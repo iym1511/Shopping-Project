@@ -14,14 +14,11 @@ const PopModal = ({ className, onClose, closable, visible }) => {
     //     }
     // }
 
+    
     // 이전방문 날짜
     const VISITED_BEFORE_DATE = localStorage.getItem('VisitCookie')
     // 현재 날짜
     const VISITED_NOW_DATE = Math.floor(new Date().getDate())
-
-    // console.log(VISITED_BEFORE_DATE)
-    // console.log(VISITED_NOW_DATE)
-    // localStorage.removeItem('VisitCookie')
 
     useEffect(() => {
         // 팝업 오늘 하루닫기 체크
@@ -42,10 +39,20 @@ const PopModal = ({ className, onClose, closable, visible }) => {
     const Dayclose = (e) => {
         if (onClose) {
             onClose(e)
-
-            const expiry = new Date()
+            const date = new Date()
+            const currentDay = date.getDate();
+            const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+            const day = () => {
+                if (currentDay === lastDayOfMonth) {
+                    date.setMonth(date.getMonth() + 1);
+                    date.setDate(1);
+                    } else {
+                    date.setDate(date.getDate());
+                    }
+                return date.getDate();
+            }
             // +1일 계산
-            const expiryDate = expiry.getDate() + 1
+            const expiryDate = day();
             // 로컬스토리지 저장
             localStorage.setItem('VisitCookie', expiryDate)
         }
