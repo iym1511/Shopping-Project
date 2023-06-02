@@ -117,7 +117,6 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
           clickStates[i] = i <= index ? true : false;
         }
         setClicked(clickStates);
-        console.log(clickStates)
       };
 
     useEffect(() => {

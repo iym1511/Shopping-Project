@@ -38,14 +38,14 @@ const Login = () => {
 
     const onSubmitForm = (e) => {
         e.preventDefault();
-        console.log(sign)
+        // console.log(sign)
         const findUser = sign.userlist.find((user) => user.id === id && user.password === password);
       
         // const logfindUser = user.find((log)=> log.id === user .id)
 
         if (!findUser) {
           alert("로그인 실패");
-          console.log(findUser.name)
+          // console.log(findUser.name)
         } else {
           dispatch(
             loginUser({
@@ -63,7 +63,7 @@ const Login = () => {
               pid: findUser.pid 
             }),
           );
-          console.log(findUser)
+          // console.log(findUser)
           navigate("/");
         }
       };

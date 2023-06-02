@@ -76,7 +76,7 @@ const Signup = () => {
           return setPasswordError(true);
         }
         if (!findUser) {
-          console.log(sign)
+          // console.log(sign)
           dispatch(createUser(user));
           navigate("/login");
           alert("회원가입 완료.")
@@ -130,10 +130,10 @@ const Signup = () => {
         },
         // 주소 선택 이벤트
         selectAddress: (data) => {
-            console.log(`
-                주소: ${data.address},
-                우편번호: ${data.zonecode}
-            `)
+            // console.log(`
+            //     주소: ${data.address},
+            //     우편번호: ${data.zonecode}
+            // `)
             setApiaddress(data.address);
             setApizoneCode(data.zonecode);
             onChangeaddress(data.address);
@@ -141,9 +141,8 @@ const Signup = () => {
             sessionStorage.setItem("address", data.address)
             sessionStorage.setItem("zonecode", data.zonecode)
             setOpenPostcode(false);
-            console.log(sesstionAddress)
-            console.log(sesstionZonecode)
-
+            // console.log(sesstionAddress)
+            // console.log(sesstionZonecode)
         },
     }
 

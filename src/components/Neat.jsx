@@ -28,12 +28,14 @@ const Neat = () => {
         e.preventDefault();
         setSearched(search);
     }
-
+    
     // 검색 기능
     const filterShop = shop.players.filter((a)=>{
         return a.name.replace(" ","").toLocaleLowerCase().includes(searched.toLocaleLowerCase().replace(" ",""))
     })
     
+    // 검색기능으로 필터한걸 Tag로 한번더 필터 (includes)
+    let filterTagShop = filterShop.filter((a)=> a.tag.includes(`${filter}`));
 
     // Tag 함수
     const NeatTag = () => {
@@ -57,8 +59,6 @@ const Neat = () => {
         setTagClick('CASUALTAG')
     }
 
-    // 검색기능으로 필터한걸 Tag로 한번더 필터 (includes)
-    let filterTagShop = filterShop.filter((a)=> a.tag.includes(`${filter}`));
 
 
     const recent = (i) => {

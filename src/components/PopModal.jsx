@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import styled from 'styled-components'
 import PropTypes from "prop-types";
 import Portal from "./Portal";
@@ -18,7 +18,7 @@ const PopModal = ({ className, onClose, closable, visible }) => {
     // 이전방문 날짜
     const VISITED_BEFORE_DATE = localStorage.getItem('VisitCookie')
     // 현재 날짜
-    const VISITED_NOW_DATE = Math.floor(new Date().getDate())
+    const VISITED_NOW_DATE = Math.floor(new Date().getDate());
 
     useEffect(() => {
         // 팝업 오늘 하루닫기 체크
