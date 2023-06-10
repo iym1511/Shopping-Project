@@ -7,7 +7,6 @@ import { deleteChecked, shopaddCount, shopAlldelete, shopdelete, shopminuseCount
 import { ADDIT_USER } from "../redux/singup";
 import Recent from "./Recent";
 import Notfound from "./Notfound";
-import Footer from "../page/Footer";
 import { motion} from "framer-motion";
 
 
@@ -22,7 +21,6 @@ const Cart = () => {
 
     // main.js / cart담기는곳
     const mainshop = useSelector((state) => state);
-    const usercart = useSelector((state)=> state.user.item);
     
       // 로그인
     const users = useSelector((state) => state.user);
@@ -122,7 +120,7 @@ const Cart = () => {
     },[shopplusCount, shopbbagiCount]) // 개수 + , - 될때 작동
 
     // 배열에있는거 전부 더할때
-    useEffect((a)=>{
+    useEffect(()=>{
         const list = moneylist.reduce(function add(sum, currValue){
             return sum + currValue.money;
         },0);
@@ -135,7 +133,7 @@ const Cart = () => {
     },[moneylist])
 
     // 배송비 포함
-    useEffect((a)=>{
+    useEffect(()=>{
         const list2 = moneylist2.reduce(function add(sum2, currValue){
             return sum2 + currValue.money;
         },0);

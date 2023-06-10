@@ -54,9 +54,6 @@ function App() {
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/detailpage/:id" element={<DetailPage />}></Route>
           <Route path="/login" element={<Login />}></Route> 
-          {/* <Route path="/shirt" element={<Shirt />}></Route> */}
-          {/* <Route path="/about" element={<Shoes />}></Route> */}
-          {/* <Route path="/bottom" element={<Bottom />}></Route> */}
           <Route index path="/" element={<Main />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/mypage" element={<MyPage />}></Route>

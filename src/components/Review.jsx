@@ -2,14 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../css/Review.css'
-import { add } from '../redux/comment';
 import { addReview } from '../redux/review';
 
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 import { purchaseBoolean } from '../redux/singup';
 
-const Review = ({setShowReviewModal, showReviewModal}) => {
+const Review = ({setShowReviewModal}) => {
 
     let {id} = useParams();
 
@@ -17,7 +16,6 @@ const Review = ({setShowReviewModal, showReviewModal}) => {
 
     const users = useSelector((state) => state.user);
     const sign = useSelector((state) => state.signup);
-    const reviews = useSelector((state) => state.review);
     const shop = useSelector((state) => state);
 
     const date = new Date();

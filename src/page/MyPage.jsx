@@ -113,9 +113,6 @@ const MyPage = () => {
         delcomment,
       })
     );
-    // console.log(users)
-    // console.log(findUser)
-    // console.log(sign)
     alert("배송지 저장 완료");
   };
 
@@ -138,7 +135,6 @@ const MyPage = () => {
   const totalMoney = purchaseArray
     ? purchaseArray.reduce((acc, curr) => acc + curr.money, 0)
     : undefined;
-  //   console.log(totalMoney); // 총 구매 금액 출력
 
   const delivery = (a) => {
     if (totalMoney < 40000) {
@@ -165,7 +161,6 @@ const MyPage = () => {
                   dispatch(ADDIT_USER(trans));
                   dispatch(loginUser(trans));
                   alert("변경되었습니다");
-                  // console.log(trans.password);
                 } else {
                   alert(
                     "현재 입력된 비밀번호와\n비밀번호 확인란이\n맞지 않습니다"

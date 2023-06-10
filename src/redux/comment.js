@@ -17,8 +17,6 @@ export const commentSlice = createSlice({
         text: action.payload.text, // text하나만 선택
         date: action.payload.date
       });
-      console.log(nextId);
-      console.log(action.payload)
     },
     remove: (state, action) => {
       alert("삭제되었습니다.");

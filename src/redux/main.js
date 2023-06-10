@@ -9,27 +9,15 @@ export const mainSlice = createSlice({
     shopaddCount(state, action) {
       // 위 배열안의 id와 값을올려줄 물건id가 같으면 증가
       let nums = state.findIndex((a) => a.id === action.payload);
-      let deliveryMoney = 2500;
       state[nums].count++;
       console.log(state[nums].deliveryMoney);
-      // 가격에다가 수량증가하면 가격++
-      // if(state[nums].money < 40000){
-      //   state[nums].money += state[nums].deliveryMoney;
-      // }else{
-        state[nums].money += state[nums].save;
-      // }
+      state[nums].money += state[nums].save;
     },
     shopminuseCount(state, action) {
       let nums = state.findIndex((a) => a.id === action.payload);
       if (state[nums].count > 1) {
         state[nums].count--;
         state[nums].money -= state[nums].save;
-        // console.log(state[nums].money);
-        // if(state[nums].money > 40000){
-        //   state[nums].money -= state[nums].deliveryMoney;
-        // }else{
-        //   state[nums].money -= state[nums].save;
-        // }
       }
     },
     shopdelete(state, action) {
@@ -42,7 +30,6 @@ export const mainSlice = createSlice({
     shopcartAdd(state, action) {
       // 처음에 빈배열이라서 같은게 없어서 false 반환
       const someCheck = state.some((a) => a.id === action.payload.id);
-      // console.log(someCheck);
       // 값이 있으면 true 값이 없으면 false
       // 처음에 빈배열이라 false 반환하니 거꾸로 true로 만들어줘서 if문 실행
       if (!someCheck) {
@@ -77,22 +64,7 @@ export const mainSlice = createSlice({
 
     deleteChecked(state) {
       return state.filter((item) => !item.checked);
-    },
-
-    // add: (state, action) => {
-    //   const comment = state.comment.find((item) =>{
-    //     item.id === action.payload.id
-    //   })
-    //   nextId++;
-    //   state.push({
-    //     id: nextId,
-    //     pid: action.payload.pid, // pid하나만선택
-    //     name: action.payload.name,
-    //     text: action.payload.text, // text하나만 선택
-    //   });
-    //   console.log(nextId);
-    //   console.log(comment)
-    // },
+    }
   },
 });
 

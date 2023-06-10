@@ -23,14 +23,9 @@ const Nav = () => {
   const userName = useSelector((state) => state.user);
   // 로그인
   const users = useSelector((state) => state.user);
-  // 로그인 로그 확인용
-  const log = useSelector((state)=> state.loginlog)
 
   // 장바구니
   const cart = useSelector((state)=> state.main)
-
-  // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 (지워도댐 확인용)
-  const sign = useSelector((state) => state.signup);
 
   // 장바구니 로그인 & 로그아웃
   const loginMarket = () => {
