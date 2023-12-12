@@ -4,7 +4,7 @@ import "../css/MyPage.css";
 import { ADDIT_USER, pushPid } from "../redux/singup";
 import { loginUser, updateAddress } from "../redux/user";
 import DaumPostcode from "react-daum-postcode";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Notfound from "../components/Notfound";
 import Footer from "./Footer";
 import { motion } from "framer-motion";
@@ -18,6 +18,7 @@ const MyPage = () => {
   const sign = useSelector((state) => state.signup);
   const users = useSelector((state) => state.user);
   const shop = useSelector((state) => state.players);
+  const state = useLocation();
 
   // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 / 댓글 이름별출력도 이걸로함
   const findUser = sign.userlist.find((user) => user.id == users.id);
@@ -26,10 +27,10 @@ const MyPage = () => {
   const navigate = useNavigate();
 
   // 사용자 배송지 정보
-  const [address, setAddress] = useState(findUser.apiaddress);
-  const [zonecode, setZonecode] = useState(findUser.apizonecode);
-  const [detailAddress, setDetailAddress] = useState(findUser.detailAddress);
-  const [delcomment, setDelcomment] = useState(users.delComment);
+  const [address, setAddress] = useState(findUser && findUser.apiaddress);
+  const [zonecode, setZonecode] = useState(findUser && findUser.apizonecode);
+  const [detailAddress, setDetailAddress] = useState(findUser && findUser.detailAddress);
+  const [delcomment, setDelcomment] = useState(findUser && users.delComment);
 
   const onChangeAddress = (e) => {
     setAddress(e.target.value);
@@ -143,6 +144,13 @@ const MyPage = () => {
       return a.money;
     }
   };
+
+  useEffect(() => {
+    if (!findUser && state.pathname == "/mypage") {
+      navigate(-1);
+    }
+  }, [state]);
+
 
   return (
     <motion.div

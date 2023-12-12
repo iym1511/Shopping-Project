@@ -92,7 +92,7 @@ const Neat = () => {
     //         }
     //     ))
     // }
-             
+
     //     <div className="neat-mapbox">  원래 쓰던거
     //     {
     //         shop.players.map((a, i)=> (

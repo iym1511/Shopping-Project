@@ -3,19 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userlist: [
     // 임시데이터
-    {
-      id: "iym1511",
-      name: "문일윤",
-      password: "iym1511",
-      email: "iym1511@naver.com",
-      apiaddress: "땡땡아파트",
-      apizonecode:"41234",
-      detailAddress: "302동 201호",
-      isLoggedIn: true,
-      item: [],
-      mypageitem: null,
-      phonNumber : "01023126324",
-    },
+    // {
+    //   id: "iym1511",
+    //   name: "문일윤",
+    //   password: "iym1511",
+    //   email: "iym1511@naver.com",
+    //   apiaddress: "땡땡아파트",
+    //   apizonecode:"41234",
+    //   detailAddress: "302동 201호",
+    //   isLoggedIn: true,
+    //   item: [],
+    //   mypageitem: null,
+    //   phonNumber : "01023126324",
+    // },
   ],
 };
 

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../css/Signup.css";
 import useInput from "../hooks/useInput";
 import { createUser } from "../redux/singup";
@@ -10,6 +10,8 @@ import Notfound from "../components/Notfound";
 const Signup = () => {
   const sign = useSelector((state) => state.signup);
   const users = useSelector((state) => state.user);
+  const findUsers = sign.userlist.find((user) => user.id == users.id);
+  const state = useLocation();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -80,18 +82,19 @@ const Signup = () => {
     item: [], // 장바구니 담기는 곳
   };
 
-  const findUser = sign.userlist.find(
-    (signup) => sign.id === id || signup.email === email
-  );
+
 
   const onSubmitForm = (e) => {
     e.preventDefault();
+    const findUser = sign.userlist.find(
+      (signup) => sign.id === id || signup.email === email
+    );
+
     if (password !== passwordCheck) {
       alert("비밀번호 불일치");
       return setPasswordError(true);
     }
     if (!findUser) {
-      // console.log(sign)
       dispatch(createUser(user));
       navigate("/login");
       alert("회원가입 완료.");
@@ -104,7 +107,7 @@ const Signup = () => {
     }
   };
 
-  const findUsers = sign.userlist.find((user) => user.id == users.id);
+
   // 세션으로 주소 불러오기
   const sesstionAddress = sessionStorage.getItem("address");
   const sesstionZonecode = sessionStorage.getItem("zonecode");
@@ -132,7 +135,13 @@ const Signup = () => {
       // document.removeEventListener('touchstart', handler); // 모바일 대응
     };
   });
-  // ---------------------------
+  // ----------
+
+  useEffect(() => {
+    if (findUsers && state.pathname == "/signup") {
+      navigate(-1);
+    }
+  }, [state]);
 
   const handle = {
     // 버튼클릭 이벤트
@@ -153,8 +162,6 @@ const Signup = () => {
       sessionStorage.setItem("address", data.address);
       sessionStorage.setItem("zonecode", data.zonecode);
       setOpenPostcode(false);
-      // console.log(sesstionAddress)
-      // console.log(sesstionZonecode)
     },
   };
 

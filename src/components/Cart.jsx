@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import '../css/Cart.css';
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { deleteChecked, shopaddCount, shopAlldelete, shopdelete, shopminuseCount, toggleCheckbox, toggleCheckboxAll } from "../redux/main";
 import { ADDIT_USER } from "../redux/singup";
 import Recent from "./Recent";
@@ -26,8 +26,10 @@ const Cart = () => {
     const users = useSelector((state) => state.user);
 
     // 현재 로그인한 유저랑 회원가입된 유저 찾아줌 / 댓글 이름별출력도 이걸로함
-    const sign = useSelector((state)=> state.signup)
-    const findUser = sign.userlist.find((user)=> user.id == users.id)
+    const sign = useSelector((state)=> state.signup);
+    const findUser = sign.userlist.find((user)=> user.id == users.id);
+
+    const state = useLocation();
     
 
       // 로그인 유무 체크
@@ -156,6 +158,12 @@ const Cart = () => {
     useEffect(() => {
         setLogin(users.isLoggedIn ? true : false);
     }, [users]);
+
+    useEffect(() => {
+        if (!findUser && state.pathname == "/cart") {
+            navigater(-1);
+        }
+    }, [state]);
 
 
     // main에 있는 배열값을 map으로 풀어서 main안에서 비교할수있게 id를 한번더 전달해줌

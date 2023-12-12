@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "문일윤",
-  id: "iym1511",
-  email: "iym1511@naver.com",
-  apiaddress: "땡땡아파트",
-  apizonecode: "41234",
-  detailAddress: "302동 201호",
-  isLoggedIn: false
+  // name: "문일윤",
+  // id: "iym1511",
+  // email: "iym1511@naver.com",
+  // apiaddress: "땡땡아파트",
+  // apizonecode: "41234",
+  // detailAddress: "302동 201호",
+  // isLoggedIn: false
 };
 
 export const userSlice = createSlice({
