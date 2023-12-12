@@ -117,7 +117,6 @@ const Cart = () => {
             }
             moneylist.push(obj)
             moneylist2.push(obj) // 배송비 포함
-            //moneylist.push(a.money, a.id)
         })
     },[shopplusCount, shopbbagiCount]) // 개수 + , - 될때 작동
 
@@ -193,7 +192,6 @@ const Cart = () => {
                 
                 {   // 장바구니는 배열이니까 길이로 찾아서 삼항연산자로쓰기💚
                     mainshop.main.length == 0 ?
-                    // usercart.length == 0 ?
                     (
                         <p className="Cart-zero">장바구니가 비어있습니다</p>
                         

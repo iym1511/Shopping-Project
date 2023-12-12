@@ -5,7 +5,6 @@ import '../css/Neat.css'
 import Footer from "../page/Footer";
 import Recent from "./Recent";
 import { motion} from "framer-motion";
-// import Pagination from "react-js-pagination";
 
 let recentPush = []
 

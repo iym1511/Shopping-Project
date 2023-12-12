@@ -31,8 +31,6 @@ const Review = ({setShowReviewModal}) => {
     // useParams :id 값이랑 배열안에있는 id값을 같은걸로 찾아줌
     const shoplist = shop.players.find(r=> r.id == id)
 
-    const checkuser = findUser.purchaseArray.find((e)=> e.id == id)
-
     // 별점
     const starArray = [0, 1, 2, 3, 4];
     const [clicked, setClicked] = useState([false, false, false, false, false]);
@@ -70,13 +68,6 @@ const Review = ({setShowReviewModal}) => {
               alert("댓글을 작성해주세요")
           }
           onReset();          
-      }
-
-      const addboolean = () => {
-        if(checkuser.id == id){
-          // dispatch(purchaseBoolean({...findUser}))
-          console.log(checkuser)
-        }
       }
       
 
@@ -124,16 +115,6 @@ const Review = ({setShowReviewModal}) => {
   const sendReview = () => {
     let score = clicked.filter(Boolean).length;
     setStar(score)
-    // fetch('http://52.78.63.175:8000/movie', {
-    //   method: 'POST',
-    //   Headers: {
-    //     Authroization: 'e7f59ef4b4900fe5aa839fcbe7c5ceb7',
-    //   },
-    //   body: JSON.stringify({
-    //     movie_id:1
-    //     star: score,
-    //   }),
-    // });
   };
 
 
@@ -159,7 +140,7 @@ const Review = ({setShowReviewModal}) => {
                 </Stars>
                 <form onSubmit={addtext}>
                     <textarea type="text" onChange={handleText}  className='review-input'/>
-                    <button type='submit' onClick={addboolean} className='review-btn'>리뷰 작성</button>
+                    <button type='submit' className='review-btn'>리뷰 작성</button>
                 </form>
             </div>
         </div>
