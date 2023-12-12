@@ -50,11 +50,11 @@ function App() {
       <AnimatePresence>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route index path="/" element={<Main />}></Route>
           <Route path="/neat" element={<Neat />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/detailpage/:id" element={<DetailPage />}></Route>
           <Route path="/login" element={<Login />}></Route> 
-          <Route index path="/" element={<Main />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/mypage" element={<MyPage />}></Route>
           <Route path="/review/:id" element={<Review />} />
